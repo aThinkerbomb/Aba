@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="VideoSendCommentView">
+            <rect key="frame" x="0.0" y="0.0" width="388" height="113"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="grh-yG-nZt">
+                    <rect key="frame" x="8" y="8" width="314" height="97"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="cHU-vw-OTO"/>
+                    </connections>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wE-Ot-rT5">
+                    <rect key="frame" x="330" y="8" width="50" height="30"/>
+                    <color key="backgroundColor" red="0.99215686270000003" green="0.66666666669999997" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="8tG-n5-Bal"/>
+                        <constraint firstAttribute="width" constant="50" id="zLE-Z7-HXa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="发送">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="SendAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="fkr-1G-4JE"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="给专家留言吧..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wht-m6-8XF">
+                    <rect key="frame" x="14" y="16" width="91" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.58823529409999997" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0wE-Ot-rT5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="3Jb-Zg-Nml"/>
+                <constraint firstItem="grh-yG-nZt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="8Du-s9-5qT"/>
+                <constraint firstItem="Wht-m6-8XF" firstAttribute="leading" secondItem="grh-yG-nZt" secondAttribute="leading" constant="6" id="9ey-SP-K6O"/>
+                <constraint firstItem="0wE-Ot-rT5" firstAttribute="leading" secondItem="grh-yG-nZt" secondAttribute="trailing" constant="8" id="CoQ-ph-6UJ"/>
+                <constraint firstAttribute="bottom" secondItem="grh-yG-nZt" secondAttribute="bottom" constant="8" id="Pfp-nh-0s7"/>
+                <constraint firstItem="Wht-m6-8XF" firstAttribute="top" secondItem="grh-yG-nZt" secondAttribute="top" constant="8" id="xS9-fy-F47"/>
+                <constraint firstItem="grh-yG-nZt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="zAy-8S-bER"/>
+                <constraint firstAttribute="trailing" secondItem="0wE-Ot-rT5" secondAttribute="trailing" constant="8" id="zqL-Dj-Mro"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="placeholdeLabel" destination="Wht-m6-8XF" id="ULI-yP-ZO1"/>
+                <outlet property="textView" destination="grh-yG-nZt" id="BQK-ry-xl7"/>
+            </connections>
+            <point key="canvasLocation" x="39" y="-186.5"/>
+        </view>
+    </objects>
+</document>

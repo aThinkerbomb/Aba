@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommodityTableViewCell" rowHeight="81" id="KGk-i7-Jjw" customClass="CommodityTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="360" height="80.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSU-tX-XYb">
+                        <rect key="frame" x="315.5" y="18" width="32.5" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32.5" id="nZU-zq-Jt9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.20784313730000001" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5v-He-Wd7">
+                        <rect key="frame" x="335" y="34" width="13" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.20784313730000001" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="贝贝熊-畅销40余年，发行2.4亿，影响两代人；孩子们成长初期的启蒙书；适合阅读年龄：3～9岁。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6h-se-3qy">
+                        <rect key="frame" x="14" y="18" width="302" height="31.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Z5v-He-Wd7" firstAttribute="top" secondItem="dSU-tX-XYb" secondAttribute="bottom" id="16w-JL-CVR"/>
+                    <constraint firstItem="dSU-tX-XYb" firstAttribute="leading" secondItem="J6h-se-3qy" secondAttribute="trailing" id="D9W-5P-j0U"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Z5v-He-Wd7" secondAttribute="trailing" constant="4" id="ICW-zT-lfB"/>
+                    <constraint firstItem="J6h-se-3qy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="Qij-cR-eDv"/>
+                    <constraint firstItem="J6h-se-3qy" firstAttribute="top" secondItem="dSU-tX-XYb" secondAttribute="top" id="blI-2x-rt8"/>
+                    <constraint firstItem="dSU-tX-XYb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="sPa-js-nVs"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="dSU-tX-XYb" secondAttribute="trailing" constant="4" id="tzq-R1-Yh4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="goodsName" destination="J6h-se-3qy" id="Szx-Ii-ggb"/>
+                <outlet property="number" destination="Z5v-He-Wd7" id="E2m-Yp-0VM"/>
+                <outlet property="price" destination="dSU-tX-XYb" id="04j-fr-7OM"/>
+            </connections>
+            <point key="canvasLocation" x="43" y="-81.5"/>
+        </tableViewCell>
+    </objects>
+</document>
