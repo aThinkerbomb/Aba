@@ -37,7 +37,7 @@
 #define ABA_MY_VIDEO_URL @"/userVideo/queryUserVideoByUserId"
 
 // 历史观看
-
+#define ABA_HISTORY_WATCH_URL @"/userVideo/queryUserHistoryLookByUserId"
 // 观看记录
 #define ABA_Watch_Record_URL @"/userPayRecord/queryUserPayRecordByUserId";
 

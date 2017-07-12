@@ -24,7 +24,13 @@
     if (_videoModel) {
         ZFPlayerModel * playerModel = [[ZFPlayerModel alloc] init];
         playerModel.title = _videoModel.videoname;
-        playerModel.videoURL = [NSURL URLWithString:_videoModel.videopath];
+        
+        NSString *videoPath = _videoModel.videopath;
+        if ([ABAConfig IsChinese:videoPath]) {
+            videoPath = [videoPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
+        
+        playerModel.videoURL = [NSURL URLWithString:videoPath];
         
         // image 烦人
         NSInteger index = [_videoModel.filename length] - 4;

@@ -132,6 +132,13 @@
 		B2D359A11F160D5D00827894 /* VideoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D359A01F160D5D00827894 /* VideoHeaderView.xib */; };
 		B2D359A41F1612B900827894 /* ExpertVideoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D359A31F1612B900827894 /* ExpertVideoApi.m */; };
 		B2D359A71F16146B00827894 /* ExpertVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D359A61F16146B00827894 /* ExpertVideoModel.m */; };
+		B2D359C91F165F5D00827894 /* MyVideoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D359C31F165F5D00827894 /* MyVideoApi.m */; };
+		B2D359CA1F165F5D00827894 /* MyVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D359C61F165F5D00827894 /* MyVideoViewController.m */; };
+		B2D359D21F166A6A00827894 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D359D11F166A6A00827894 /* HistoryViewController.m */; };
+		B2D359D61F166C2000827894 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D359D41F166C2000827894 /* HistoryTableViewCell.m */; };
+		B2D359D71F166C2000827894 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D359D51F166C2000827894 /* HistoryTableViewCell.xib */; };
+		B2D359DA1F166EC200827894 /* HistoryWatchApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D359D91F166EC200827894 /* HistoryWatchApi.m */; };
+		B2D359DD1F16722000827894 /* HistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D359DC1F16722000827894 /* HistoryModel.m */; };
 		B2F363FF1F0A263B00D26AA8 /* BabyGoodTeachHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F363FE1F0A263B00D26AA8 /* BabyGoodTeachHeaderView.m */; };
 		B2F364011F0A264B00D26AA8 /* BabyGoodTeachHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F364001F0A264B00D26AA8 /* BabyGoodTeachHeaderView.xib */; };
 		B2F364071F0A53B200D26AA8 /* BenefitDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F364061F0A53B200D26AA8 /* BenefitDetailHeaderView.m */; };
@@ -368,6 +375,19 @@
 		B2D359A31F1612B900827894 /* ExpertVideoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertVideoApi.m; sourceTree = "<group>"; };
 		B2D359A51F16146B00827894 /* ExpertVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpertVideoModel.h; sourceTree = "<group>"; };
 		B2D359A61F16146B00827894 /* ExpertVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertVideoModel.m; sourceTree = "<group>"; };
+		B2D359C21F165F5D00827894 /* MyVideoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVideoApi.h; sourceTree = "<group>"; };
+		B2D359C31F165F5D00827894 /* MyVideoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVideoApi.m; sourceTree = "<group>"; };
+		B2D359C51F165F5D00827894 /* MyVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVideoViewController.h; sourceTree = "<group>"; };
+		B2D359C61F165F5D00827894 /* MyVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVideoViewController.m; sourceTree = "<group>"; };
+		B2D359D01F166A6A00827894 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		B2D359D11F166A6A00827894 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		B2D359D31F166C2000827894 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
+		B2D359D41F166C2000827894 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
+		B2D359D51F166C2000827894 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
+		B2D359D81F166EC200827894 /* HistoryWatchApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryWatchApi.h; sourceTree = "<group>"; };
+		B2D359D91F166EC200827894 /* HistoryWatchApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryWatchApi.m; sourceTree = "<group>"; };
+		B2D359DB1F16722000827894 /* HistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryModel.h; sourceTree = "<group>"; };
+		B2D359DC1F16722000827894 /* HistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryModel.m; sourceTree = "<group>"; };
 		B2F363FD1F0A263B00D26AA8 /* BabyGoodTeachHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyGoodTeachHeaderView.h; sourceTree = "<group>"; };
 		B2F363FE1F0A263B00D26AA8 /* BabyGoodTeachHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyGoodTeachHeaderView.m; sourceTree = "<group>"; };
 		B2F364001F0A264B00D26AA8 /* BabyGoodTeachHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BabyGoodTeachHeaderView.xib; sourceTree = "<group>"; };
@@ -636,6 +656,7 @@
 				B2B73E111EFB7BB4008F3BC3 /* Baby */,
 				B2B73E121EFB7BB4008F3BC3 /* benefit */,
 				B2B73E131EFB7BB4008F3BC3 /* school */,
+				B2D359BF1F165F5D00827894 /* side */,
 				B2B3CCE61F0699D20094AD5B /* WebView */,
 			);
 			path = Module;
@@ -1044,6 +1065,106 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		B2D359BF1F165F5D00827894 /* side */ = {
+			isa = PBXGroup;
+			children = (
+				B2D359C01F165F5D00827894 /* myVideo */,
+				B2D359CB1F166A1A00827894 /* HistoryWatch */,
+			);
+			path = side;
+			sourceTree = "<group>";
+		};
+		B2D359C01F165F5D00827894 /* myVideo */ = {
+			isa = PBXGroup;
+			children = (
+				B2D359C11F165F5D00827894 /* api */,
+				B2D359C41F165F5D00827894 /* controller */,
+				B2D359C71F165F5D00827894 /* model */,
+				B2D359C81F165F5D00827894 /* view */,
+			);
+			path = myVideo;
+			sourceTree = "<group>";
+		};
+		B2D359C11F165F5D00827894 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				B2D359C21F165F5D00827894 /* MyVideoApi.h */,
+				B2D359C31F165F5D00827894 /* MyVideoApi.m */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		B2D359C41F165F5D00827894 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				B2D359C51F165F5D00827894 /* MyVideoViewController.h */,
+				B2D359C61F165F5D00827894 /* MyVideoViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		B2D359C71F165F5D00827894 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		B2D359C81F165F5D00827894 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		B2D359CB1F166A1A00827894 /* HistoryWatch */ = {
+			isa = PBXGroup;
+			children = (
+				B2D359CC1F166A1A00827894 /* Controller */,
+				B2D359CD1F166A1A00827894 /* model */,
+				B2D359CE1F166A1A00827894 /* view */,
+				B2D359CF1F166A1A00827894 /* watchApi */,
+			);
+			path = HistoryWatch;
+			sourceTree = "<group>";
+		};
+		B2D359CC1F166A1A00827894 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B2D359D01F166A6A00827894 /* HistoryViewController.h */,
+				B2D359D11F166A6A00827894 /* HistoryViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B2D359CD1F166A1A00827894 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B2D359DB1F16722000827894 /* HistoryModel.h */,
+				B2D359DC1F16722000827894 /* HistoryModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		B2D359CE1F166A1A00827894 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				B2D359D31F166C2000827894 /* HistoryTableViewCell.h */,
+				B2D359D41F166C2000827894 /* HistoryTableViewCell.m */,
+				B2D359D51F166C2000827894 /* HistoryTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		B2D359CF1F166A1A00827894 /* watchApi */ = {
+			isa = PBXGroup;
+			children = (
+				B2D359D81F166EC200827894 /* HistoryWatchApi.h */,
+				B2D359D91F166EC200827894 /* HistoryWatchApi.m */,
+			);
+			path = watchApi;
+			sourceTree = "<group>";
+		};
 		B2F816461EFAB720002454A9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -1178,6 +1299,7 @@
 				B28FC2631F03EF3F009899ED /* SchoolSectionView.xib in Resources */,
 				B2D359971F1605D400827894 /* VideoIntroSectionView.xib in Resources */,
 				B2A6B3CE1EF9331600C74D79 /* Main.storyboard in Resources */,
+				B2D359D71F166C2000827894 /* HistoryTableViewCell.xib in Resources */,
 				B2A003571F0BEFD900EF87FD /* GoodDetailSectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1269,6 +1391,7 @@
 				B26561451F0CD3630078B2A7 /* ServiceDesTableViewCell.m in Sources */,
 				B2243F261F010DBB00FE795D /* HomePlayModel.m in Sources */,
 				B28FC2731F04013B009899ED /* SchoolDaRenApi.m in Sources */,
+				B2D359DA1F166EC200827894 /* HistoryWatchApi.m in Sources */,
 				B21EB7FF1F0E1781005F571A /* HomeVideoSectionView.m in Sources */,
 				B2B347F01F0261CE005FEAD5 /* BabyListTableViewCell.m in Sources */,
 				B2C073E51F1385500038381F /* CommodityTableViewCell.m in Sources */,
@@ -1291,6 +1414,7 @@
 				B2B492D81EFE608700CF1221 /* GetRegisterVerCode.m in Sources */,
 				B2FB32FA1F1523EF0071AC4A /* EditViewController.m in Sources */,
 				B2D3599F1F160D5500827894 /* VideoHeaderView.m in Sources */,
+				B2D359D61F166C2000827894 /* HistoryTableViewCell.m in Sources */,
 				B28FC2611F03EF30009899ED /* SchoolSectionView.m in Sources */,
 				B28FC2661F03F9F1009899ED /* SchoolAlbumModel.m in Sources */,
 				B2C073E01F13839E0038381F /* OrangeTableViewCell.m in Sources */,
@@ -1305,6 +1429,7 @@
 				B21EB81E1F0E645D005F571A /* VideoMessageApi.m in Sources */,
 				B2B347DE1F023C0C005FEAD5 /* NSDate+Calender.m in Sources */,
 				B28FC2701F04012A009899ED /* SchoolAlbumApi.m in Sources */,
+				B2D359D21F166A6A00827894 /* HistoryViewController.m in Sources */,
 				B22C97721F000CF500A3EEEA /* BaseModel.m in Sources */,
 				B2B347DA1F02115A005FEAD5 /* HomeListTableViewCell.m in Sources */,
 				B2B492DB1EFE70D100CF1221 /* ForgotPasswordApi.m in Sources */,
@@ -1315,6 +1440,7 @@
 				B25B2EDE1EFA6E6F00520854 /* YTKNetworkAgent+DT_Agent.m in Sources */,
 				B2F8164B1EFAB761002454A9 /* HomeViewController.m in Sources */,
 				B2BD0C631F13C275003918B0 /* GetReceiptApi.m in Sources */,
+				B2D359C91F165F5D00827894 /* MyVideoApi.m in Sources */,
 				B23127531F054D120091CC78 /* SchoolViewController.m in Sources */,
 				B2B73E261EFB7CD6008F3BC3 /* BenefitViewController.m in Sources */,
 				B2B492CA1EFE4DEC00CF1221 /* UserLoginModel.m in Sources */,
@@ -1337,7 +1463,9 @@
 				B21EB8181F0E3293005F571A /* VideoBrowNumberApi.m in Sources */,
 				B231274D1F052DB90091CC78 /* HeaderToolScrollBar.m in Sources */,
 				B2B3CCE41F0643C70094AD5B /* ArticleTableViewCell.m in Sources */,
+				B2D359DD1F16722000827894 /* HistoryModel.m in Sources */,
 				B21EB8051F0E1E28005F571A /* CommentTableViewCell.m in Sources */,
+				B2D359CA1F165F5D00827894 /* MyVideoViewController.m in Sources */,
 				B28FC2691F03FA09009899ED /* SchoolDaRenModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

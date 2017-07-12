@@ -16,6 +16,10 @@
 #import "HomeVideoViewController.h"
 
 
+// 已下为test
+#import "MyVideoViewController.h"
+#import "HistoryViewController.h"
+
 static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, HomeLiveHeaderViewDelegate>
@@ -153,7 +157,13 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 
 - (void)leftButtonAction:(UIButton *)sender
 {
-    NSLog(@"头像按钮");
+//    MyVideoViewController *myVideo = [[MyVideoViewController alloc] init];
+//    myVideo.hidesBottomBarWhenPushed = YES;
+//    [self pushToNextNavigationController:myVideo];
+    
+    HistoryViewController *historyVC = [[HistoryViewController alloc] init];
+    historyVC.hidesBottomBarWhenPushed = YES;
+    [self pushToNextNavigationController:historyVC];
 }
 
 #pragma mark - lazyLoading
