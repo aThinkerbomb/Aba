@@ -60,7 +60,9 @@
     return _playerControlView;
 }
 
-
+- (void)pause {
+    [self.playerView pause];
+}
 
 
 /*

@@ -40,6 +40,12 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     [[NSNotificationCenter defaultCenter] postNotificationName:@"pause" object:nil];
 }
 
+- (void)popBack {
+    [super popBack];
+    
+    [self.videoheaderView pause];
+}
+
 - (void)setupController {
     [super setupController];
     

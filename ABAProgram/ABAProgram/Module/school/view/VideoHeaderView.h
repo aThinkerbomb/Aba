@@ -13,4 +13,5 @@
 
 @property (nonatomic, strong) ExpertVideoModel *videoModel;
 
+- (void)pause;
 @end
