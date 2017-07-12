@@ -43,6 +43,9 @@
         playerModel.placeholderImageURLString = urlstring;
         playerModel.fatherView = self;
         
+        //用于重置新的播放。
+        [self.playerView resetPlayer];
+        
         [self.playerView playerControlView:self.playerControlView playerModel:playerModel];
         
     }
