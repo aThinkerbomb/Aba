@@ -35,6 +35,9 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     self.title = [NSString stringWithFormat:@"%@视频", self.peopleName];
     
     _open = NO;
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pause" object:nil];
 }
 
 - (void)setupController {
@@ -194,6 +197,7 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     }
     return _sectionView;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -362,6 +362,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     [self.playerView playerControlView:controlView playerModel:playModel];
     
     [backView addSubview:self.playerView];
+    
     return backView;
 
 }
@@ -380,7 +381,10 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     return _videoTableView;
 }
 
-
+- (void)popBack {
+    [super popBack];
+    [self.playerView pause];
+}
 
 
 - (void)didReceiveMemoryWarning {

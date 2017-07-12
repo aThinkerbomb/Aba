@@ -39,7 +39,7 @@
     [self.aImage sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     self.aTitle.text = _homeModel.streamname;
     self.accessTitle.text = _homeModel.sysUserInfo.username;
-    if ([_homeModel.price intValue] == 0) {
+    if ([_homeModel.price doubleValue] == 0) {
         self.aPrice.text = @"免费";
     } else {
         self.aPrice.text = _homeModel.price;

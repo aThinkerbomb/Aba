@@ -20,6 +20,7 @@
 @implementation VideoHeaderView
 
 - (void)setVideoModel:(ExpertVideoModel *)videoModel {
+    
     _videoModel = videoModel;
     if (_videoModel) {
         ZFPlayerModel * playerModel = [[ZFPlayerModel alloc] init];
