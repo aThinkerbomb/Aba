@@ -144,6 +144,7 @@ static NSString *babyListCellIdentifier = @"BabyListTableViewCell";
         BabyGoodDetalViewController *detailVC = [[BabyGoodDetalViewController alloc] init];
         detailVC.style = GoodChooseStyleTeach;
         detailVC.institutionId = model.babyId;
+        detailVC.hidesBottomBarWhenPushed = YES;
         [self pushToNextNavigationController:detailVC];
         
     } else {
@@ -151,6 +152,7 @@ static NSString *babyListCellIdentifier = @"BabyListTableViewCell";
         BabyGoodDetalViewController *detailVC = [[BabyGoodDetalViewController alloc] init];
         detailVC.style = GoodChooseStyleClass;
         detailVC.institutionId = model.babyId;
+        detailVC.hidesBottomBarWhenPushed = YES;
         [self pushToNextNavigationController:detailVC];
     }
 }

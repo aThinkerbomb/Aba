@@ -88,6 +88,11 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     // 注册cell
     [self registerTableViewCell];
     
+    // 视频
+    [self.view addSubview:[self setupPlayView]];;
+    
+    
+    
     // 发表评论的view
     self.sendCommentView = [[[NSBundle mainBundle] loadNibNamed:@"VideoSendCommentView" owner:self options:nil] lastObject];
     [self.sendCommentView setFrame:CGRectMake(0, ScreenH - 50, ScreenW, 50)];
@@ -328,7 +333,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 #pragma mark - 设置播放器界面
 
 - (UIView *)setupPlayView {
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, 250)];
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenW/5*3)];
 
     self.playerView = [[ZFPlayerView alloc] initWithFrame:backView.bounds];
     
@@ -366,10 +371,9 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 #pragma mark - lazyLoading
 - (UITableView *)videoTableView {
     if (!_videoTableView) {
-        _videoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH-50) style:UITableViewStylePlain];
+        _videoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, ScreenW/5*3, ScreenW, ScreenH-50-ScreenW/5*3) style:UITableViewStylePlain];
         _videoTableView.delegate = self;
         _videoTableView.dataSource = self;
-        _videoTableView.tableHeaderView = [self setupPlayView];
         _videoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.view addSubview:_videoTableView];
     }
