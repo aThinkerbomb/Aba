@@ -27,6 +27,10 @@
     
     _videoModel = videoModel;
     if (_videoModel) {
+        
+        NSString *num = [NSString stringWithFormat:@"  %@次播放", _videoModel.videolooksum];
+        [self.playNumbwe setTitle:num forState:UIControlStateNormal];
+        
         ZFPlayerModel * playerModel = [[ZFPlayerModel alloc] init];
         playerModel.title = _videoModel.videoname;
         
