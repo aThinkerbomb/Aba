@@ -13,6 +13,10 @@
 #import "YTKNetwork.h"
 #import "VersionManager.h"
 #import "SchoolViewController.h"
+#import "ABAShareManager.h"
+
+
+
 @interface AppDelegate ()
 
 @end
@@ -37,6 +41,10 @@
     // 版本检测
     [VersionManager startCheckVersion];
     
+    // 注册分享功能
+    [ABAShareManager registerShare];
+    
+    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -53,6 +61,13 @@
     
     
     return YES;
+}
+
+// 其他应用回掉
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    return [ABAShareManager HandleCallBackOpenurl:url];
+    
 }
 
 
