@@ -16,8 +16,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeQ-kE-D4y">
-                    <rect key="frame" x="0.0" y="0.0" width="305" height="150"/>
+                    <rect key="frame" x="0.0" y="0.0" width="305" height="190"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perinfo_title_bg1" translatesAutoresizingMaskIntoConstraints="NO" id="KMf-Ll-gCu">
+                            <rect key="frame" x="0.0" y="0.0" width="305" height="190"/>
+                        </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerImage" translatesAutoresizingMaskIntoConstraints="NO" id="gNg-8I-4sy">
                             <rect key="frame" x="135" y="35" width="35" height="35"/>
                         </imageView>
@@ -31,26 +34,30 @@
                     <color key="backgroundColor" red="1" green="0.96782315682677511" blue="0.96988407967478152" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="gNg-8I-4sy" firstAttribute="centerX" secondItem="qeQ-kE-D4y" secondAttribute="centerX" id="DuH-XX-2Hp"/>
-                        <constraint firstAttribute="height" constant="150" id="L7g-HD-gbD"/>
+                        <constraint firstAttribute="height" constant="190" id="L7g-HD-gbD"/>
+                        <constraint firstItem="KMf-Ll-gCu" firstAttribute="leading" secondItem="qeQ-kE-D4y" secondAttribute="leading" id="P0u-cw-28m"/>
                         <constraint firstItem="0tk-Ju-7HX" firstAttribute="centerX" secondItem="gNg-8I-4sy" secondAttribute="centerX" id="UJM-qL-WSs"/>
+                        <constraint firstItem="KMf-Ll-gCu" firstAttribute="top" secondItem="qeQ-kE-D4y" secondAttribute="top" id="e2N-a3-HwY"/>
+                        <constraint firstAttribute="trailing" secondItem="KMf-Ll-gCu" secondAttribute="trailing" id="hMr-yM-IdZ"/>
+                        <constraint firstAttribute="bottom" secondItem="KMf-Ll-gCu" secondAttribute="bottom" id="nln-Mk-AdS"/>
                         <constraint firstItem="gNg-8I-4sy" firstAttribute="top" secondItem="qeQ-kE-D4y" secondAttribute="top" constant="35" id="vQV-Lr-XhB"/>
                         <constraint firstItem="0tk-Ju-7HX" firstAttribute="top" secondItem="gNg-8I-4sy" secondAttribute="bottom" constant="15" id="vWI-4L-LCV"/>
                     </constraints>
                 </view>
-                <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xoo-sr-pVL">
-                    <rect key="frame" x="0.0" y="150" width="305" height="397"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xoo-sr-pVL">
+                    <rect key="frame" x="0.0" y="190" width="305" height="357"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_password" translatesAutoresizingMaskIntoConstraints="NO" id="1CY-Qm-G7c">
-                            <rect key="frame" x="25" y="25" width="16" height="20"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perinfo_myvideo" translatesAutoresizingMaskIntoConstraints="NO" id="1CY-Qm-G7c">
+                            <rect key="frame" x="25" y="25" width="17" height="17"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的视频" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsW-50-hhB">
-                            <rect key="frame" x="56" y="27" width="53.5" height="16"/>
+                            <rect key="frame" x="57" y="25.5" width="53.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" tag="3000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wg-uI-Pdq">
-                            <rect key="frame" x="0.0" y="17.5" width="305" height="35"/>
+                            <rect key="frame" x="0.0" y="16" width="305" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="GQq-y8-Pc1"/>
                             </constraints>
@@ -58,17 +65,17 @@
                                 <action selector="functionAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ci9-8U-Axx"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_password" translatesAutoresizingMaskIntoConstraints="NO" id="rgh-8V-aKv">
-                            <rect key="frame" x="25" y="59.5" width="16" height="20"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perinfo_historywatch" translatesAutoresizingMaskIntoConstraints="NO" id="rgh-8V-aKv">
+                            <rect key="frame" x="25" y="60.5" width="15" height="15"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="历史观看" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17c-qm-7xE">
-                            <rect key="frame" x="56" y="61.5" width="53.5" height="16"/>
+                            <rect key="frame" x="55" y="60" width="53.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" tag="3001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cch-V9-Arb">
-                            <rect key="frame" x="0.0" y="52" width="305" height="35"/>
+                            <rect key="frame" x="0.0" y="50.5" width="305" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="9PW-1v-5uP"/>
                             </constraints>
@@ -76,17 +83,17 @@
                                 <action selector="functionAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="0jM-Km-UcC"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_password" translatesAutoresizingMaskIntoConstraints="NO" id="KIq-p6-AEy">
-                            <rect key="frame" x="25" y="94.5" width="16" height="20"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutMe" translatesAutoresizingMaskIntoConstraints="NO" id="KIq-p6-AEy">
+                            <rect key="frame" x="25" y="95.5" width="15" height="15"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于我们" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IfU-8L-y4y">
-                            <rect key="frame" x="56" y="96.5" width="53.5" height="16"/>
+                            <rect key="frame" x="55" y="95" width="53.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" tag="3002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkY-n9-EcD">
-                            <rect key="frame" x="0.0" y="87" width="305" height="35"/>
+                            <rect key="frame" x="0.0" y="85.5" width="305" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="6kq-MT-NiC"/>
                             </constraints>
@@ -94,17 +101,17 @@
                                 <action selector="functionAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="8B4-A6-Q96"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_password" translatesAutoresizingMaskIntoConstraints="NO" id="WGc-fG-ZMy">
-                            <rect key="frame" x="25" y="129.5" width="16" height="20"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perinfo_exit" translatesAutoresizingMaskIntoConstraints="NO" id="WGc-fG-ZMy">
+                            <rect key="frame" x="25" y="131" width="14" height="14"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退出登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uz-Zi-c9O">
-                            <rect key="frame" x="56" y="131.5" width="53.5" height="16"/>
+                            <rect key="frame" x="54" y="130" width="53.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" tag="3003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iek-iz-Fvk">
-                            <rect key="frame" x="0.0" y="122" width="305" height="35"/>
+                            <rect key="frame" x="0.0" y="120.5" width="305" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="gIO-xu-wPW"/>
                             </constraints>
@@ -113,7 +120,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.99215686270000003" green="0.66666666669999997" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.9882352941176471" green="0.67843137254901964" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="WGc-fG-ZMy" firstAttribute="centerY" secondItem="iek-iz-Fvk" secondAttribute="centerY" id="3Kk-ef-ugB"/>
                         <constraint firstItem="rgh-8V-aKv" firstAttribute="centerY" secondItem="Cch-V9-Arb" secondAttribute="centerY" id="3rK-If-Y2a"/>
@@ -138,6 +145,7 @@
                         <constraint firstItem="6Wg-uI-Pdq" firstAttribute="leading" secondItem="xoo-sr-pVL" secondAttribute="leading" id="h67-k4-n4J"/>
                         <constraint firstItem="Cch-V9-Arb" firstAttribute="leading" secondItem="xoo-sr-pVL" secondAttribute="leading" id="ioo-4s-k61"/>
                         <constraint firstItem="6Wg-uI-Pdq" firstAttribute="centerY" secondItem="1CY-Qm-G7c" secondAttribute="centerY" id="nGd-tx-m6r"/>
+                        <constraint firstItem="Cch-V9-Arb" firstAttribute="leading" secondItem="6Wg-uI-Pdq" secondAttribute="trailing" constant="-305" id="pDR-Bh-a33"/>
                         <constraint firstAttribute="trailing" secondItem="6Wg-uI-Pdq" secondAttribute="trailing" id="q3U-eJ-Gc4"/>
                         <constraint firstItem="0uz-Zi-c9O" firstAttribute="centerY" secondItem="iek-iz-Fvk" secondAttribute="centerY" id="qOB-S2-eHC"/>
                         <constraint firstItem="KIq-p6-AEy" firstAttribute="leading" secondItem="xoo-sr-pVL" secondAttribute="leading" constant="25" id="qr8-FA-mzq"/>
@@ -162,7 +170,11 @@
         </view>
     </objects>
     <resources>
+        <image name="aboutMe" width="15" height="15"/>
         <image name="headerImage" width="35" height="35"/>
-        <image name="icon_password" width="16" height="20"/>
+        <image name="perinfo_exit" width="14" height="14"/>
+        <image name="perinfo_historywatch" width="15" height="15"/>
+        <image name="perinfo_myvideo" width="17" height="17"/>
+        <image name="perinfo_title_bg1" width="491" height="378"/>
     </resources>
 </document>
