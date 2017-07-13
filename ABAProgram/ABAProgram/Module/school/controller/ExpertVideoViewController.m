@@ -12,6 +12,8 @@
 #import "VideoHeaderView.h"
 #import "ExpertVideoApi.h"
 #import "ExpertVideoModel.h"
+#import "ABAShareManager.h"
+
 
 static NSString *TableViewCellIdentifier = @"UITableViewCell";
 static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
@@ -26,7 +28,10 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
 
 @implementation ExpertVideoViewController
 {
-    BOOL _open;
+    BOOL _open; //是否展开简介 ，默认NO
+    NSInteger _index;  //记录点击的indexPatch.row, 默认为0   用于分享
+    
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,9 +40,7 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     self.title = [NSString stringWithFormat:@"%@视频", self.peopleName];
     
     _open = NO;
-    
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"pause" object:nil];
+    _index = 0;
 }
 
 - (void)popBack {
@@ -55,6 +58,12 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     
     // view
     self.videoheaderView = [[[NSBundle mainBundle] loadNibNamed:@"VideoHeaderView" owner:self options:nil] lastObject];
+    // 回调
+    [self.videoheaderView ShareHandle:^{
+        
+        [self sharePlatform];
+    }];
+    
     [self.videoheaderView setFrame:CGRectMake(0, 0, ScreenW, ScreenW/4*3)];
     [self.view addSubview:self.videoheaderView];
     
@@ -178,7 +187,43 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.videoheaderView.videoModel = self.dataSource[indexPath.row-1];
+    _index = indexPath.row - 1;
 }
+
+#pragma mark - 分享
+- (void)sharePlatform {
+    
+    [UMSocialUIManager setPreDefinePlatforms:@[@0,@1,@2,@4,@5]];
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        
+        // 视频网络URL
+        ExpertVideoModel *model = self.dataSource[_index];
+        NSString *videoURL = model.videopath;
+        if ([ABAConfig IsChinese:videoURL]) {
+            videoURL = [videoURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
+        
+        // 图片
+//        NSInteger index = [model.filename length] - 4;
+//        NSString *imageName = [model.filename substringToIndex:index];
+//        NSString *urlstring = [[ABA_IMAGE stringByAppendingString:imageName] stringByAppendingString:@".jpg"];
+//        if ([ABAConfig IsChinese:urlstring]) {
+//            urlstring = [urlstring stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        }
+        
+
+        
+        [ABAShareManager shareToPlatform:platformType title:model.videoname content:model.remark image:[UIImage imageNamed:@"ic_launcher"] url:videoURL presentedController:self complete:^(BOOL isSuccess, NSString *errorMsg) {
+            if (isSuccess) {
+                [self showTipsMsg:@"分享成功"];
+            } else {
+                [self showTipsMsg:errorMsg];
+            }
+            
+        }];
+    }];
+}
+
 
 
 #pragma mark - lazyLoading

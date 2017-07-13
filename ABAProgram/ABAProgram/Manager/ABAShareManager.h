@@ -8,14 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum sharePlatform {
-    SharePlatformSina = 0,        //新浪微博
-    SharePlatformWXSession = 1,   //微信好友
-    SharePlatformWXTimeline  =2,  //朋友圈
-    SharePlatformQQ = 3,          //QQ好友
-    SharePlatformQQZone = 4,      //QQ空间
-}SharePlatform;
-
 
 @interface ABAShareManager : NSObject
 
@@ -36,7 +28,7 @@ typedef enum sharePlatform {
  @param presentedController 从哪个界面跳转（仅新浪微博需要传）
  @param complete            请求回调
  */
-+ (void)shareToPlatform:(SharePlatform)platform
++ (void)shareToPlatform:(UMSocialPlatformType)platform
                   title:(NSString *)title
                 content:(NSString *)content
                   image:(id)image url:(NSString *)url

@@ -12,8 +12,12 @@
 
 @property (strong, nonatomic) IBOutlet ZFPlayerView *playerView;
 @property (weak, nonatomic) IBOutlet UIButton *playNumbwe;
+@property (weak, nonatomic) IBOutlet UIView *playerFatherView;
 
 @property (nonatomic, strong) ZFPlayerControlView *playerControlView;
+
+@property (nonatomic, copy)VideoShare videoShare;
+
 @end
 
 
@@ -41,7 +45,7 @@
             urlstring = [urlstring stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         }
         playerModel.placeholderImageURLString = urlstring;
-        playerModel.fatherView = self;
+        playerModel.fatherView = self.playerFatherView;
         
         //用于重置新的播放。
         [self.playerView resetPlayer];
@@ -53,6 +57,17 @@
 
 
 - (IBAction)shareaction:(UIButton *)sender {
+    
+    if (self.videoShare) {
+        self.videoShare();
+    }
+    
+}
+
+- (void)ShareHandle:(VideoShare)share {
+    if (share) {
+        self.videoShare = share;
+    }
 }
 
 

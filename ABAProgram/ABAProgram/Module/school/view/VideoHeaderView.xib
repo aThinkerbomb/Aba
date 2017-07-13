@@ -15,9 +15,21 @@
             <rect key="frame" x="0.0" y="0.0" width="380" height="312"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2j-WQ-EtL" customClass="ZFPlayerView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWZ-XB-OaR">
                     <rect key="frame" x="0.0" y="0.0" width="380" height="272"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2j-WQ-EtL" customClass="ZFPlayerView">
+                            <rect key="frame" x="0.0" y="0.0" width="380" height="272"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="p2j-WQ-EtL" secondAttribute="trailing" id="DIa-uH-3s4"/>
+                        <constraint firstItem="p2j-WQ-EtL" firstAttribute="top" secondItem="dWZ-XB-OaR" secondAttribute="top" id="IQJ-xu-oGt"/>
+                        <constraint firstAttribute="bottom" secondItem="p2j-WQ-EtL" secondAttribute="bottom" id="nHA-6p-Ned"/>
+                        <constraint firstItem="p2j-WQ-EtL" firstAttribute="leading" secondItem="dWZ-XB-OaR" secondAttribute="leading" id="ypY-oS-xEK"/>
+                    </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="he4-HB-54x">
                     <rect key="frame" x="20" y="272" width="63" height="40"/>
@@ -39,24 +51,25 @@
             </subviews>
             <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="p2j-WQ-EtL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CIZ-qh-1t5"/>
-                <constraint firstAttribute="bottom" secondItem="p2j-WQ-EtL" secondAttribute="bottom" constant="40" id="F2e-xJ-ywk"/>
-                <constraint firstAttribute="trailing" secondItem="p2j-WQ-EtL" secondAttribute="trailing" id="Lim-mG-rNB"/>
-                <constraint firstItem="he4-HB-54x" firstAttribute="top" secondItem="p2j-WQ-EtL" secondAttribute="bottom" id="OEK-lO-k7t"/>
+                <constraint firstItem="dWZ-XB-OaR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3yj-3e-Scz"/>
+                <constraint firstAttribute="bottom" secondItem="dWZ-XB-OaR" secondAttribute="bottom" constant="40" id="Ag1-T3-SAL"/>
+                <constraint firstItem="dWZ-XB-OaR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BIG-c7-mGU"/>
+                <constraint firstAttribute="trailing" secondItem="dWZ-XB-OaR" secondAttribute="trailing" id="Lhy-FJ-Rtp"/>
                 <constraint firstAttribute="bottom" secondItem="5Fh-iu-7Dc" secondAttribute="bottom" id="TR5-Fi-Je3"/>
                 <constraint firstAttribute="trailing" secondItem="5Fh-iu-7Dc" secondAttribute="trailing" constant="10" id="UVq-hf-he9"/>
-                <constraint firstItem="5Fh-iu-7Dc" firstAttribute="top" secondItem="p2j-WQ-EtL" secondAttribute="bottom" id="ZNB-RX-hhf"/>
+                <constraint firstItem="5Fh-iu-7Dc" firstAttribute="top" secondItem="dWZ-XB-OaR" secondAttribute="bottom" id="hGB-ZW-hs9"/>
                 <constraint firstAttribute="bottom" secondItem="he4-HB-54x" secondAttribute="bottom" id="myQ-YP-Hct"/>
-                <constraint firstItem="p2j-WQ-EtL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xxf-g9-hdE"/>
+                <constraint firstItem="he4-HB-54x" firstAttribute="top" secondItem="dWZ-XB-OaR" secondAttribute="bottom" id="xCf-Qv-iAW"/>
                 <constraint firstItem="he4-HB-54x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="y3J-wH-exB"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="playNumbwe" destination="he4-HB-54x" id="n6k-OA-9wA"/>
+                <outlet property="playerFatherView" destination="dWZ-XB-OaR" id="iT2-a9-OLd"/>
                 <outlet property="playerView" destination="p2j-WQ-EtL" id="Tzh-yy-Wuj"/>
             </connections>
-            <point key="canvasLocation" x="-157" y="-243"/>
+            <point key="canvasLocation" x="-586" y="-315"/>
         </view>
     </objects>
     <resources>

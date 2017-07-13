@@ -37,8 +37,12 @@
     [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager] setUmSocialAppkey:UMengShareKey];
     
+
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:SinaAppKey appSecret:SinaSecret redirectURL:redirect];
+    
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:QQAPPID appSecret:QQAPPKEY redirectURL:redirect];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Qzone appKey:QQAPPID appSecret:QQAPPKEY redirectURL:redirect];
+//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Qzone appKey:QQAPPID appSecret:QQAPPKEY redirectURL:redirect];
+    
     
 }
 
@@ -51,57 +55,31 @@
 }
 
 
-+ (void)shareToPlatform:(SharePlatform)platform title:(NSString *)title content:(NSString *)content image:(id)image url:(NSString *)url presentedController:(UIViewController *)presentedController complete:(void (^)(BOOL, NSString *))complete {
++ (void)shareToPlatform:(UMSocialPlatformType)platform title:(NSString *)title content:(NSString *)content image:(id)image url:(NSString *)url presentedController:(UIViewController *)presentedController complete:(void (^)(BOOL, NSString *))complete {
     
-    UMSocialPlatformType sharePlatform = UMSocialPlatformType_UnKnown;
-    //创建分享的资源
-    if ( !image || ([image isKindOfClass:[NSString class]] && ((NSString *)image).length == 0)) {
-        image = [UIImage imageNamed:@"share_icon"];//本地图片
-    }
+    UMSocialPlatformType sharePlatform = platform;
+   
+    // 对图片进行异常处理
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    
+    if ( !image || ([image isKindOfClass:[NSString class]] && ((NSString *)image).length == 0)) {
+        image = [UIImage imageNamed:@"ic_launcher"];//本地图片
+    }
+    
     //创建网页内容对象
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:content thumImage:image];
     //设置网页地址
     shareObject.webpageUrl = url;
     messageObject.shareObject = shareObject;
-    
-    switch (platform) {
-        case SharePlatformSina: {
-            sharePlatform = UMSocialPlatformType_Sina;
-            break;
-        }
-        case SharePlatformWXSession: {
-            
-            sharePlatform = UMSocialPlatformType_WechatSession;
-            break;
-        }
-        case SharePlatformWXTimeline: {
-            
-            sharePlatform = UMSocialPlatformType_WechatTimeLine;
-            break;
-        }
-        case SharePlatformQQ: {
-            sharePlatform = UMSocialPlatformType_QQ;
-            break;
-        }
-        case SharePlatformQQZone: {
-            sharePlatform = UMSocialPlatformType_Qzone;
-            break;
-        }
-        default:
-            break;
-    }
-    
-    
+  
     //调用分享接口
-    [[UMSocialManager defaultManager] shareToPlatform:sharePlatform messageObject:messageObject currentViewController:self completion:^(UMSocialShareResponse * data, NSError *error) {
+    [[UMSocialManager defaultManager] shareToPlatform:sharePlatform messageObject:messageObject currentViewController:presentedController completion:^(UMSocialShareResponse * data, NSError *error) {
         if (error) {
             complete(NO,[self errorMessageWithCode:error.code]);
         }else{
             complete(YES,data.message);
         }
     }];
-    
     
     
 }

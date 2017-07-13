@@ -25,6 +25,8 @@
 #import "VideoSendCommentView.h"
 #import "VideoSendCommendApi.h"
 
+#import "ABAShareManager.h"
+
 static NSString * commentCellIdentifier       = @"CommentTableViewCell";
 static NSString * introPeopleCellIdentifier   = @"IntroPeopleTableViewCell";
 static NSString * introResumentCellIdentifier = @"IntroResumeTableViewCell";
@@ -114,6 +116,17 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     [self.videoTableView registerNib:[UINib nibWithNibName:@"IntroResumeTableViewCell" bundle:nil] forCellReuseIdentifier:introResumentCellIdentifier];
     [self.videoTableView registerNib:[UINib nibWithNibName:@"IntroGoodAtTableViewCell" bundle:nil] forCellReuseIdentifier:introGoodAtCellIdentifier];
     [self.videoTableView registerNib:[UINib nibWithNibName:@"CommentTableViewCell" bundle:nil] forCellReuseIdentifier:commentCellIdentifier];
+}
+
+
+- (void)popBack {
+    [super popBack];
+    [self.playerView pause];
+}
+
+- (void)rightButtonAction:(UIButton *)sender {
+    //分享
+    [self sharePlatform];
 }
 
 #pragma mark - 数据请求
@@ -282,9 +295,6 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 }
 
 
-- (void)rightButtonAction:(UIButton *)sender {
-    // 分享
-}
 
 #pragma mark - CommentCellDelegate
 
@@ -368,6 +378,31 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 }
 
 
+#pragma mark - 设置分享
+- (void)sharePlatform {
+ 
+    [UMSocialUIManager setPreDefinePlatforms:@[@0,@1,@2,@4,@5]];
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        
+        // 设置视频网络URL
+        NSString *videoURL = self.homePlayModel.recordurl;
+        if ([ABAConfig IsChinese:videoURL]) {
+            videoURL = [videoURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
+
+        
+        [ABAShareManager shareToPlatform:platformType title:self.homePlayModel.streamname content:self.homePlayModel.sysUserInfo.userbegood image:[UIImage imageNamed:@"ic_launcher"] url:videoURL presentedController:self complete:^(BOOL isSuccess, NSString *errorMsg) {
+            if (isSuccess) {
+                [self showTipsMsg:@"分享成功"];
+            } else {
+                [self showTipsMsg:errorMsg];
+            }
+            
+        }];
+    }];
+}
+
+
 
 #pragma mark - lazyLoading
 - (UITableView *)videoTableView {
@@ -381,10 +416,6 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     return _videoTableView;
 }
 
-- (void)popBack {
-    [super popBack];
-    [self.playerView pause];
-}
 
 
 - (void)didReceiveMemoryWarning {

@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ExpertVideoModel.h"
 
+typedef void(^VideoShare)(void);
+
 @interface VideoHeaderView : UIView
 
 @property (nonatomic, strong) ExpertVideoModel *videoModel;
 
 - (void)pause;
+
+- (void)ShareHandle:(VideoShare)share;
 @end

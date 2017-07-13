@@ -26,4 +26,6 @@
 #import "ABAConfig.h"
 #import "UserInfo.h"
 
+#import <UShareUI/UShareUI.h>
+
 #endif /* PrefixHeader_pch */
