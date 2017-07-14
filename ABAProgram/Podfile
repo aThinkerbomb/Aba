@@ -9,7 +9,8 @@ target 'ABAProgram' do
 
   pod 'YTKNetwork'
   pod 'MBProgressHUD'
-  pod 'ZFPlayer'
+  #pod 'ZFPlayer'
+  pod 'Masonry', '~> 1.0.2'
   pod 'SDWebImage', '~> 4.0.0'
   pod 'IQKeyboardManager', '~> 4.0.9'
   pod 'MJRefresh', '~> 3.1.12'

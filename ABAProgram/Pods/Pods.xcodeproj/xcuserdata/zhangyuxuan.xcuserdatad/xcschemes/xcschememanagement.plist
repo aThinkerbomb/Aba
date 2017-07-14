@@ -49,11 +49,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ZFPlayer.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -62,12 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2767C22A137B43164D3871E7F4876715</key>
+		<key>11BF5214B6A24C465E668531DF9524C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4CD57B515554C4C8CB25FEDAE6EF065F</key>
+		<key>46C088E9F88AFB050E99A65967E73EFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DB520D006BF5262EF3CB822C54D6BD48</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F058EF070C2EED3F1BB0076219ED9D15</key>
+		<key>B1A31E9932F04932EC4D837C5C5F40BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
