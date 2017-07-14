@@ -59,9 +59,10 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     // view
     self.videoheaderView = [[[NSBundle mainBundle] loadNibNamed:@"VideoHeaderView" owner:self options:nil] lastObject];
     // 回调
+    __weak typeof(self)weakSelf = self;
     [self.videoheaderView ShareHandle:^{
         
-        [self sharePlatform];
+        [weakSelf sharePlatform];
     }];
     
     [self.videoheaderView setFrame:CGRectMake(0, 0, ScreenW, ScreenW/4*3)];
@@ -162,9 +163,9 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
         
         _open = !_open;
         if (_open) {
-            [self.sectionView.jiantouIcon setImage:[UIImage imageNamed:@"jiantoushang"]];
+            [WeakSelf.sectionView.jiantouIcon setImage:[UIImage imageNamed:@"jiantoushang"]];
         } else {
-            [self.sectionView.jiantouIcon setImage:[UIImage imageNamed:@"jiantouxia"]];
+            [WeakSelf.sectionView.jiantouIcon setImage:[UIImage imageNamed:@"jiantouxia"]];
         }
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0] ;
@@ -212,12 +213,12 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
 //        }
         
 
-        
+        __weak typeof (self)Weakself = self;
         [ABAShareManager shareToPlatform:platformType title:model.videoname content:model.remark image:[UIImage imageNamed:@"ic_launcher"] url:videoURL presentedController:self complete:^(BOOL isSuccess, NSString *errorMsg) {
             if (isSuccess) {
-                [self showTipsMsg:@"分享成功"];
+                [Weakself showTipsMsg:@"分享成功"];
             } else {
-                [self showTipsMsg:errorMsg];
+                [Weakself showTipsMsg:errorMsg];
             }
             
         }];
@@ -249,6 +250,9 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     return _sectionView;
 }
 
+- (void)dealloc {
+    NSLog(@"释放啦～～～");
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

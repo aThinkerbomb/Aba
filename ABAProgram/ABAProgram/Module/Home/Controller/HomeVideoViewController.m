@@ -98,8 +98,9 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     // 发表评论的view
     self.sendCommentView = [[[NSBundle mainBundle] loadNibNamed:@"VideoSendCommentView" owner:self options:nil] lastObject];
     [self.sendCommentView setFrame:CGRectMake(0, ScreenH - 50, ScreenW, 50)];
+    __weak typeof(self)WeakSelf = self;
     [self.sendCommentView didSelectedSendMessage:^(NSString *message) {
-        [self requestSendCommentWithMessage:message];
+        [WeakSelf requestSendCommentWithMessage:message];
     }];
     [self.view addSubview:self.sendCommentView];
     
@@ -417,6 +418,11 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 }
 
 
+
+- (void)dealloc {
+    
+    NSLog(@"释放啦～～");
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

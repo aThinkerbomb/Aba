@@ -156,10 +156,12 @@ static NSString * serviceDesCellIdentifier = @"ServiceDesTableViewCell";
     // 0 == section
     self.sectionView = [[[NSBundle mainBundle] loadNibNamed:@"GoodDetailSectionView" owner:self options:nil] lastObject];
     self.sectionView.detailModel = self.detailModel;
+    
+    __weak typeof(self)WeakSelf = self;
     [self.sectionView didSelectedTab:^(DetailStyle style) {
         
-        self.detailModel.detailStyle = style;
-        [self.detailViewController reloadData];
+        WeakSelf.detailModel.detailStyle = style;
+        [WeakSelf.detailViewController reloadData];
         
     }];
     return self.sectionView;
@@ -198,6 +200,10 @@ static NSString * serviceDesCellIdentifier = @"ServiceDesTableViewCell";
         [_HeaderView setFrame:CGRectMake(0, 0, ScreenW, ScreenW/5*4+90+size.height)];
     }
     return _HeaderView;
+}
+
+- (void)dealloc {
+    NSLog(@"释放啦～～");
 }
 
 - (void)didReceiveMemoryWarning {
