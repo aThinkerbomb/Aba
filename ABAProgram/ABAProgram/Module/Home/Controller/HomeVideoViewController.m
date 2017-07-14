@@ -353,7 +353,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     ZFPlayerModel *playModel = [[ZFPlayerModel alloc] init];
     
     // 设置视频标题
-    playModel.title = self.homePlayModel.streamname;
+//    playModel.title = self.homePlayModel.streamname; //标题不写了，展示的太难看，还需要改三方
     
     // 设置视频网络URL
     NSString *videoURL = self.homePlayModel.recordurl;
