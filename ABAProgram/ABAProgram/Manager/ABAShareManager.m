@@ -21,7 +21,7 @@
 #define QQAPPKEY  @"c0xNR14XeY4mFwCu"
 
 #define WeiXinAppKey @"wx909f8c29eb7ddae2"
-#define WeiXinAppSecret @""
+#define WeiXinAppSecret @"d96535da24a9fd2d8faf31a409e029e4"
 
 
 #define SinaAppKey @"1829343188"
@@ -41,7 +41,9 @@
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:SinaAppKey appSecret:SinaSecret redirectURL:redirect];
     
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:QQAPPID appSecret:QQAPPKEY redirectURL:redirect];
-//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Qzone appKey:QQAPPID appSecret:QQAPPKEY redirectURL:redirect];
+    
+    
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:WeiXinAppKey appSecret:WeiXinAppSecret redirectURL:redirect];
     
     
 }
@@ -59,20 +61,32 @@
     
     UMSocialPlatformType sharePlatform = platform;
    
-    // 对图片进行异常处理
+    // 创建消息分享对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     
     if ( !image || ([image isKindOfClass:[NSString class]] && ((NSString *)image).length == 0)) {
         image = [UIImage imageNamed:@"ic_launcher"];//本地图片
     }
     
-    //创建网页内容对象
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:content thumImage:image];
-    //设置网页地址
-    shareObject.webpageUrl = url;
+    // 创建视频内容分享对象
+    UMShareVideoObject *shareObject = [UMShareVideoObject shareObjectWithTitle:title descr:content thumImage:image];
+    
+    //设置视频网页播放地址
+    shareObject.videoUrl = url;
+    
+    //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;
+    
+    //创建网页内容对象
+//    UMSocialMessageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:content thumImage:image];
+    //设置网页地址
+//    shareObject.webpageUrl = url;
+//    messageObject.shareObject = shareObject;
   
     //调用分享接口
+    
+
+    
     [[UMSocialManager defaultManager] shareToPlatform:sharePlatform messageObject:messageObject currentViewController:presentedController completion:^(UMSocialShareResponse * data, NSError *error) {
         if (error) {
             complete(NO,[self errorMessageWithCode:error.code]);
