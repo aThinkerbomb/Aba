@@ -12,6 +12,8 @@
 #import "UserLoginModel.h"
 #import "CheckBindPhone.h"
 #import "OtherLoginApi.h"
+#import "AbaAlertView.h"
+
 
 @interface LoginViewController ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phone;
@@ -20,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *LoginBtn;
 
 @property (nonatomic, strong) UserLoginModel *userModel;
+@property (nonatomic, strong) AbaAlertView *alertView;
+
+@property (nonatomic, strong) NSMutableDictionary *infoDic;
 
 @end
 
@@ -29,8 +34,7 @@
     [super viewDidLoad];
     
     self.agreeBtn.selected = YES;
-    
-    
+    self.infoDic = [NSMutableDictionary dictionary];
     
 }
 
@@ -166,11 +170,11 @@
         } else {
             
             // 需要弹出框，绑定手机号
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请绑定手机号" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-            UITextField *phoneTextField = [alertView textFieldAtIndex:0];
+            self.alertView = [[AbaAlertView alloc] initWithTitle:@"请绑定手机号" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [self.alertView setAlertViewStyle:UIAlertViewStyleSecureTextInput];
+            UITextField *phoneTextField = [self.alertView textFieldAtIndex:0];
             phoneTextField.placeholder = @"请输入手机号";
-            [alertView show];
+            [self.alertView show];
             
         }
         
@@ -238,6 +242,9 @@
                 [dic setObject:resp.name forKey:@"username"];
                 [dic setObject:resp.iconurl forKey:@"userimg"];
                 [dic setObject:resp.unionGender?@"0":@"1" forKey:@"usergender"];
+                
+                // 设置一个全局的信息，方便绑定手机时候用
+                self.infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
                 
                 [KZUserDefaults setObject:resp.iconurl forKey:@"userimg"];
                 
@@ -315,9 +322,8 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        
         UITextField *textField = [alertView textFieldAtIndex:0];
-        
+        self.alertView.phone = textField.text;
         if ([textField.text isEqualToString:@""]) {
             [self showTipsMsg:@"请输入手机号"];
             return;
@@ -327,6 +333,11 @@
             return;
         }
         
+        // 绑定手机 传手机号
+        [self.infoDic setObject:textField.text forKey:@"userphone"];
+        
+        // 绑定手机号后 直接登录
+        [self OtherLoginWithInfoDic:self.infoDic];
         
     }
 }
