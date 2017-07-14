@@ -34,9 +34,9 @@
 
 +(void)registerShare {
     
-    [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager] setUmSocialAppkey:UMengShareKey];
-    
+    [[UMSocialManager defaultManager] openLog:YES];
+
 
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:SinaAppKey appSecret:SinaSecret redirectURL:redirect];
     

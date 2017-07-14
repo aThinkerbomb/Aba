@@ -10,8 +10,10 @@
 #import "RegisterViewController.h"
 #import "LoginDataSource.h"
 #import "UserLoginModel.h"
+#import "CheckBindPhone.h"
+#import "OtherLoginApi.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
@@ -39,10 +41,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
-- (void)setupController
-{
-    
-}
+
 
 # pragma mark - 登录的网络请求
 - (void)LoginRequestWihtPhone:(NSString *)phone pwd:(NSString *)pwd
@@ -138,11 +137,199 @@
  */
 - (IBAction)OtherLoginAction:(UIButton *)sender {
     
-    
-    
-    
+    NSInteger tag = sender.tag - 200;
+    if (tag == 1) {
+        [self WeiXinLogin];
+    } else if (tag == 2) {
+        [self QQLogin];
+    } else {
+        [self SinaLogin];
+    }
     
 }
+
+#pragma mark - 检查是否绑定手机
+- (void)checkBingPhoneInfoDic:(NSDictionary *)dic {
+    
+    [self showLoadingView:YES];
+    NSString *openid = [dic objectForKey:@"useraccount"];
+    CheckBindPhone *bindApi = [[CheckBindPhone alloc] initWithBindPhoneOpenid:openid];
+    [bindApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        if ([ABAConfig checkResponseObject:request.responseObject]) {
+            
+            // 已经绑定，就直接登录
+            [self OtherLoginWithInfoDic:dic];
+            
+            
+        } else {
+            
+            // 需要弹出框，绑定手机号
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请绑定手机号" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            UITextField *phoneTextField = [alertView textFieldAtIndex:0];
+            phoneTextField.placeholder = @"请输入手机号";
+            [alertView show];
+            
+        }
+        
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [self showLoadingView:NO];
+    }];
+    
+}
+
+
+#pragma mark - 三方登录
+
+- (void)OtherLoginWithInfoDic:(NSDictionary *)dic {
+    
+    [self showLoadingView:YES];
+    
+    OtherLoginApi *loginApi = [[OtherLoginApi alloc] initWithInfoDictionary:dic];
+    [loginApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        if ([ABAConfig checkResponseObject:request.responseObject]) {
+            
+            self.userModel = [UserLoginModel mj_objectWithKeyValues:[request.responseObject objectForKey:@"body"]];
+            
+            [KZUserDefaults setObject:self.userModel.userId forKey:@"userid"];
+            
+            [self showTipsMsg:@"登录成功" delayDo:^{
+                // 设置根视图
+                [ABAConfig creatRootViewController:[ABAConfig initTabBarViewController]];
+            }];
+            
+        } else {
+            [self showTipsMsg:@"登录失败"];
+        }
+        
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [self showLoadingView:NO];
+        [self showTipsMsg:@"网络请求错误"];
+    }];
+    
+}
+
+
+#pragma mark - 三方授权
+
+- (void)WeiXinLogin {
+    
+    [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_WechatSession completion:^(id result, NSError *error) {//先取消以前的授权 否则 如果授权过 他会直接获取信息 而不跳微信页授权
+        
+        
+        //获取用户信息
+        [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(UMSocialUserInfoResponse * result, NSError *error) {
+            if (error) {
+                
+                [self showTipsMsg:@"授权失败"];
+            } else {
+                
+                UMSocialUserInfoResponse *resp = result;
+                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                [dic setObject:@"1" forKey:@"usertype"];
+                [dic setObject:@"2" forKey:@"logintype"];
+                [dic setObject:resp.openid forKey:@"useraccount"];
+                [dic setObject:resp.name forKey:@"username"];
+                [dic setObject:resp.iconurl forKey:@"userimg"];
+                [dic setObject:resp.unionGender?@"0":@"1" forKey:@"usergender"];
+                
+                // 检查是否绑定手机号
+                [self checkBingPhoneInfoDic:dic];
+
+            }
+            
+        }];
+        
+    }];
+}
+
+- (void)QQLogin {
+    [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_QQ completion:^(id result, NSError *error) {//先取消以前的授权 否则 如果授权过 他会直接获取信息 而不跳微信页授权
+        [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:self completion:^(id result, NSError *error) {
+            if (error) {
+                
+            } else {
+                UMSocialUserInfoResponse *resp = result;
+                
+                // 授权信息
+                NSLog(@"QQ uid: %@", resp.uid);
+                NSLog(@"QQ openid: %@", resp.openid);
+                NSLog(@"QQ unionid: %@", resp.unionId);
+                NSLog(@"QQ accessToken: %@", resp.accessToken);
+                NSLog(@"QQ expiration: %@", resp.expiration);
+                
+                // 用户信息
+                NSLog(@"QQ name: %@", resp.name);
+                NSLog(@"QQ iconurl: %@", resp.iconurl);
+                NSLog(@"QQ gender: %@", resp.unionGender);
+                
+                // 第三方平台SDK源数据
+                NSLog(@"QQ originalResponse: %@", resp.originalResponse);
+            }
+        }];
+        
+        
+    }];
+    
+}
+
+
+- (void)SinaLogin {
+    [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_Sina completion:^(id result, NSError *error) {//先取消以前的授权 否则 如果授权过 他会直接获取信息 而不跳微信页授权
+        [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Sina currentViewController:self completion:^(id result, NSError *error) {
+            if (error) {
+                
+            } else {
+                UMSocialUserInfoResponse *resp = result;
+                
+                // 授权信息
+                NSLog(@"Sina uid: %@", resp.uid);
+                NSLog(@"Sina accessToken: %@", resp.accessToken);
+                NSLog(@"Sina refreshToken: %@", resp.refreshToken);
+                NSLog(@"Sina expiration: %@", resp.expiration);
+                
+                // 用户信息
+                NSLog(@"Sina name: %@", resp.name);
+                NSLog(@"Sina iconurl: %@", resp.iconurl);
+                NSLog(@"Sina gender: %@", resp.unionGender);
+                
+                // 第三方平台SDK源数据
+                NSLog(@"Sina originalResponse: %@", resp.originalResponse);
+            }
+        }];
+        
+        
+    }];
+}
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        
+        UITextField *textField = [alertView textFieldAtIndex:0];
+        
+        if ([textField.text isEqualToString:@""]) {
+            [self showTipsMsg:@"请输入手机号"];
+            return;
+        }
+        if (textField.text.length != 11) {
+            [self showTipsMsg:@"请输入正确的手机号"];
+            return;
+        }
+        
+        
+    }
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

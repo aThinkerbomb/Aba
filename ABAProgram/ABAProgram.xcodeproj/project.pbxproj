@@ -60,6 +60,10 @@
 		B231274E1F052DB90091CC78 /* NSString+CalculateFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = B23127481F052DB90091CC78 /* NSString+CalculateFontSize.m */; };
 		B23127501F052DB90091CC78 /* LySegmentMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B231274C1F052DB90091CC78 /* LySegmentMenu.m */; };
 		B23127531F054D120091CC78 /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23127521F054D120091CC78 /* SchoolViewController.m */; };
+		B23B5A451F18C2FB006AB709 /* CheckBindPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = B23B5A441F18C2FB006AB709 /* CheckBindPhone.m */; };
+		B23B5A4B1F18C682006AB709 /* OtherLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B23B5A4A1F18C682006AB709 /* OtherLoginApi.m */; };
+		B23B5A4E1F18D725006AB709 /* OtherLoginBingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B23B5A4D1F18D725006AB709 /* OtherLoginBingView.m */; };
+		B23B5A501F18D732006AB709 /* OtherLoginBingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B23B5A4F1F18D732006AB709 /* OtherLoginBingView.xib */; };
 		B23C3C3E1F0B78DB009723FE /* BenefitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F364031F0A538E00D26AA8 /* BenefitDetailViewController.m */; };
 		B250A7051F10CC880069CB10 /* VideoSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B250A7041F10CC880069CB10 /* VideoSendCommentView.m */; };
 		B250A7071F10CC920069CB10 /* VideoSendCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B250A7061F10CC920069CB10 /* VideoSendCommentView.xib */; };
@@ -257,6 +261,13 @@
 		B231274C1F052DB90091CC78 /* LySegmentMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LySegmentMenu.m; sourceTree = "<group>"; };
 		B23127511F054D120091CC78 /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
 		B23127521F054D120091CC78 /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
+		B23B5A431F18C2FB006AB709 /* CheckBindPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckBindPhone.h; sourceTree = "<group>"; };
+		B23B5A441F18C2FB006AB709 /* CheckBindPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckBindPhone.m; sourceTree = "<group>"; };
+		B23B5A491F18C682006AB709 /* OtherLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherLoginApi.h; sourceTree = "<group>"; };
+		B23B5A4A1F18C682006AB709 /* OtherLoginApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherLoginApi.m; sourceTree = "<group>"; };
+		B23B5A4C1F18D725006AB709 /* OtherLoginBingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherLoginBingView.h; sourceTree = "<group>"; };
+		B23B5A4D1F18D725006AB709 /* OtherLoginBingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherLoginBingView.m; sourceTree = "<group>"; };
+		B23B5A4F1F18D732006AB709 /* OtherLoginBingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherLoginBingView.xib; sourceTree = "<group>"; };
 		B250A7031F10CC880069CB10 /* VideoSendCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoSendCommentView.h; sourceTree = "<group>"; };
 		B250A7041F10CC880069CB10 /* VideoSendCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoSendCommentView.m; sourceTree = "<group>"; };
 		B250A7061F10CC920069CB10 /* VideoSendCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoSendCommentView.xib; sourceTree = "<group>"; };
@@ -482,8 +493,8 @@
 		B21408221F176FF700CA4DCC /* UMSocial */ = {
 			isa = PBXGroup;
 			children = (
-				B21408231F176FF700CA4DCC /* SocialLibraries */,
 				B214082D1F176FF700CA4DCC /* UMSocialSDK */,
+				B21408231F176FF700CA4DCC /* SocialLibraries */,
 				B21408311F176FF700CA4DCC /* UMSocialSDKPlugin */,
 				B21408331F176FF700CA4DCC /* UMSocialUI */,
 			);
@@ -831,6 +842,9 @@
 		B2A6B3FE1EF93A0500C74D79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B23B5A4C1F18D725006AB709 /* OtherLoginBingView.h */,
+				B23B5A4D1F18D725006AB709 /* OtherLoginBingView.m */,
+				B23B5A4F1F18D732006AB709 /* OtherLoginBingView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -945,6 +959,10 @@
 			children = (
 				B2B492D21EFE535800CF1221 /* LoginDataSource.h */,
 				B2B492D31EFE535800CF1221 /* LoginDataSource.m */,
+				B23B5A431F18C2FB006AB709 /* CheckBindPhone.h */,
+				B23B5A441F18C2FB006AB709 /* CheckBindPhone.m */,
+				B23B5A491F18C682006AB709 /* OtherLoginApi.h */,
+				B23B5A4A1F18C682006AB709 /* OtherLoginApi.m */,
 			);
 			path = LoginApi;
 			sourceTree = "<group>";
@@ -1412,6 +1430,7 @@
 				B214083D1F176FF700CA4DCC /* UMSocialSDKResources.bundle in Resources */,
 				B26561461F0CD3630078B2A7 /* ServiceDesTableViewCell.xib in Resources */,
 				B2C073F01F138A440038381F /* payTableViewCell.xib in Resources */,
+				B23B5A501F18D732006AB709 /* OtherLoginBingView.xib in Resources */,
 				B250A7071F10CC920069CB10 /* VideoSendCommentView.xib in Resources */,
 				B2C073E11F13839E0038381F /* OrangeTableViewCell.xib in Resources */,
 				B2D3599C1F160AD500827894 /* VideListTableViewCell.xib in Resources */,
@@ -1487,6 +1506,7 @@
 				B250A7051F10CC880069CB10 /* VideoSendCommentView.m in Sources */,
 				B2B3CCF11F069CDF0094AD5B /* ABAWebViewController.m in Sources */,
 				B26561491F0CE53F0078B2A7 /* LeftSideView.m in Sources */,
+				B23B5A4B1F18C682006AB709 /* OtherLoginApi.m in Sources */,
 				B23C3C3E1F0B78DB009723FE /* BenefitDetailViewController.m in Sources */,
 				B22C97741F000CF500A3EEEA /* BaseViewController.m in Sources */,
 				B2F67DB81F08D9C500302303 /* VideoIntroductionModel.m in Sources */,
@@ -1542,9 +1562,11 @@
 				B2D359921F15F07900827894 /* ExpertVideoViewController.m in Sources */,
 				B26561411F0CAC900078B2A7 /* ParameterTableViewCell.m in Sources */,
 				B25B2EE11EFA795100520854 /* UIImage+Color.m in Sources */,
+				B23B5A451F18C2FB006AB709 /* CheckBindPhone.m in Sources */,
 				B231274E1F052DB90091CC78 /* NSString+CalculateFontSize.m in Sources */,
 				B21D65F81F037CA200C11BE1 /* BenefitGoodsApi.m in Sources */,
 				B266400C1EFD0ED3002A8F3D /* RegisterViewController.m in Sources */,
+				B23B5A4E1F18D725006AB709 /* OtherLoginBingView.m in Sources */,
 				B22C97631EFF943E00A3EEEA /* RehisterApi.m in Sources */,
 				B21EB81E1F0E645D005F571A /* VideoMessageApi.m in Sources */,
 				B2B347DE1F023C0C005FEAD5 /* NSDate+Calender.m in Sources */,
