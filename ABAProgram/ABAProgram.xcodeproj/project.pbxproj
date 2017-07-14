@@ -1301,8 +1301,8 @@
 			isa = PBXGroup;
 			children = (
 				B21408221F176FF700CA4DCC /* UMSocial */,
-				B23127431F052DB90091CC78 /* SegmentMenu */,
 				B21D65FB1F03A3C200C11BE1 /* CycleView */,
+				B23127431F052DB90091CC78 /* SegmentMenu */,
 			);
 			path = Tools;
 			sourceTree = "<group>";

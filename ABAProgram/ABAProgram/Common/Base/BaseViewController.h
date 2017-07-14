@@ -17,7 +17,7 @@
 - (void)setupController;
 
 // 设置navi 左右按钮图标
-- (void)setNaviLeftItemNormalImage:(UIImage *)normalImage HighlightedIamge:(UIImage *)highLightedImage;
+- (void)setNaviLeftItemNormalImage:(id)normalImage HighlightedIamge:(id)highLightedImage;
 - (void)setNaviRightItemNormalImage:(UIImage *)normalImage HighlightedIamge:(UIImage *)highLightedImage;
 
 // navi 左右按钮相应事件

@@ -56,7 +56,7 @@
             self.userModel = [UserLoginModel mj_objectWithKeyValues:[request.responseObject objectForKey:@"body"]];
             
             [KZUserDefaults setObject:self.userModel.userId forKey:@"userid"];
-            
+            [KZUserDefaults setObject:self.userModel.userimg forKey:@"userimg"];
             [self showTipsMsg:@"登录成功" delayDo:^{
                 // 设置根视图
                 [ABAConfig creatRootViewController:[ABAConfig initTabBarViewController]];
@@ -238,6 +238,8 @@
                 [dic setObject:resp.name forKey:@"username"];
                 [dic setObject:resp.iconurl forKey:@"userimg"];
                 [dic setObject:resp.unionGender?@"0":@"1" forKey:@"usergender"];
+                
+                [KZUserDefaults setObject:resp.iconurl forKey:@"userimg"];
                 
                 // 检查是否绑定手机号
                 [self checkBingPhoneInfoDic:dic];

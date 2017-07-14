@@ -43,8 +43,16 @@ static NSString *babyListCellIdentifier = @"BabyListTableViewCell";
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     // 设置左上角图标
-    UIImage *imager = [UIImage imageNamed:@"headerImage"];
-    [self setNaviLeftItemNormalImage:imager HighlightedIamge:imager];
+    
+    NSString *imagerString = [KZUserDefaults objectForKey:@"userimg"];
+    if ([imagerString isEqualToString:@""]) {
+        UIImage *imager = [UIImage imageNamed:@"headerImage"];
+        [self setNaviLeftItemNormalImage:imager HighlightedIamge:imager];
+    } else {
+        [self setNaviLeftItemNormalImage:imagerString HighlightedIamge:imagerString];
+    }
+    
+    
     
     // lySegment 初始化
     LySegmentMenu *lySegment = [[LySegmentMenu alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH - 64 - 50) ControllerViewArray:@[self.goodTeachTableView, self.goodClassTableView] TitleArray:@[@"优教", @"优班"]];

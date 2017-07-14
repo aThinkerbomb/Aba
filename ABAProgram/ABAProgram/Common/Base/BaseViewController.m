@@ -46,12 +46,19 @@
 }
 
 
-- (void)setNaviLeftItemNormalImage:(UIImage *)normalImage HighlightedIamge:(UIImage *)highLightedImage
+- (void)setNaviLeftItemNormalImage:(id)normalImage HighlightedIamge:(id)highLightedImage
 {
-    if (normalImage && highLightedImage) {
+    
+    if ([normalImage isKindOfClass:[UIImage class]] && [highLightedImage isKindOfClass:[UIImage class]]) {
         [self.leftButton setImage:normalImage forState:UIControlStateNormal];
         [self.leftButton setImage:highLightedImage forState:UIControlStateHighlighted];
         [self.leftButton sizeToFit];
+    }
+    if ([normalImage isKindOfClass:[NSString class]] && [highLightedImage isKindOfClass:[NSString class]]) {
+        [self.leftButton sd_setImageWithURL:[NSURL URLWithString:normalImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"headerImage"]];
+        [self.leftButton setFrame:CGRectMake(0, 0, 37, 37)];
+        self.leftButton.layer.cornerRadius = 37.0/2;
+        self.leftButton.layer.masksToBounds = YES;
     }
 }
 

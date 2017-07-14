@@ -48,8 +48,14 @@
 {
     [super setupController];
     
-    UIImage *imager = [UIImage imageNamed:@"headerImage"];
-    [self setNaviLeftItemNormalImage:imager HighlightedIamge:imager];
+    // 设置头像
+    NSString *imagerString = [KZUserDefaults objectForKey:@"userimg"];
+    if ([imagerString isEqualToString:@""]) {
+        UIImage *imager = [UIImage imageNamed:@"headerImage"];
+        [self setNaviLeftItemNormalImage:imager HighlightedIamge:imager];
+    } else {
+        [self setNaviLeftItemNormalImage:imagerString HighlightedIamge:imagerString];
+    }
     
     self.hour.layer.cornerRadius = 4;
     self.hour.layer.masksToBounds = YES;

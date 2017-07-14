@@ -50,8 +50,13 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 {
     [super setupController];
     
-    UIImage *imager = [UIImage imageNamed:@"headerImage"];
-    [self setNaviLeftItemNormalImage:imager HighlightedIamge:imager];
+    NSString *imagerString = [KZUserDefaults objectForKey:@"userimg"];
+    if ([imagerString isEqualToString:@""]) {
+        UIImage *imager = [UIImage imageNamed:@"headerImage"];
+        [self setNaviLeftItemNormalImage:imager HighlightedIamge:imager];
+    } else {
+        [self setNaviLeftItemNormalImage:imagerString HighlightedIamge:imagerString];
+    }
     
     [self registerTableViewCell];
     

@@ -72,8 +72,14 @@ static NSString *articelCellIdentifier = @"ArticleTableViewCell";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    UIImage *imager = [UIImage imageNamed:@"headerImage"];
-    [self setNaviLeftItemNormalImage:imager HighlightedIamge:imager];
+    // 设置头像
+    NSString *imagerString = [KZUserDefaults objectForKey:@"userimg"];
+    if ([imagerString isEqualToString:@""]) {
+        UIImage *imager = [UIImage imageNamed:@"headerImage"];
+        [self setNaviLeftItemNormalImage:imager HighlightedIamge:imager];
+    } else {
+        [self setNaviLeftItemNormalImage:imagerString HighlightedIamge:imagerString];
+    }
     
 
     //lySegment 初始化
