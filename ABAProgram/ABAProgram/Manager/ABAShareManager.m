@@ -24,8 +24,8 @@
 #define WeiXinAppSecret @"d96535da24a9fd2d8faf31a409e029e4"
 
 
-#define SinaAppKey @"1829343188"
-#define SinaSecret @"df3be1e33e9b16bde6db57467cce9c48"
+#define SinaAppKey @"1014488485"
+#define SinaSecret @"b1bc1e0f8057d1254b9fcfa60048453b"
 
 
 
