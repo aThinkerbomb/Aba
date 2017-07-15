@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "ABAConfig.h"
 
+
 @interface BaseViewController ()
 {
     MBProgressHUD * _tipsView;
@@ -56,6 +57,7 @@
     }
     if ([normalImage isKindOfClass:[NSString class]] && [highLightedImage isKindOfClass:[NSString class]]) {
         [self.leftButton sd_setImageWithURL:[NSURL URLWithString:normalImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"headerImage"]];
+        [self.leftButton sd_setImageWithURL:[NSURL URLWithString:normalImage] forState:UIControlStateHighlighted placeholderImage:[UIImage imageNamed:@"headerImage"]];
         [self.leftButton setFrame:CGRectMake(0, 0, 37, 37)];
         self.leftButton.layer.cornerRadius = 37.0/2;
         self.leftButton.layer.masksToBounds = YES;

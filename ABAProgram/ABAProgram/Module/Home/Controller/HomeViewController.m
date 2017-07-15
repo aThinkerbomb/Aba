@@ -19,6 +19,7 @@
 // 已下为test
 #import "MyVideoViewController.h"
 #import "HistoryViewController.h"
+#import "AboutOursViewController.h"
 
 static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 
@@ -159,6 +160,7 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 }
 
 
+#pragma mark - 头像点击方法
 
 - (void)leftButtonAction:(UIButton *)sender
 {
@@ -166,9 +168,13 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 //    myVideo.hidesBottomBarWhenPushed = YES;
 //    [self pushToNextNavigationController:myVideo];
     
-    HistoryViewController *historyVC = [[HistoryViewController alloc] init];
-    historyVC.hidesBottomBarWhenPushed = YES;
-    [self pushToNextNavigationController:historyVC];
+//    HistoryViewController *historyVC = [[HistoryViewController alloc] init];
+//    historyVC.hidesBottomBarWhenPushed = YES;
+//    [self pushToNextNavigationController:historyVC];
+    
+    AboutOursViewController *aboutVC = [[AboutOursViewController alloc] init];
+    aboutVC.hidesBottomBarWhenPushed = YES;
+    [self pushToNextNavigationController:aboutVC];
 }
 
 #pragma mark - lazyLoading
