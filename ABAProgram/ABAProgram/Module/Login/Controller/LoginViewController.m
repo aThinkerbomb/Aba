@@ -161,7 +161,10 @@
     [bindApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         [self showLoadingView:NO];
-        if ([ABAConfig checkResponseObject:request.responseObject]) {
+        
+        self.userModel = [UserLoginModel mj_objectWithKeyValues:[request.responseObject objectForKey:@"body"]];
+        
+        if ([ABAConfig checkResponseObject:request.responseObject] && ![self.userModel.userphone isEqualToString:@""]) {
             
             // 已经绑定，就直接登录
             [self OtherLoginWithInfoDic:dic];
@@ -173,6 +176,7 @@
             self.alertView = [[AbaAlertView alloc] initWithTitle:@"请绑定手机号" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
             [self.alertView setAlertViewStyle:UIAlertViewStyleSecureTextInput];
             UITextField *phoneTextField = [self.alertView textFieldAtIndex:0];
+            phoneTextField.keyboardType = UIKeyboardTypeNumberPad;
             phoneTextField.placeholder = @"请输入手机号";
             [self.alertView show];
             
@@ -338,6 +342,8 @@
         
         // 绑定手机号后 直接登录
         [self OtherLoginWithInfoDic:self.infoDic];
+        
+        [self showTipsMsg:@"绑定成功"];
         
     }
 }
