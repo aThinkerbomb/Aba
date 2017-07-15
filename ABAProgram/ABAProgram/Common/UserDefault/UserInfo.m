@@ -33,9 +33,9 @@
 
 + (BOOL)hasLogin
 {
-//    if ([KZUserDefaults objectForKey:@"userid"]) {
-//        return YES;
-//    }
+    if ([KZUserDefaults objectForKey:@"userid"]) {
+        return YES;
+    }
     return NO;
 }
 

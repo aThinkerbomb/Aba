@@ -25,6 +25,7 @@
     _videoModel = videoModel;
     if (_videoModel) {
         
+        // 狗血的图片数据。。。
         NSInteger index = [_videoModel.filename length] - 4;
         NSString *imageName = [_videoModel.filename substringToIndex:index];
         NSString *urlstring = [[ABA_IMAGE stringByAppendingString:imageName] stringByAppendingString:@".jpg"];

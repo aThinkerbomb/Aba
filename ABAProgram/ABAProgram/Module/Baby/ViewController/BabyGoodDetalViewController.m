@@ -16,10 +16,11 @@
 #import "IntroductionModel.h"
 #import "VideoIntroductionModel.h"
 
+#import "ZFPlayerView.h"
 
 static NSString *TableViewCellIdentifier = @"UITableViewCell";
 
-@interface BabyGoodDetalViewController ()<UITableViewDelegate, UITableViewDataSource, GoodDetailSectionViewDelegate, SchoolInfoSectionViewDelegate>
+@interface BabyGoodDetalViewController ()<UITableViewDelegate, UITableViewDataSource, GoodDetailSectionViewDelegate, SchoolInfoSectionViewDelegate, ZFPlayerDelegate>
 
 @property (nonatomic, strong) UITableView *teachTableView;
 @property (nonatomic, strong) NSArray *dataSource;
@@ -28,7 +29,7 @@ static NSString *TableViewCellIdentifier = @"UITableViewCell";
 @property (nonatomic, strong) BabyGoodTeachHeaderView *teachHeaderView;
 @property (nonatomic, strong) IntroductionModel * baseIntroMode;
 
-
+@property (nonatomic, strong) ZFPlayerView * playerView;
 @end
 
 @implementation BabyGoodDetalViewController
@@ -51,6 +52,7 @@ static NSString *TableViewCellIdentifier = @"UITableViewCell";
     [self requestVideoInfoData];
     
 }
+
 
 - (void)setupController
 {
@@ -220,11 +222,53 @@ static NSString *TableViewCellIdentifier = @"UITableViewCell";
 }
 
 
+#pragma mark - 视频播放
+
+- (void)setupPlayViewWithUrl:(NSString *)url {
+    
+    ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
+    [controlView setHiddenFullButton: YES];
+    ZFPlayerModel *playModel = [[ZFPlayerModel alloc] init];
+    
+    // 设置视频网络URL
+    NSString *videoURL = url;
+    if ([ABAConfig IsChinese:videoURL]) {
+        videoURL = [videoURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+    playModel.videoURL = [NSURL URLWithString:videoURL];
+    
+    // 有userimg不用 非用这个字段，真特么没见过。。。狗血的数据 一个图片 搞这么繁琐的代码，真是够了
+    NSInteger index = [url length] - 4;
+    NSString *imageName = [url substringToIndex:index];
+    NSString *urlstring = [[ABA_IMAGE stringByAppendingString:imageName] stringByAppendingString:@".jpg"];
+    if ([ABAConfig IsChinese:urlstring]) {
+        urlstring = [urlstring stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    playModel.placeholderImageURLString = urlstring;
+    playModel.fatherView = self.view;
+    
+    [self.playerView playerControlView:controlView playerModel:playModel];
+    [self.playerView _fullScreenAction];
+}
+
+#pragma mark - 视频播放返回按钮代理方法
+- (void)zf_playerBackAction {
+    
+    [self.playerView pause];
+    self.playerView.hidden = YES;
+    self.playerView = nil;
+    
+}
+
 #pragma mark - GoodDetailSectionViewDelegate
 
 - (void)didSelectedSection:(NSInteger)section {
     
     NSLog(@"%lu", section);
+    
+    VideoIntroductionModel *VideoModel = self.dataSource[section];
+    [self setupPlayViewWithUrl:VideoModel.videopath];
 }
 
 
@@ -260,7 +304,18 @@ static NSString *TableViewCellIdentifier = @"UITableViewCell";
     return _teachHeaderView;
 }
 
+- (ZFPlayerView *)playerView {
+    if (!_playerView) {
+        _playerView = [[ZFPlayerView alloc]init];
+        _playerView.delegate = self;
+    }
+    return _playerView;
+}
 
+
+- (void)dealloc {
+    NSLog(@"释放啦～～");
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

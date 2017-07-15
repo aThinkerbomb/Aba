@@ -1346,6 +1346,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
             if ([self.delegate respondsToSelector:@selector(zf_playerBackAction)]) { [self.delegate zf_playerBackAction]; }
         } else {
             [self interfaceOrientation:UIInterfaceOrientationPortrait];
+            
+            // 宇轩修改 全屏情况下点击返回按钮也要走代理方法
+            if ([self.delegate respondsToSelector:@selector(zf_playerBackAction)]) { [self.delegate zf_playerBackAction]; }
         }
     }
 }

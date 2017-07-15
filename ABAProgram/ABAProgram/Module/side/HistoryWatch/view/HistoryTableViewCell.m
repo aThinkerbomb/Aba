@@ -24,7 +24,7 @@
     if (_historyModel) {
         self.historyTime.text = [NSDate getDateFromDateString:_historyModel.creattime withDateFormatter:@"yyyy/MM/dd"];
         
-        // image 烦人
+        // image 烦人 狗血的图片数据
         NSInteger index = [_historyModel.filename length] - 4;
         NSString *imageName = [_historyModel.filename substringToIndex:index];
         NSString *urlstring = [[ABA_IMAGE stringByAppendingString:imageName] stringByAppendingString:@".jpg"];

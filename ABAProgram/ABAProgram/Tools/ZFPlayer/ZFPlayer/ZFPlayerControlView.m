@@ -102,7 +102,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 /** 是否播放结束 */
 @property (nonatomic, assign, getter=isPlayEnd) BOOL  playeEnd;
 /** 是否全屏播放 */
-@property (nonatomic, assign,getter=isFullScreen)BOOL fullScreen;
+@property (nonatomic, assign, getter=isFullScreen)BOOL fullScreen;
 
 @end
 
@@ -1156,6 +1156,11 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 /** 下载按钮状态 */
 - (void)zf_playerDownloadBtnState:(BOOL)state {
     self.downLoadBtn.enabled = state;
+}
+
+
+- (void)setHiddenFullButton:(BOOL)hidden {
+    self.fullScreenBtn.hidden = hidden;
 }
 
 #pragma clang diagnostic pop

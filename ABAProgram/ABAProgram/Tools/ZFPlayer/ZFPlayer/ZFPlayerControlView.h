@@ -30,5 +30,7 @@ typedef void(^SliderTapBlock)(CGFloat value);
 
 @interface ZFPlayerControlView : UIView 
 
+// 宇轩修改  按需求修改。。。
+- (void)setHiddenFullButton:(BOOL)hidden;
 
 @end

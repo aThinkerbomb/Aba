@@ -120,11 +120,6 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 }
 
 
-- (void)popBack {
-    [super popBack];
-    [self.playerView pause];
-}
-
 - (void)rightButtonAction:(UIButton *)sender {
     //分享
     [self sharePlatform];

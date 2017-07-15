@@ -25,12 +25,15 @@
     _videModel = videModel;
     
     if (![ABAConfig isEmptyOfObj:_videModel]) {
-        NSString *imageStr = _videModel.userimg;
-        if ([ABAConfig IsChinese:imageStr]) {
-            imageStr = [imageStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        }
         
-        [self.babyImage sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        // 有userimg不用 非用这个字段，真特么没见过。。。狗血的数据
+        NSInteger index = [_videModel.filename length] - 4;
+        NSString *imageName = [_videModel.filename substringToIndex:index];
+        NSString *urlstring = [[ABA_IMAGE stringByAppendingString:imageName] stringByAppendingString:@".jpg"];
+        if ([ABAConfig IsChinese:urlstring]) {
+            urlstring = [urlstring stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
+        [self.babyImage sd_setImageWithURL:[NSURL URLWithString:urlstring] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     }
     
     self.babyTitle.text = _videModel.videoname;

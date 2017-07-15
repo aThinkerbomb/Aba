@@ -41,7 +41,7 @@
         
         playerModel.videoURL = [NSURL URLWithString:videoPath];
         
-        // image 烦人
+        // image 烦人 狗血的图片数据
         NSInteger index = [_videoModel.filename length] - 4;
         NSString *imageName = [_videoModel.filename substringToIndex:index];
         NSString *urlstring = [[ABA_IMAGE stringByAppendingString:imageName] stringByAppendingString:@".jpg"];
