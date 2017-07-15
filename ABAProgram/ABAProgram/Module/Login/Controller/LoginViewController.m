@@ -266,24 +266,26 @@
     [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_QQ completion:^(id result, NSError *error) {//先取消以前的授权 否则 如果授权过 他会直接获取信息 而不跳微信页授权
         [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:self completion:^(id result, NSError *error) {
             if (error) {
+                [self showTipsMsg:@"授权失败"];
                 
             } else {
+               
                 UMSocialUserInfoResponse *resp = result;
+                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                [dic setObject:@"1" forKey:@"usertype"];
+                [dic setObject:@"1" forKey:@"logintype"];
+                [dic setObject:resp.openid forKey:@"useraccount"];
+                [dic setObject:resp.name forKey:@"username"];
+                [dic setObject:resp.iconurl forKey:@"userimg"];
+                [dic setObject:resp.unionGender?@"0":@"1" forKey:@"usergender"];
                 
-                // 授权信息
-                NSLog(@"QQ uid: %@", resp.uid);
-                NSLog(@"QQ openid: %@", resp.openid);
-                NSLog(@"QQ unionid: %@", resp.unionId);
-                NSLog(@"QQ accessToken: %@", resp.accessToken);
-                NSLog(@"QQ expiration: %@", resp.expiration);
+                // 设置一个全局的信息，方便绑定手机时候用
+                self.infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
                 
-                // 用户信息
-                NSLog(@"QQ name: %@", resp.name);
-                NSLog(@"QQ iconurl: %@", resp.iconurl);
-                NSLog(@"QQ gender: %@", resp.unionGender);
+                [KZUserDefaults setObject:resp.iconurl forKey:@"userimg"];
                 
-                // 第三方平台SDK源数据
-                NSLog(@"QQ originalResponse: %@", resp.originalResponse);
+                // 检查是否绑定手机号
+                [self checkBingPhoneInfoDic:dic];
             }
         }];
         
