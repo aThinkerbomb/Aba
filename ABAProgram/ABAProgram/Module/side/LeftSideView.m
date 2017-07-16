@@ -11,11 +11,32 @@
 @interface LeftSideView ()
 
 @property (nonatomic, copy) LeftSideHandle handle;
+@property (weak, nonatomic) IBOutlet UIImageView *HeadImage;
+@property (weak, nonatomic) IBOutlet UILabel *Name;
 
 @end
 
 
 @implementation LeftSideView
+
+- (instancetype)init {
+    
+    self = [super init];
+    
+    if (self) {
+        
+        NSString *headImagerStr = [KZUserDefaults objectForKey:@"userimg"];
+        if (headImagerStr) {
+            [self.HeadImage sd_setImageWithURL:[NSURL URLWithString:headImagerStr] placeholderImage:[UIImage imageNamed:@"headerImage"]];
+        } else {
+            self.HeadImage.image = [UIImage imageNamed:@"headerImage"];
+        }
+        
+        self.Name.text = [KZUserDefaults objectForKey:@"username"];
+
+    }
+    return self;
+}
 
 - (IBAction)functionAction:(UIButton *)sender {
     

@@ -164,6 +164,7 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 
 - (void)leftButtonAction:(UIButton *)sender
 {
+    [self showLeftSideView];
 //    MyVideoViewController *myVideo = [[MyVideoViewController alloc] init];
 //    myVideo.hidesBottomBarWhenPushed = YES;
 //    [self pushToNextNavigationController:myVideo];
@@ -172,9 +173,9 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 //    historyVC.hidesBottomBarWhenPushed = YES;
 //    [self pushToNextNavigationController:historyVC];
     
-    AboutOursViewController *aboutVC = [[AboutOursViewController alloc] init];
-    aboutVC.hidesBottomBarWhenPushed = YES;
-    [self pushToNextNavigationController:aboutVC];
+//    AboutOursViewController *aboutVC = [[AboutOursViewController alloc] init];
+//    aboutVC.hidesBottomBarWhenPushed = YES;
+//    [self pushToNextNavigationController:aboutVC];
 }
 
 #pragma mark - lazyLoading

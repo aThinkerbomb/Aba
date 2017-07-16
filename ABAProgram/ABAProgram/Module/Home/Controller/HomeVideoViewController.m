@@ -50,6 +50,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 @property (nonatomic, strong) ZFPlayerView *playerView;
 @property (nonatomic, strong) VideoSendCommentView *sendCommentView;
 
+@property (nonatomic, strong) UIButton * shelterBtnView; //遮挡视频播放的btn，需要支付的时候出现
 @end
 
 @implementation HomeVideoViewController
@@ -339,6 +340,8 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 #pragma mark - 设置播放器界面
 
 - (UIView *)setupPlayView {
+    
+    // 底层View
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenW/5*3)];
 
     self.playerView = [[ZFPlayerView alloc] initWithFrame:backView.bounds];
@@ -363,15 +366,34 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
         URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
     playModel.placeholderImageURLString = URLString;
-    
     playModel.fatherView = backView;
     [self.playerView playerControlView:controlView playerModel:playModel];
-    
     [backView addSubview:self.playerView];
+    
+    // 设置遮挡btnView
+    if ([self.homePlayModel.price doubleValue] > 0) {
+        self.shelterBtnView = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.shelterBtnView setFrame:backView.bounds];
+        self.shelterBtnView.backgroundColor = [UIColor clearColor];
+        [self.shelterBtnView addTarget:self action:@selector(ShelterBtnViewClickedAction) forControlEvents:UIControlEventTouchUpInside];
+        [backView addSubview:self.shelterBtnView];
+    }
+    
     
     return backView;
 
 }
+
+#pragma mark - 需要支付
+
+// 遮挡btn 被点击 需要支付
+- (void)ShelterBtnViewClickedAction {
+    
+    NSLog(@"需要支付哦～～");
+    
+}
+
+
 
 
 #pragma mark - 设置分享

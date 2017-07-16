@@ -61,6 +61,7 @@
             
             [KZUserDefaults setObject:self.userModel.userId forKey:@"userid"];
             [KZUserDefaults setObject:self.userModel.userimg forKey:@"userimg"];
+            [KZUserDefaults setObject:phone forKey:@"username"];
             [self showTipsMsg:@"登录成功" delayDo:^{
                 // 设置根视图
                 [ABAConfig creatRootViewController:[ABAConfig initTabBarViewController]];
@@ -205,6 +206,8 @@
             self.userModel = [UserLoginModel mj_objectWithKeyValues:[request.responseObject objectForKey:@"body"]];
             
             [KZUserDefaults setObject:self.userModel.userId forKey:@"userid"];
+            [KZUserDefaults setObject:self.userModel.userimg forKey:@"userimg"];
+            [KZUserDefaults setObject:self.userModel.username forKey:@"username"];
             
             [self showTipsMsg:@"登录成功" delayDo:^{
                 // 设置根视图
@@ -250,8 +253,6 @@
                 // 设置一个全局的信息，方便绑定手机时候用
                 self.infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
                 
-                [KZUserDefaults setObject:resp.iconurl forKey:@"userimg"];
-                
                 // 检查是否绑定手机号
                 [self checkBingPhoneInfoDic:dic];
 
@@ -281,8 +282,6 @@
                 
                 // 设置一个全局的信息，方便绑定手机时候用
                 self.infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-                
-                [KZUserDefaults setObject:resp.iconurl forKey:@"userimg"];
                 
                 // 检查是否绑定手机号
                 [self checkBingPhoneInfoDic:dic];

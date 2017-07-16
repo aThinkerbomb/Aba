@@ -118,5 +118,4 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
 
 // 全屏播放 宇轩修改  拿出来了
 - (void)_fullScreenAction;
-
 @end

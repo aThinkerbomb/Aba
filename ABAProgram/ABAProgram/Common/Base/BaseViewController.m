@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "ABAConfig.h"
-
+#import "LeftSideView.h"
 
 @interface BaseViewController ()
 {
@@ -18,7 +18,7 @@
 }
 @property (nonatomic, strong) UIBarButtonItem *leftBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
-
+@property (nonatomic, strong) LeftSideView *leftSideView;
 @end
 
 @implementation BaseViewController
@@ -241,8 +241,18 @@
     
 }
 
+- (LeftSideView *)leftSideView {
+    if (!_leftSideView) {
+        _leftSideView = [[LeftSideView alloc] initWithFrame:CGRectMake(0, 0, ScreenW/4*3, ScreenH)];
+        
+        [self.view addSubview:_leftSideView];
+    }
+    return _leftSideView;
+}
 
-
+- (void)showLeftSideView {
+    [self leftSideView];
+}
 
 
 - (void)didReceiveMemoryWarning {

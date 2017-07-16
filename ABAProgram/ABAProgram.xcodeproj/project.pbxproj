@@ -85,6 +85,10 @@
 		B250A7051F10CC880069CB10 /* VideoSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B250A7041F10CC880069CB10 /* VideoSendCommentView.m */; };
 		B250A7071F10CC920069CB10 /* VideoSendCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B250A7061F10CC920069CB10 /* VideoSendCommentView.xib */; };
 		B250A70A1F1120130069CB10 /* VideoSendCommendApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B250A7091F1120130069CB10 /* VideoSendCommendApi.m */; };
+		B25AD1841F1B64E000ADA23D /* WXPayApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B25AD1831F1B64E000ADA23D /* WXPayApi.m */; };
+		B25AD1871F1B6B5400ADA23D /* ZFBPayApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B25AD1861F1B6B5400ADA23D /* ZFBPayApi.m */; };
+		B25AD18A1F1B7F2700ADA23D /* PayChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B25AD1891F1B7F2700ADA23D /* PayChooseView.m */; };
+		B25AD18C1F1B7F8400ADA23D /* PayChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25AD18B1F1B7F8400ADA23D /* PayChooseView.xib */; };
 		B25B2EDE1EFA6E6F00520854 /* YTKNetworkAgent+DT_Agent.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B2EDD1EFA6E6F00520854 /* YTKNetworkAgent+DT_Agent.m */; };
 		B25B2EE11EFA795100520854 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B2EE01EFA795100520854 /* UIImage+Color.m */; };
 		B26561411F0CAC900078B2A7 /* ParameterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B26561401F0CAC900078B2A7 /* ParameterTableViewCell.m */; };
@@ -325,6 +329,13 @@
 		B250A7061F10CC920069CB10 /* VideoSendCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoSendCommentView.xib; sourceTree = "<group>"; };
 		B250A7081F1120130069CB10 /* VideoSendCommendApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoSendCommendApi.h; sourceTree = "<group>"; };
 		B250A7091F1120130069CB10 /* VideoSendCommendApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoSendCommendApi.m; sourceTree = "<group>"; };
+		B25AD1821F1B64E000ADA23D /* WXPayApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXPayApi.h; sourceTree = "<group>"; };
+		B25AD1831F1B64E000ADA23D /* WXPayApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXPayApi.m; sourceTree = "<group>"; };
+		B25AD1851F1B6B5400ADA23D /* ZFBPayApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFBPayApi.h; sourceTree = "<group>"; };
+		B25AD1861F1B6B5400ADA23D /* ZFBPayApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFBPayApi.m; sourceTree = "<group>"; };
+		B25AD1881F1B7F2700ADA23D /* PayChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayChooseView.h; sourceTree = "<group>"; };
+		B25AD1891F1B7F2700ADA23D /* PayChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayChooseView.m; sourceTree = "<group>"; };
+		B25AD18B1F1B7F8400ADA23D /* PayChooseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayChooseView.xib; sourceTree = "<group>"; };
 		B25B2EDC1EFA6E6F00520854 /* YTKNetworkAgent+DT_Agent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YTKNetworkAgent+DT_Agent.h"; sourceTree = "<group>"; };
 		B25B2EDD1EFA6E6F00520854 /* YTKNetworkAgent+DT_Agent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTKNetworkAgent+DT_Agent.m"; sourceTree = "<group>"; };
 		B25B2EDF1EFA795100520854 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -775,6 +786,20 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		B25AD1811F1B649200ADA23D /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				B25AD1821F1B64E000ADA23D /* WXPayApi.h */,
+				B25AD1831F1B64E000ADA23D /* WXPayApi.m */,
+				B25AD1851F1B6B5400ADA23D /* ZFBPayApi.h */,
+				B25AD1861F1B6B5400ADA23D /* ZFBPayApi.m */,
+				B25AD1881F1B7F2700ADA23D /* PayChooseView.h */,
+				B25AD1891F1B7F2700ADA23D /* PayChooseView.m */,
+				B25AD18B1F1B7F8400ADA23D /* PayChooseView.xib */,
+			);
+			path = Pay;
+			sourceTree = "<group>";
+		};
 		B2663FFE1EFCE346002A8F3D /* UserDefault */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,8 +899,8 @@
 		B2A6B3F61EF9353E00C74D79 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				B2A6B40B1EF94DD500C74D79 /* AppDelegate.h */,
 				B2A6B40C1EF94DD500C74D79 /* AppDelegate.m */,
+				B2A6B40B1EF94DD500C74D79 /* AppDelegate.h */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -892,6 +917,7 @@
 				B2B73E131EFB7BB4008F3BC3 /* school */,
 				B2D359BF1F165F5D00827894 /* side */,
 				B2B3CCE61F0699D20094AD5B /* WebView */,
+				B25AD1811F1B649200ADA23D /* Pay */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -1526,6 +1552,7 @@
 				B2F364091F0A53BE00D26AA8 /* BenefitDetailHeaderView.xib in Resources */,
 				B2C49D7B1F1A221C00F15CA8 /* AboutOursViewController.xib in Resources */,
 				B2663FFD1EFCD07E002A8F3D /* LoginViewController.xib in Resources */,
+				B25AD18C1F1B7F8400ADA23D /* PayChooseView.xib in Resources */,
 				B21EB8151F0E2560005F571A /* IntroGoodAtTableViewCell.xib in Resources */,
 				B2C073DC1F137FBC0038381F /* AdressTableViewCell.xib in Resources */,
 				B2C49D751F1A20C400F15CA8 /* LeftSideView.xib in Resources */,
@@ -1643,6 +1670,7 @@
 				B2B4E6331F0B5FA400A2CE2F /* GoodsDetailApi.m in Sources */,
 				B2F67DB51F08D87900302303 /* BabyIntroductionApi.m in Sources */,
 				B23B5B201F192053006AB709 /* UINavigationController+ZFPlayerRotation.m in Sources */,
+				B25AD1871F1B6B5400ADA23D /* ZFBPayApi.m in Sources */,
 				B21EB8211F0E6C7A005F571A /* videoCommentModel.m in Sources */,
 				B22C97711F000CF500A3EEEA /* BaseApi.m in Sources */,
 				B21EB7FC1F0DEBAA005F571A /* HomeVideoViewController.m in Sources */,
@@ -1652,6 +1680,7 @@
 				B2BD0C661F13C371003918B0 /* GetReceiptAdressModel.m in Sources */,
 				B23B5B271F192053006AB709 /* ZFPlayerControlView.m in Sources */,
 				B2683F201F0F85830099C391 /* CommentZanApi.m in Sources */,
+				B25AD18A1F1B7F2700ADA23D /* PayChooseView.m in Sources */,
 				B2B73E071EFB6AB9008F3BC3 /* LoginViewController.m in Sources */,
 				B224AC9B1F07B52600BAC3E9 /* BabyGoodDetalViewController.m in Sources */,
 				B29B536A1F07888B00087CFA /* TalentViewController.m in Sources */,
@@ -1740,6 +1769,7 @@
 				B22C97731F000CF500A3EEEA /* BaseNavigationController.m in Sources */,
 				B23B5B211F192053006AB709 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				B23B5B251F192053006AB709 /* ZFBrightnessView.m in Sources */,
+				B25AD1841F1B64E000ADA23D /* WXPayApi.m in Sources */,
 				B224AC9E1F07BA9A00BAC3E9 /* BabyGoodDetailSectionView.m in Sources */,
 				B21EB8181F0E3293005F571A /* VideoBrowNumberApi.m in Sources */,
 				B231274D1F052DB90091CC78 /* HeaderToolScrollBar.m in Sources */,

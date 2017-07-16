@@ -117,6 +117,12 @@
 // 更新用户收货地址
 #define ABA_UPDATE_RECEIPT_DES_URL @"/userPre/updateUserShipInfo"
 
+// 微信支付
+#define ABA_WX_PAY_URL @"/chooseWXPay/gopay"
+
+// 支付宝
+#define ABA_ZFB_PAY_URL @"/alipay/getAlipayInfo"
+
 // 图片
 #define ABA_IMAGE @"http://yccitaba002.oss-cn-hangzhou.aliyuncs.com/Act-Snapshot/"
 

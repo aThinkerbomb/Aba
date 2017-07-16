@@ -16,6 +16,9 @@
 // 初始化UI
 - (void)setupController;
 
+// 展示侧边栏
+- (void)showLeftSideView;
+
 // 设置navi 左右按钮图标
 - (void)setNaviLeftItemNormalImage:(id)normalImage HighlightedIamge:(id)highLightedImage;
 - (void)setNaviRightItemNormalImage:(UIImage *)normalImage HighlightedIamge:(UIImage *)highLightedImage;

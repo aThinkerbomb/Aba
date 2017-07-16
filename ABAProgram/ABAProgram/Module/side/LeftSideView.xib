@@ -165,6 +165,10 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="HeadImage" destination="gNg-8I-4sy" id="lMF-we-Rz1"/>
+                <outlet property="Name" destination="0tk-Ju-7HX" id="C3f-u5-BZO"/>
+            </connections>
             <point key="canvasLocation" x="-132.5" y="-136.5"/>
         </view>
     </objects>
