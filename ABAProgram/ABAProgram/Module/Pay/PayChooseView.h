@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+// index 1--微信   2--支付宝
+typedef void(^PayHandle)(NSInteger index);
+typedef void(^CloseAction)(void);
 @interface PayChooseView : UIView
+
+- (void)closePayView:(CloseAction)close;
+- (void)SurePay:(PayHandle)handle;
 
 @end

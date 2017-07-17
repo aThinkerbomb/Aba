@@ -10,6 +10,10 @@
 #import "ABAConfig.h"
 #import "LeftSideView.h"
 
+#import "MyVideoViewController.h"
+#import "HistoryViewController.h"
+#import "AboutOursViewController.h"
+
 @interface BaseViewController ()
 {
     MBProgressHUD * _tipsView;
@@ -19,6 +23,8 @@
 @property (nonatomic, strong) UIBarButtonItem *leftBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
 @property (nonatomic, strong) LeftSideView *leftSideView;
+
+@property (nonatomic, strong) UIView *bgview; //黑色背景
 @end
 
 @implementation BaseViewController
@@ -243,16 +249,108 @@
 
 - (LeftSideView *)leftSideView {
     if (!_leftSideView) {
-        _leftSideView = [[LeftSideView alloc] initWithFrame:CGRectMake(0, 0, ScreenW/4*3, ScreenH)];
+        _leftSideView = [[[NSBundle mainBundle] loadNibNamed:@"LeftSideView" owner:self options:nil] lastObject];
+        [_leftSideView setFrame:CGRectMake(-(ScreenW/4*3), 0, ScreenW/4*3, ScreenH)];
         
-        [self.view addSubview:_leftSideView];
+        
+        [_leftSideView didSelectedSideFunction:^(FunctionType funtion) {
+            
+            // 隐藏侧边栏
+            [self HiddenLeftSideView];
+            
+            if (funtion == FunctionTypeMyVideo) {
+                MyVideoViewController *myVideo = [[MyVideoViewController alloc] init];
+                myVideo.hidesBottomBarWhenPushed = YES;
+                [self pushToNextNavigationController:myVideo];
+            }
+            if (funtion == FunctionTypeHistoryRecord) {
+                HistoryViewController *historyVC = [[HistoryViewController alloc] init];
+                historyVC.hidesBottomBarWhenPushed = YES;
+                [self pushToNextNavigationController:historyVC];
+            }
+            if (funtion == FunctionTypeAboutOurs) {
+                AboutOursViewController *aboutVC = [[AboutOursViewController alloc] init];
+                aboutVC.hidesBottomBarWhenPushed = YES;
+                [self pushToNextNavigationController:aboutVC];
+            }
+            if (funtion == FunctionTypeExit) {
+                
+                [self LoginOut];
+            }
+            
+        }];
+        
+        
     }
     return _leftSideView;
 }
 
-- (void)showLeftSideView {
-    [self leftSideView];
+- (UIView *)bgview {
+    if (!_bgview) {
+        _bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+    }
+    return _bgview;
 }
+
+- (void)showLeftSideView {
+
+    [self leftSideView]; // 先设置frame，要么会导致第一次瞬间出现在0，0位置
+    [UIView animateWithDuration:0.3 animations:^{
+        [kAppDelegate.window addSubview:self.bgview];
+        [kAppDelegate.window addSubview:self.leftSideView];
+        [self.leftSideView setFrame:CGRectMake(0, 0, ScreenW/4*3, ScreenH)];
+        self.bgview.hidden = NO;
+        [self.bgview setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.5]];
+    } completion:^(BOOL finished) {
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(HiddenLeftSideView)];
+
+        UIPanGestureRecognizer *pan1 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(HiddenLeftSideView)];
+        
+        UIPanGestureRecognizer *pan2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(HiddenLeftSideView)];
+        
+        [self.bgview addGestureRecognizer:tap];
+        [self.bgview addGestureRecognizer:pan1];
+        [self.leftSideView addGestureRecognizer:pan2];
+        
+    }];
+}
+
+
+- (void)HiddenLeftSideView {
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.leftSideView setFrame:CGRectMake(-(ScreenW/4*3), 0, ScreenW/4*3, ScreenH)];
+        [self.bgview setBackgroundColor:[[UIColor clearColor] colorWithAlphaComponent:0.5]];
+        self.bgview.hidden = YES;
+        
+    }];
+}
+
+// 登出
+- (void)LoginOut {
+    [KZUserDefaults removeObjectForKey:@"userid"];
+    [KZUserDefaults removeObjectForKey:@"userimg"];
+    [KZUserDefaults removeObjectForKey:@"username"];
+    
+    [self showTipsMsg:@"退出成功" delayDo:^{
+        [ABAConfig creatRootViewController:[ABAConfig creatLoginViewController]];
+    }];
+    
+    
+    
+}
+
+
+//- (void)PanHiddenLeftSideView:(UIPanGestureRecognizer *)gesture {
+//    
+//    CGPoint position = [gesture translationInView:self.leftSideView];
+//    NSLog(@"xx ==%f", position.x);
+//    if (self.leftSideView.frame.origin.x <= 0) {
+//        self.leftSideView.transform = CGAffineTransformTranslate(self.leftSideView.transform, position.x, 0);
+//        [gesture setTranslation:CGPointZero inView:self.leftSideView];
+//    }
+//    
+//}
 
 
 - (void)didReceiveMemoryWarning {

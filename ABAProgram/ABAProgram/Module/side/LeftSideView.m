@@ -19,25 +19,6 @@
 
 @implementation LeftSideView
 
-- (instancetype)init {
-    
-    self = [super init];
-    
-    if (self) {
-        
-        NSString *headImagerStr = [KZUserDefaults objectForKey:@"userimg"];
-        if (headImagerStr) {
-            [self.HeadImage sd_setImageWithURL:[NSURL URLWithString:headImagerStr] placeholderImage:[UIImage imageNamed:@"headerImage"]];
-        } else {
-            self.HeadImage.image = [UIImage imageNamed:@"headerImage"];
-        }
-        
-        self.Name.text = [KZUserDefaults objectForKey:@"username"];
-
-    }
-    return self;
-}
-
 - (IBAction)functionAction:(UIButton *)sender {
     
     NSInteger tag = sender.tag - 3000;
@@ -65,6 +46,17 @@
         }
     }
     
+}
+
+-(void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.HeadImage.layer.cornerRadius = 50.0/2;
+    self.HeadImage.layer.masksToBounds = YES;
+    
+    NSString *headImagerStr = [KZUserDefaults objectForKey:@"userimg"];
+    [self.HeadImage sd_setImageWithURL:[NSURL URLWithString:headImagerStr] placeholderImage:[UIImage imageNamed:@"headerImage"]];
+    self.Name.text = [KZUserDefaults objectForKey:@"username"];
 }
 
 

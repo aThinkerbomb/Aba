@@ -431,7 +431,7 @@ static NSString *articelCellIdentifier = @"ArticleTableViewCell";
 
 - (void)leftButtonAction:(UIButton *)sender
 {
-    NSLog(@"头像按钮");
+    [self showLeftSideView];
 }
 
 

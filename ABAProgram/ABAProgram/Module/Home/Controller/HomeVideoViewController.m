@@ -26,6 +26,7 @@
 #import "VideoSendCommendApi.h"
 
 #import "ABAShareManager.h"
+#import "PayChooseView.h"
 
 static NSString * commentCellIdentifier       = @"CommentTableViewCell";
 static NSString * introPeopleCellIdentifier   = @"IntroPeopleTableViewCell";
@@ -50,7 +51,10 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 @property (nonatomic, strong) ZFPlayerView *playerView;
 @property (nonatomic, strong) VideoSendCommentView *sendCommentView;
 
-@property (nonatomic, strong) UIButton * shelterBtnView; //遮挡视频播放的btn，需要支付的时候出现
+@property (nonatomic, strong) UIButton * shelterBtnView;     //遮挡视频播放的btn，需要支付的时候出现
+@property (nonatomic, strong) PayChooseView * payChooseView; //支付选择页面
+@property (nonatomic, strong) UIView * backGroundView;       //支付选择页面的父view
+
 @end
 
 @implementation HomeVideoViewController
@@ -391,6 +395,31 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     
     NSLog(@"需要支付哦～～");
     
+    self.backGroundView = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.backGroundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    [self.payChooseView setFrame:CGRectMake((ScreenW-240)/2, (ScreenH-360)/2, 240, 360)];
+    
+    __weak typeof(self)WeakSelf = self;
+    [self.payChooseView closePayView:^{
+        [WeakSelf.backGroundView removeFromSuperview];
+    }];
+    
+    [self.payChooseView SurePay:^(NSInteger index) {
+       
+        NSLog(@"index = %lu", index);
+        if (1 == index) {
+            // 微信
+        } else if (2 == index) {
+            // 支付宝
+        } else {
+            [WeakSelf showTipsMsg:@"请选择支付方式"];
+        }
+        
+        
+    }];
+    [self.backGroundView addSubview:self.payChooseView];
+    [self.view addSubview:self.backGroundView];
+    
 }
 
 
@@ -432,6 +461,16 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
         [self.view addSubview:_videoTableView];
     }
     return _videoTableView;
+}
+
+- (PayChooseView *)payChooseView {
+    if (!_payChooseView) {
+        _payChooseView = [[[NSBundle mainBundle] loadNibNamed:@"PayChooseView" owner:self options:nil] lastObject];
+        _payChooseView.layer.cornerRadius = 6;
+        _payChooseView.layer.masksToBounds = YES;
+        
+    }
+    return _payChooseView;
 }
 
 

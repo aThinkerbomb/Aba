@@ -899,8 +899,8 @@
 		B2A6B3F61EF9353E00C74D79 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				B2A6B40C1EF94DD500C74D79 /* AppDelegate.m */,
 				B2A6B40B1EF94DD500C74D79 /* AppDelegate.h */,
+				B2A6B40C1EF94DD500C74D79 /* AppDelegate.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -917,6 +917,7 @@
 				B2B73E131EFB7BB4008F3BC3 /* school */,
 				B2D359BF1F165F5D00827894 /* side */,
 				B2B3CCE61F0699D20094AD5B /* WebView */,
+				B2D359CB1F166A1A00827894 /* HistoryWatch */,
 				B25AD1811F1B649200ADA23D /* Pay */,
 			);
 			path = Module;
@@ -1346,7 +1347,6 @@
 				B2C49D721F1A20C400F15CA8 /* LeftSideView.m */,
 				B2C49D731F1A20C400F15CA8 /* LeftSideView.xib */,
 				B2D359C01F165F5D00827894 /* myVideo */,
-				B2D359CB1F166A1A00827894 /* HistoryWatch */,
 				B2C49D761F1A21A500F15CA8 /* AboutOurs */,
 			);
 			path = side;
@@ -1403,7 +1403,8 @@
 				B2D359CE1F166A1A00827894 /* view */,
 				B2D359CF1F166A1A00827894 /* watchApi */,
 			);
-			path = HistoryWatch;
+			name = HistoryWatch;
+			path = side/HistoryWatch;
 			sourceTree = "<group>";
 		};
 		B2D359CC1F166A1A00827894 /* Controller */ = {

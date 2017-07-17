@@ -10,10 +10,9 @@
 
 @interface UserInfo : NSObject
 
-
-
 + (instancetype)shareUserInfo;
 
+// 判断登录
 + (BOOL)hasLogin;
 
 @end

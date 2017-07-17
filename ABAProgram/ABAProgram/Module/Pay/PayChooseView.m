@@ -13,30 +13,76 @@
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UIButton *WxBtn;
 @property (weak, nonatomic) IBOutlet UIButton *zfbBtn;
+@property (weak, nonatomic) IBOutlet UIButton *PayBtn;
 
-
+@property (nonatomic, copy) PayHandle payhandle;
+@property (nonatomic, copy) CloseAction close;
 @end
 
 @implementation PayChooseView
+{
+    NSInteger _index;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _index = 0;
+    }
+    return self;
+}
+
+
+
 - (IBAction)closeAction:(UIButton *)sender {
+    
+    if (self.close) {
+        self.close();
+    }
     
 }
 - (IBAction)PayAction:(UIButton *)sender {
+    
+    if (self.payhandle) {
+        self.payhandle(_index);
+    }
     
 }
 
 - (IBAction)ChooseWxPay:(UIButton *)sender {
     
+    _index = 1;
     sender.selected = YES;
     self.zfbBtn.selected = NO;
     
 }
 - (IBAction)ChooseZfbPay:(UIButton *)sender {
     
+    _index = 2;
     sender.selected = YES;
     self.WxBtn.selected = NO;
 }
 
+- (void)SurePay:(PayHandle)handle {
+    if (handle) {
+        self.payhandle = handle;
+    }
+}
+
+- (void)closePayView:(CloseAction)close {
+    if (close) {
+        self.close = close;
+    }
+}
+
+
+
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.PayBtn.layer.cornerRadius = 6;
+    self.PayBtn.layer.masksToBounds = YES;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

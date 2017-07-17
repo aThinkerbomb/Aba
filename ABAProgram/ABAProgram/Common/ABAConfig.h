@@ -16,6 +16,7 @@
 + (UINavigationController *)creatLoginViewController;
 // 主页面
 + (UITabBarController *)initTabBarViewController;
+
 // 设置根视图
 + (void)creatRootViewController:(UIViewController *)viewController;
 
