@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		63F84BBF7928C827C230A19E /* libPods-ABAProgram.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7BB8D61A2D4BA6E84B7244 /* libPods-ABAProgram.a */; };
+		B202536A1F1DC54700F2CF47 /* GoodsIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20253681F1DC54700F2CF47 /* GoodsIntroViewController.m */; };
+		B202536B1F1DC54700F2CF47 /* GoodsIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20253691F1DC54700F2CF47 /* GoodsIntroViewController.xib */; };
+		B202536F1F1DCC6800F2CF47 /* BackFreeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B202536D1F1DCC6800F2CF47 /* BackFreeInfoViewController.m */; };
+		B20253701F1DCC6800F2CF47 /* BackFreeInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B202536E1F1DCC6800F2CF47 /* BackFreeInfoViewController.xib */; };
+		B20253731F1DF16700F2CF47 /* FeedBackApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B20253721F1DF16700F2CF47 /* FeedBackApi.m */; };
 		B214081F1F176CDA00CA4DCC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B214081E1F176CDA00CA4DCC /* libsqlite3.tbd */; };
 		B21408211F176CEC00CA4DCC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21408201F176CEC00CA4DCC /* CoreGraphics.framework */; };
 		B21408361F176FF700CA4DCC /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B21408251F176FF700CA4DCC /* libSocialQQ.a */; };
@@ -196,6 +201,14 @@
 
 /* Begin PBXFileReference section */
 		92FE9D33CB10659DF35D8C67 /* Pods-ABAProgram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABAProgram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ABAProgram/Pods-ABAProgram.debug.xcconfig"; sourceTree = "<group>"; };
+		B20253671F1DC54700F2CF47 /* GoodsIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsIntroViewController.h; sourceTree = "<group>"; };
+		B20253681F1DC54700F2CF47 /* GoodsIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsIntroViewController.m; sourceTree = "<group>"; };
+		B20253691F1DC54700F2CF47 /* GoodsIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsIntroViewController.xib; sourceTree = "<group>"; };
+		B202536C1F1DCC6800F2CF47 /* BackFreeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackFreeInfoViewController.h; sourceTree = "<group>"; };
+		B202536D1F1DCC6800F2CF47 /* BackFreeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackFreeInfoViewController.m; sourceTree = "<group>"; };
+		B202536E1F1DCC6800F2CF47 /* BackFreeInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackFreeInfoViewController.xib; sourceTree = "<group>"; };
+		B20253711F1DF16700F2CF47 /* FeedBackApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackApi.h; sourceTree = "<group>"; };
+		B20253721F1DF16700F2CF47 /* FeedBackApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackApi.m; sourceTree = "<group>"; };
 		B214081E1F176CDA00CA4DCC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		B21408201F176CEC00CA4DCC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B21408251F176FF700CA4DCC /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
@@ -1336,6 +1349,14 @@
 				B2C49D771F1A221C00F15CA8 /* AboutOursViewController.h */,
 				B2C49D781F1A221C00F15CA8 /* AboutOursViewController.m */,
 				B2C49D791F1A221C00F15CA8 /* AboutOursViewController.xib */,
+				B20253671F1DC54700F2CF47 /* GoodsIntroViewController.h */,
+				B20253681F1DC54700F2CF47 /* GoodsIntroViewController.m */,
+				B20253691F1DC54700F2CF47 /* GoodsIntroViewController.xib */,
+				B202536C1F1DCC6800F2CF47 /* BackFreeInfoViewController.h */,
+				B202536D1F1DCC6800F2CF47 /* BackFreeInfoViewController.m */,
+				B202536E1F1DCC6800F2CF47 /* BackFreeInfoViewController.xib */,
+				B20253711F1DF16700F2CF47 /* FeedBackApi.h */,
+				B20253721F1DF16700F2CF47 /* FeedBackApi.m */,
 			);
 			path = AboutOurs;
 			sourceTree = "<group>";
@@ -1554,6 +1575,7 @@
 				B2C49D7B1F1A221C00F15CA8 /* AboutOursViewController.xib in Resources */,
 				B2663FFD1EFCD07E002A8F3D /* LoginViewController.xib in Resources */,
 				B25AD18C1F1B7F8400ADA23D /* PayChooseView.xib in Resources */,
+				B202536B1F1DC54700F2CF47 /* GoodsIntroViewController.xib in Resources */,
 				B21EB8151F0E2560005F571A /* IntroGoodAtTableViewCell.xib in Resources */,
 				B2C073DC1F137FBC0038381F /* AdressTableViewCell.xib in Resources */,
 				B2C49D751F1A20C400F15CA8 /* LeftSideView.xib in Resources */,
@@ -1587,6 +1609,7 @@
 				B2C073E11F13839E0038381F /* OrangeTableViewCell.xib in Resources */,
 				B23B5B261F192053006AB709 /* ZFPlayer.bundle in Resources */,
 				B2D3599C1F160AD500827894 /* VideListTableViewCell.xib in Resources */,
+				B20253701F1DCC6800F2CF47 /* BackFreeInfoViewController.xib in Resources */,
 				B23B5B1A1F192053006AB709 /* LICENSE in Resources */,
 				B28FC2631F03EF3F009899ED /* SchoolSectionView.xib in Resources */,
 				B2D359971F1605D400827894 /* VideoIntroSectionView.xib in Resources */,
@@ -1680,6 +1703,7 @@
 				B2C073DB1F137FBC0038381F /* AdressTableViewCell.m in Sources */,
 				B2BD0C661F13C371003918B0 /* GetReceiptAdressModel.m in Sources */,
 				B23B5B271F192053006AB709 /* ZFPlayerControlView.m in Sources */,
+				B202536F1F1DCC6800F2CF47 /* BackFreeInfoViewController.m in Sources */,
 				B2683F201F0F85830099C391 /* CommentZanApi.m in Sources */,
 				B25AD18A1F1B7F2700ADA23D /* PayChooseView.m in Sources */,
 				B2B73E071EFB6AB9008F3BC3 /* LoginViewController.m in Sources */,
@@ -1779,6 +1803,8 @@
 				B2D359DD1F16722000827894 /* HistoryModel.m in Sources */,
 				B2C49D741F1A20C400F15CA8 /* LeftSideView.m in Sources */,
 				B21EB8051F0E1E28005F571A /* CommentTableViewCell.m in Sources */,
+				B20253731F1DF16700F2CF47 /* FeedBackApi.m in Sources */,
+				B202536A1F1DC54700F2CF47 /* GoodsIntroViewController.m in Sources */,
 				B2D359CA1F165F5D00827894 /* MyVideoViewController.m in Sources */,
 				B28FC2691F03FA09009899ED /* SchoolDaRenModel.m in Sources */,
 				B23B5B221F192053006AB709 /* UIView+CustomControlView.m in Sources */,

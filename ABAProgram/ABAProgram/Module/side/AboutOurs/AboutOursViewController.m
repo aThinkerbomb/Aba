@@ -7,7 +7,8 @@
 //
 
 #import "AboutOursViewController.h"
-
+#import "GoodsIntroViewController.h"
+#import "BackFreeInfoViewController.h"
 @interface AboutOursViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *version;
@@ -51,6 +52,25 @@
     cell.textLabel.font = [UIFont systemFontOfSize:13.0];
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        
+        GoodsIntroViewController *goodsIntoVC = [[GoodsIntroViewController alloc] init];
+        [self pushToNextNavigationController:goodsIntoVC];
+        
+    }
+    
+    if (indexPath.row == 1) {
+        
+    }
+    if (indexPath.row == 2) {
+        BackFreeInfoViewController *backFeedVC = [[BackFreeInfoViewController alloc] init];
+        [self pushToNextNavigationController:backFeedVC];
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
