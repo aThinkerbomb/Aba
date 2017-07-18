@@ -13,4 +13,7 @@
 + (NSString *)getDateFromDateString:(NSString *)dateString;
 
 + (NSString *)currentPreciseTime;
+
+/// 得到当前时间戳 精确到秒
++ (NSString *)getCurrentTimestamp;
 @end

@@ -118,15 +118,20 @@
 #define ABA_UPDATE_RECEIPT_DES_URL @"/userPre/updateUserShipInfo"
 
 // 微信支付
-#define ABA_WX_PAY_URL @"/chooseWXPay/gopay"
+#define WEIXIN_URL @"chooseWXPay/gopay"
+#define ABA_WX_PAY_URL @"/chooseWXPay/payCallback"
 
 // 支付宝
-#define ABA_ZFB_PAY_URL @"/alipay/getAlipayInfo"
+#define ZFB_URL @"/alipay/getAlipayInfo"
+#define ABA_ZFB_PAY_URL @"alipay/alipayCallBack"
 
 // 图片
 #define ABA_IMAGE @"http://yccitaba002.oss-cn-hangzhou.aliyuncs.com/Act-Snapshot/"
 
 // HTML
 #define ABA_HTML @"http://www.abashow.com"
+
+// 微信商户Id
+#define ABA_WX_Partnerid @"1454243702"
 
 #endif /* ABAInterface_h */

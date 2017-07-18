@@ -28,6 +28,18 @@
 #import "ABAShareManager.h"
 #import "PayChooseView.h"
 
+#import "NSDate+Calender.h"
+
+
+
+#import "WeixinPayApi.h"
+#import "ZhiFuBaoPayApi.h"
+#import "WXApi.h"
+
+
+
+#define WeiXinAppKey @"wx909f8c29eb7ddae2"
+
 static NSString * commentCellIdentifier       = @"CommentTableViewCell";
 static NSString * introPeopleCellIdentifier   = @"IntroPeopleTableViewCell";
 static NSString * introResumentCellIdentifier = @"IntroResumeTableViewCell";
@@ -205,6 +217,30 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     }];
 }
 
+- (void)requestWeixinData {
+    
+    WeixinPayApi *wxApi = [[WeixinPayApi alloc] initWithCommodityName:@"Video" totalPrice:self.homePlayModel.price];
+    [wxApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        NSLog(@"request = %@", request.responseObject);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSLog(@"error = %@", request.error);
+    }];
+    
+
+//    ZhiFuBaoPayApi *api = [[ZhiFuBaoPayApi alloc] initWithMercid:self.homePlayModel.liveId cashnum:self.homePlayModel.price];
+//    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        
+//        NSLog(@"request = %@", request.responseObject);
+//        
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"error = %@", request.error);
+//    }];
+    
+}
+
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -297,7 +333,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 
 
 
-#pragma mark - CommentCellDelegate
+#pragma mark - CommentCellDelegate  评论点赞
 
 - (void)didSelectedZan:(NSInteger)index {
     
@@ -409,6 +445,9 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
         NSLog(@"index = %lu", index);
         if (1 == index) {
             // 微信
+            
+//            [self requestWeixinData];
+            [self TuneUpWeiXinRequestWithPrepayid:@"wx2017071820563316b91f1b330352249961"];
         } else if (2 == index) {
             // 支付宝
         } else {
@@ -422,7 +461,47 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     
 }
 
-
+#pragma mark - 微信支付
+/**
+ 调起微信支付
+ */
+- (void)TuneUpWeiXinRequestWithPrepayid:(NSString *)prepayid {
+    
+    if ([WXApi isWXAppSupportApi]) {
+        
+        [WXApi registerApp:WeiXinAppKey enableMTA:YES];
+        
+        // 生成随机数
+        NSString * nonceStr = [ABAConfig acrRandow];
+        
+        // 当前时间戳
+        NSString * timestamp = [NSDate getCurrentTimestamp];
+        
+        // 生成sign签名
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:nonceStr forKey:@"nonceStr"];
+        [dic setObject:timestamp forKey:@"timestamp"];
+        [dic setObject:ABA_WX_Partnerid forKey:@"partnerId"];
+        [dic setObject:prepayid forKey:@"prepayId"];
+        [dic setObject:@"Sign=WXPay" forKey:@"package"];
+        NSString * sign = [ABAConfig getSignFieldFromRequestDictionary:dic];
+        
+        // 调起微信支付
+        PayReq *request = [[PayReq alloc] init];
+        request.partnerId = ABA_WX_Partnerid;
+        request.prepayId= prepayid;
+        request.nonceStr= nonceStr;
+        request.package = @"Sign=WXPay";
+        request.timeStamp= (UInt32)timestamp;
+        request.sign= sign;
+        [WXApi sendReq:request];
+    } else {
+        [self showTipsMsg:@"未安装微信或请升级微信版本"];
+    }
+    
+    
+    
+}
 
 
 #pragma mark - 设置分享

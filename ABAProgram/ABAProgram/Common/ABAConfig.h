@@ -31,4 +31,29 @@
 
 // 判断是否包含中文字符
 + (BOOL)IsChinese:(NSString *)str;
+
+/**
+ 生成sign
+
+ @param dictionary 需要字段
+ @return 得到sign
+ */
++ (NSString *)getSignFieldFromRequestDictionary:(NSDictionary *)dictionary;
+
+
+/**
+ MD5加密 并转为大写
+
+ @param string 需要加密的字符串
+ @return 加密结果
+ */
++ (NSString *)creatMD5StringWithString:(NSString *)string;
+
+
+/**
+ 生成随机数
+
+ @return 返回随机数
+ */
++ (NSString *)acrRandow;
 @end

@@ -14,6 +14,8 @@
 #import "ABAMacro.h"
 #import "ABAInterface.h"
 
+#import <CommonCrypto/CommonDigest.h>
+
 #import "MJRefresh.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"

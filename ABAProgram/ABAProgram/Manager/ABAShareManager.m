@@ -84,9 +84,7 @@
 //    messageObject.shareObject = shareObject;
   
     //调用分享接口
-    
 
-    
     [[UMSocialManager defaultManager] shareToPlatform:sharePlatform messageObject:messageObject currentViewController:presentedController completion:^(UMSocialShareResponse * data, NSError *error) {
         if (error) {
             complete(NO,[self errorMessageWithCode:error.code]);

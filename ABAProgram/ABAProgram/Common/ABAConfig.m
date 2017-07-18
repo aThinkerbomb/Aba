@@ -10,6 +10,9 @@
 #import "BaseNavigationController.h"
 #import "LoginViewController.h"
 #import "ABATabBarController.h"
+
+#define WeiXinAppKey @"wx909f8c29eb7ddae2"
+
 @implementation ABAConfig
 
 +(instancetype)shareConfig
@@ -94,6 +97,51 @@
     }
     return NO;
     
+}
+
+
++ (NSString *)getSignFieldFromRequestDictionary:(NSDictionary *)dictionary
+{
+    if ([self isEmptyOfObj:dictionary]) {
+        return @"";
+    }
+    
+    NSArray * keys = [dictionary allKeys];
+    NSArray * array = [keys sortedArrayUsingSelector:@selector(compare:)];
+    NSMutableArray * strArray = [NSMutableArray array];
+    for (int i = 0; i < [array count]; i++) {
+        NSString * str = [[array[i] stringByAppendingString:@"="] stringByAppendingString:[NSString stringWithFormat:@"%@", [dictionary valueForKey:array[i]]]];
+        [strArray addObject:str];
+    }
+    [strArray addObject:[NSString stringWithFormat:@"key=%@", WeiXinAppKey]];
+    NSString * newString = [strArray componentsJoinedByString:@"&"];
+    NSLog(@"newString = %@", newString);
+    NSString * sign = [self creatMD5StringWithString:newString];
+    NSLog(@"sign = %@", sign);
+    return sign;
+}
+
++ (NSString *)creatMD5StringWithString:(NSString *)string
+{
+    const char *original_str = [string UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(original_str, (CC_LONG)strlen(original_str), result);
+    NSMutableString *hash = [NSMutableString string];
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [hash appendFormat:@"%02X", result[i]];
+    return [hash uppercaseString];
+}
+
++ (NSString *)acrRandow
+{
+    NSString * randow = [[NSString alloc]init];
+    int xx = 0;
+    for (int x =0 ; x <16; x++) {
+        xx = arc4random() %10;
+        NSString * aa = [NSString stringWithFormat:@"%d",xx];
+        randow = [NSString stringWithFormat:@"%@%@",randow,aa];
+    }
+    return randow;
 }
 
 @end

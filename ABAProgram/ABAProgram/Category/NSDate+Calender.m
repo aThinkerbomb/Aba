@@ -36,4 +36,12 @@
     NSString *currentTime = [dateFormatter stringFromDate:date];
     return currentTime;
 }
+
+
++ (NSString *)getCurrentTimestamp
+{
+    NSDate *date = [NSDate date];
+    NSTimeInterval timeInterval = [date timeIntervalSince1970];
+    return [NSString stringWithFormat:@"%d", (int)timeInterval];
+}
 @end

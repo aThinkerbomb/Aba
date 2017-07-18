@@ -67,6 +67,14 @@
 		B231274E1F052DB90091CC78 /* NSString+CalculateFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = B23127481F052DB90091CC78 /* NSString+CalculateFontSize.m */; };
 		B23127501F052DB90091CC78 /* LySegmentMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B231274C1F052DB90091CC78 /* LySegmentMenu.m */; };
 		B23127531F054D120091CC78 /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23127521F054D120091CC78 /* SchoolViewController.m */; };
+		B2343F2C1F1E0760002C281C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2343F271F1E0760002C281C /* libWeChatSDK.a */; };
+		B2343F2D1F1E0760002C281C /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = B2343F281F1E0760002C281C /* README.txt */; };
+		B2343F321F1E1C13002C281C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2343F311F1E1C13002C281C /* CoreTelephony.framework */; };
+		B2343F341F1E1CEF002C281C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B2343F331F1E1CEF002C281C /* libsqlite3.0.tbd */; };
+		B2343F371F1E1D19002C281C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B2343F351F1E1CFB002C281C /* libc++.tbd */; };
+		B2343F391F1E1D28002C281C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B2343F381F1E1D28002C281C /* libz.tbd */; };
+		B2343F3C1F1E22AC002C281C /* WeixinPayApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B2343F3B1F1E22AC002C281C /* WeixinPayApi.m */; };
+		B2343F421F1E2725002C281C /* ZhiFuBaoPayApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B2343F411F1E2725002C281C /* ZhiFuBaoPayApi.m */; };
 		B23B5A451F18C2FB006AB709 /* CheckBindPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = B23B5A441F18C2FB006AB709 /* CheckBindPhone.m */; };
 		B23B5A4B1F18C682006AB709 /* OtherLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B23B5A4A1F18C682006AB709 /* OtherLoginApi.m */; };
 		B23B5A4E1F18D725006AB709 /* OtherLoginBingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B23B5A4D1F18D725006AB709 /* OtherLoginBingView.m */; };
@@ -92,8 +100,6 @@
 		B250A7051F10CC880069CB10 /* VideoSendCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B250A7041F10CC880069CB10 /* VideoSendCommentView.m */; };
 		B250A7071F10CC920069CB10 /* VideoSendCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B250A7061F10CC920069CB10 /* VideoSendCommentView.xib */; };
 		B250A70A1F1120130069CB10 /* VideoSendCommendApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B250A7091F1120130069CB10 /* VideoSendCommendApi.m */; };
-		B25AD1841F1B64E000ADA23D /* WXPayApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B25AD1831F1B64E000ADA23D /* WXPayApi.m */; };
-		B25AD1871F1B6B5400ADA23D /* ZFBPayApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B25AD1861F1B6B5400ADA23D /* ZFBPayApi.m */; };
 		B25AD18A1F1B7F2700ADA23D /* PayChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B25AD1891F1B7F2700ADA23D /* PayChooseView.m */; };
 		B25AD18C1F1B7F8400ADA23D /* PayChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25AD18B1F1B7F8400ADA23D /* PayChooseView.xib */; };
 		B25B2EDE1EFA6E6F00520854 /* YTKNetworkAgent+DT_Agent.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B2EDD1EFA6E6F00520854 /* YTKNetworkAgent+DT_Agent.m */; };
@@ -302,6 +308,19 @@
 		B231274C1F052DB90091CC78 /* LySegmentMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LySegmentMenu.m; sourceTree = "<group>"; };
 		B23127511F054D120091CC78 /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
 		B23127521F054D120091CC78 /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
+		B2343F271F1E0760002C281C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		B2343F281F1E0760002C281C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		B2343F291F1E0760002C281C /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		B2343F2A1F1E0760002C281C /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		B2343F2B1F1E0760002C281C /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		B2343F311F1E1C13002C281C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B2343F331F1E1CEF002C281C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		B2343F351F1E1CFB002C281C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		B2343F381F1E1D28002C281C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B2343F3A1F1E22AC002C281C /* WeixinPayApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeixinPayApi.h; sourceTree = "<group>"; };
+		B2343F3B1F1E22AC002C281C /* WeixinPayApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeixinPayApi.m; sourceTree = "<group>"; };
+		B2343F401F1E2725002C281C /* ZhiFuBaoPayApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiFuBaoPayApi.h; sourceTree = "<group>"; };
+		B2343F411F1E2725002C281C /* ZhiFuBaoPayApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiFuBaoPayApi.m; sourceTree = "<group>"; };
 		B23B5A431F18C2FB006AB709 /* CheckBindPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckBindPhone.h; sourceTree = "<group>"; };
 		B23B5A441F18C2FB006AB709 /* CheckBindPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckBindPhone.m; sourceTree = "<group>"; };
 		B23B5A491F18C682006AB709 /* OtherLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherLoginApi.h; sourceTree = "<group>"; };
@@ -347,10 +366,6 @@
 		B250A7061F10CC920069CB10 /* VideoSendCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoSendCommentView.xib; sourceTree = "<group>"; };
 		B250A7081F1120130069CB10 /* VideoSendCommendApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoSendCommendApi.h; sourceTree = "<group>"; };
 		B250A7091F1120130069CB10 /* VideoSendCommendApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoSendCommendApi.m; sourceTree = "<group>"; };
-		B25AD1821F1B64E000ADA23D /* WXPayApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXPayApi.h; sourceTree = "<group>"; };
-		B25AD1831F1B64E000ADA23D /* WXPayApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXPayApi.m; sourceTree = "<group>"; };
-		B25AD1851F1B6B5400ADA23D /* ZFBPayApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFBPayApi.h; sourceTree = "<group>"; };
-		B25AD1861F1B6B5400ADA23D /* ZFBPayApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFBPayApi.m; sourceTree = "<group>"; };
 		B25AD1881F1B7F2700ADA23D /* PayChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayChooseView.h; sourceTree = "<group>"; };
 		B25AD1891F1B7F2700ADA23D /* PayChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayChooseView.m; sourceTree = "<group>"; };
 		B25AD18B1F1B7F8400ADA23D /* PayChooseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayChooseView.xib; sourceTree = "<group>"; };
@@ -546,14 +561,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B21408391F176FF700CA4DCC /* UMSocialCore.framework in Frameworks */,
-				B21408361F176FF700CA4DCC /* libSocialQQ.a in Frameworks */,
-				B21408211F176CEC00CA4DCC /* CoreGraphics.framework in Frameworks */,
-				B214083E1F176FF700CA4DCC /* UShareUI.framework in Frameworks */,
-				B214081F1F176CDA00CA4DCC /* libsqlite3.tbd in Frameworks */,
-				B21408381F176FF700CA4DCC /* libSocialWeChat.a in Frameworks */,
-				B214083A1F176FF700CA4DCC /* UMSocialNetwork.framework in Frameworks */,
 				B2B3CCE81F069A220094AD5B /* WebKit.framework in Frameworks */,
+				B2343F391F1E1D28002C281C /* libz.tbd in Frameworks */,
+				B2343F371F1E1D19002C281C /* libc++.tbd in Frameworks */,
+				B2343F341F1E1CEF002C281C /* libsqlite3.0.tbd in Frameworks */,
+				B2343F321F1E1C13002C281C /* CoreTelephony.framework in Frameworks */,
+				B21408391F176FF700CA4DCC /* UMSocialCore.framework in Frameworks */,
+				B21408381F176FF700CA4DCC /* libSocialWeChat.a in Frameworks */,
+				B21408361F176FF700CA4DCC /* libSocialQQ.a in Frameworks */,
+				B2343F2C1F1E0760002C281C /* libWeChatSDK.a in Frameworks */,
+				B21408211F176CEC00CA4DCC /* CoreGraphics.framework in Frameworks */,
+				B214081F1F176CDA00CA4DCC /* libsqlite3.tbd in Frameworks */,
+				B214083E1F176FF700CA4DCC /* UShareUI.framework in Frameworks */,
+				B214083A1F176FF700CA4DCC /* UMSocialNetwork.framework in Frameworks */,
 				63F84BBF7928C827C230A19E /* libPods-ABAProgram.a in Frameworks */,
 				B21408371F176FF700CA4DCC /* libSocialSina.a in Frameworks */,
 				B214083C1F176FF700CA4DCC /* libUMSocialLog.a in Frameworks */,
@@ -566,6 +586,10 @@
 		261751746A16BBCE7C83D030 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2343F381F1E1D28002C281C /* libz.tbd */,
+				B2343F351F1E1CFB002C281C /* libc++.tbd */,
+				B2343F331F1E1CEF002C281C /* libsqlite3.0.tbd */,
+				B2343F311F1E1C13002C281C /* CoreTelephony.framework */,
 				B21408201F176CEC00CA4DCC /* CoreGraphics.framework */,
 				B214081E1F176CDA00CA4DCC /* libsqlite3.tbd */,
 				B2B3CCE71F069A220094AD5B /* WebKit.framework */,
@@ -750,6 +774,18 @@
 			path = HeaderToolBar;
 			sourceTree = "<group>";
 		};
+		B2343F261F1E0760002C281C /* OpenSDK1.7.8 */ = {
+			isa = PBXGroup;
+			children = (
+				B2343F271F1E0760002C281C /* libWeChatSDK.a */,
+				B2343F281F1E0760002C281C /* README.txt */,
+				B2343F291F1E0760002C281C /* WechatAuthSDK.h */,
+				B2343F2A1F1E0760002C281C /* WXApi.h */,
+				B2343F2B1F1E0760002C281C /* WXApiObject.h */,
+			);
+			path = OpenSDK1.7.8;
+			sourceTree = "<group>";
+		};
 		B23B5AF81F192053006AB709 /* ZFPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -807,13 +843,13 @@
 		B25AD1811F1B649200ADA23D /* Pay */ = {
 			isa = PBXGroup;
 			children = (
-				B25AD1821F1B64E000ADA23D /* WXPayApi.h */,
-				B25AD1831F1B64E000ADA23D /* WXPayApi.m */,
-				B25AD1851F1B6B5400ADA23D /* ZFBPayApi.h */,
-				B25AD1861F1B6B5400ADA23D /* ZFBPayApi.m */,
 				B25AD1881F1B7F2700ADA23D /* PayChooseView.h */,
 				B25AD1891F1B7F2700ADA23D /* PayChooseView.m */,
 				B25AD18B1F1B7F8400ADA23D /* PayChooseView.xib */,
+				B2343F3A1F1E22AC002C281C /* WeixinPayApi.h */,
+				B2343F3B1F1E22AC002C281C /* WeixinPayApi.m */,
+				B2343F401F1E2725002C281C /* ZhiFuBaoPayApi.h */,
+				B2343F411F1E2725002C281C /* ZhiFuBaoPayApi.m */,
 			);
 			path = Pay;
 			sourceTree = "<group>";
@@ -945,8 +981,8 @@
 			isa = PBXGroup;
 			children = (
 				B2243F2A1F0114CD00FE795D /* HomeApi */,
-				B2A6B4001EF93A1800C74D79 /* Model */,
 				B2A6B3FF1EF93A1800C74D79 /* Controller */,
+				B2A6B4001EF93A1800C74D79 /* Model */,
 				B2A6B4011EF93A1800C74D79 /* Views */,
 			);
 			path = Home;
@@ -955,10 +991,10 @@
 		B2A6B3F91EF9386000C74D79 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B2B492CE1EFE52B200CF1221 /* LoginApi */,
 				B2A6B3FC1EF93A0500C74D79 /* Controller */,
 				B2A6B3FD1EF93A0500C74D79 /* Model */,
 				B2A6B3FE1EF93A0500C74D79 /* Views */,
-				B2B492CE1EFE52B200CF1221 /* LoginApi */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1475,6 +1511,7 @@
 		B2F816461EFAB720002454A9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				B2343F261F1E0760002C281C /* OpenSDK1.7.8 */,
 				B23B5AF81F192053006AB709 /* ZFPlayer */,
 				B21408221F176FF700CA4DCC /* UMSocial */,
 				B21D65FB1F03A3C200C11BE1 /* CycleView */,
@@ -1615,6 +1652,7 @@
 				B2C073F01F138A440038381F /* payTableViewCell.xib in Resources */,
 				B23B5A501F18D732006AB709 /* OtherLoginBingView.xib in Resources */,
 				B250A7071F10CC920069CB10 /* VideoSendCommentView.xib in Resources */,
+				B2343F2D1F1E0760002C281C /* README.txt in Resources */,
 				B2C073E11F13839E0038381F /* OrangeTableViewCell.xib in Resources */,
 				B23B5B261F192053006AB709 /* ZFPlayer.bundle in Resources */,
 				B2D3599C1F160AD500827894 /* VideListTableViewCell.xib in Resources */,
@@ -1704,7 +1742,6 @@
 				B2B4E6331F0B5FA400A2CE2F /* GoodsDetailApi.m in Sources */,
 				B2F67DB51F08D87900302303 /* BabyIntroductionApi.m in Sources */,
 				B23B5B201F192053006AB709 /* UINavigationController+ZFPlayerRotation.m in Sources */,
-				B25AD1871F1B6B5400ADA23D /* ZFBPayApi.m in Sources */,
 				B21EB8211F0E6C7A005F571A /* videoCommentModel.m in Sources */,
 				B22C97711F000CF500A3EEEA /* BaseApi.m in Sources */,
 				B21EB7FC1F0DEBAA005F571A /* HomeVideoViewController.m in Sources */,
@@ -1725,6 +1762,7 @@
 				B26561451F0CD3630078B2A7 /* ServiceDesTableViewCell.m in Sources */,
 				B2243F261F010DBB00FE795D /* HomePlayModel.m in Sources */,
 				B28FC2731F04013B009899ED /* SchoolDaRenApi.m in Sources */,
+				B2343F3C1F1E22AC002C281C /* WeixinPayApi.m in Sources */,
 				B23B5B1E1F192053006AB709 /* UIAlertController+ZFPlayerRotation.m in Sources */,
 				B2D359DA1F166EC200827894 /* HistoryWatchApi.m in Sources */,
 				B23B5B291F192053006AB709 /* ZFPlayerView.m in Sources */,
@@ -1779,6 +1817,7 @@
 				B2C073EA1F1388A00038381F /* PriceInfoTableViewCell.m in Sources */,
 				B2D3598E1F15DA5800827894 /* SubmitReceietAdressApi.m in Sources */,
 				B2A0035C1F0BF01700EF87FD /* GoodsDetailModel.m in Sources */,
+				B2343F421F1E2725002C281C /* ZhiFuBaoPayApi.m in Sources */,
 				B25B2EDE1EFA6E6F00520854 /* YTKNetworkAgent+DT_Agent.m in Sources */,
 				B2F8164B1EFAB761002454A9 /* HomeViewController.m in Sources */,
 				B2BD0C631F13C275003918B0 /* GetReceiptApi.m in Sources */,
@@ -1804,7 +1843,6 @@
 				B22C97731F000CF500A3EEEA /* BaseNavigationController.m in Sources */,
 				B23B5B211F192053006AB709 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				B23B5B251F192053006AB709 /* ZFBrightnessView.m in Sources */,
-				B25AD1841F1B64E000ADA23D /* WXPayApi.m in Sources */,
 				B224AC9E1F07BA9A00BAC3E9 /* BabyGoodDetailSectionView.m in Sources */,
 				B21EB8181F0E3293005F571A /* VideoBrowNumberApi.m in Sources */,
 				B231274D1F052DB90091CC78 /* HeaderToolScrollBar.m in Sources */,
@@ -1959,6 +1997,7 @@
 					"$(PROJECT_DIR)/ABAProgram/Tools/UMSocial/SocialLibraries/Sina",
 					"$(PROJECT_DIR)/ABAProgram/Tools/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/ABAProgram/Tools/UMSocial/UMSocialSDKPlugin",
+					"$(PROJECT_DIR)/ABAProgram/Tools/OpenSDK1.7.8",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1996,6 +2035,7 @@
 					"$(PROJECT_DIR)/ABAProgram/Tools/UMSocial/SocialLibraries/Sina",
 					"$(PROJECT_DIR)/ABAProgram/Tools/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/ABAProgram/Tools/UMSocial/UMSocialSDKPlugin",
+					"$(PROJECT_DIR)/ABAProgram/Tools/OpenSDK1.7.8",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

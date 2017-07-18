@@ -14,10 +14,9 @@
 #import "VersionManager.h"
 #import "SchoolViewController.h"
 #import "ABAShareManager.h"
+#import "WXApi.h"
 
-
-
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -65,11 +64,23 @@
 
 // 其他应用回掉
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    
+    NSLog(@"回调url=%@", url);
+    NSString *urlStr = [NSString stringWithFormat:@"%@", url];
+    if ([urlStr containsString:@"wx909f8c29eb7ddae2://pay"]) {
+        return [WXApi handleOpenURL:url delegate:self];
+    }
     return [ABAShareManager HandleCallBackOpenurl:url];
     
 }
 
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    NSString *urlStr = [NSString stringWithFormat:@"%@", url];
+    if ([urlStr containsString:@"wx909f8c29eb7ddae2://pay"]) {
+        return [WXApi handleOpenURL:url delegate:self];
+    }
+    return [ABAShareManager HandleCallBackOpenurl:url];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -97,5 +108,22 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
+
+- (void)onResp:(BaseResp*)resp{
+    if ([resp isKindOfClass:[PayResp class]]){
+        PayResp*response=(PayResp*)resp;
+        switch(response.errCode){
+            caseWXSuccess:
+                //服务器端查询支付通知或查询API返回的结果再提示成功
+                NSLog(@"支付成功");
+                break;
+                
+            default:
+                NSLog(@"支付失败，retcode=%d",resp.errCode);
+                break;
+        }
+    }
+}
 
 @end
