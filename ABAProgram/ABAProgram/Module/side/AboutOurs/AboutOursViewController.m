@@ -8,6 +8,7 @@
 
 #import "AboutOursViewController.h"
 #import "GoodsIntroViewController.h"
+#import "XieyiViewController.h"
 #import "BackFreeInfoViewController.h"
 @interface AboutOursViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -62,7 +63,8 @@
     }
     
     if (indexPath.row == 1) {
-        
+        XieyiViewController *xieyiVC = [[XieyiViewController alloc] init];
+        [self pushToNextNavigationController:xieyiVC];
     }
     if (indexPath.row == 2) {
         BackFreeInfoViewController *backFeedVC = [[BackFreeInfoViewController alloc] init];

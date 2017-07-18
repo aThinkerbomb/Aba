@@ -13,6 +13,8 @@
 		B202536F1F1DCC6800F2CF47 /* BackFreeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B202536D1F1DCC6800F2CF47 /* BackFreeInfoViewController.m */; };
 		B20253701F1DCC6800F2CF47 /* BackFreeInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B202536E1F1DCC6800F2CF47 /* BackFreeInfoViewController.xib */; };
 		B20253731F1DF16700F2CF47 /* FeedBackApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B20253721F1DF16700F2CF47 /* FeedBackApi.m */; };
+		B20253751F1DF5E100F2CF47 /* useragreement.html in Resources */ = {isa = PBXBuildFile; fileRef = B20253741F1DF5E100F2CF47 /* useragreement.html */; };
+		B20253781F1DF6F300F2CF47 /* XieyiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20253771F1DF6F300F2CF47 /* XieyiViewController.m */; };
 		B214081F1F176CDA00CA4DCC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B214081E1F176CDA00CA4DCC /* libsqlite3.tbd */; };
 		B21408211F176CEC00CA4DCC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21408201F176CEC00CA4DCC /* CoreGraphics.framework */; };
 		B21408361F176FF700CA4DCC /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B21408251F176FF700CA4DCC /* libSocialQQ.a */; };
@@ -209,6 +211,9 @@
 		B202536E1F1DCC6800F2CF47 /* BackFreeInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackFreeInfoViewController.xib; sourceTree = "<group>"; };
 		B20253711F1DF16700F2CF47 /* FeedBackApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackApi.h; sourceTree = "<group>"; };
 		B20253721F1DF16700F2CF47 /* FeedBackApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackApi.m; sourceTree = "<group>"; };
+		B20253741F1DF5E100F2CF47 /* useragreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = useragreement.html; sourceTree = "<group>"; };
+		B20253761F1DF6F300F2CF47 /* XieyiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XieyiViewController.h; sourceTree = "<group>"; };
+		B20253771F1DF6F300F2CF47 /* XieyiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XieyiViewController.m; sourceTree = "<group>"; };
 		B214081E1F176CDA00CA4DCC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		B21408201F176CEC00CA4DCC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B21408251F176FF700CA4DCC /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
@@ -1352,6 +1357,8 @@
 				B20253671F1DC54700F2CF47 /* GoodsIntroViewController.h */,
 				B20253681F1DC54700F2CF47 /* GoodsIntroViewController.m */,
 				B20253691F1DC54700F2CF47 /* GoodsIntroViewController.xib */,
+				B20253761F1DF6F300F2CF47 /* XieyiViewController.h */,
+				B20253771F1DF6F300F2CF47 /* XieyiViewController.m */,
 				B202536C1F1DCC6800F2CF47 /* BackFreeInfoViewController.h */,
 				B202536D1F1DCC6800F2CF47 /* BackFreeInfoViewController.m */,
 				B202536E1F1DCC6800F2CF47 /* BackFreeInfoViewController.xib */,
@@ -1479,6 +1486,7 @@
 		B2F816471EFAB720002454A9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B20253741F1DF5E100F2CF47 /* useragreement.html */,
 				B22C97671F000CF500A3EEEA /* Base */,
 				B2B73E091EFB6E46008F3BC3 /* TabBarController */,
 				B266400D1EFD148C002A8F3D /* ABAConfig.h */,
@@ -1599,6 +1607,7 @@
 				B2B347DB1F02115A005FEAD5 /* HomeListTableViewCell.xib in Resources */,
 				B2C073E61F1385500038381F /* CommodityTableViewCell.xib in Resources */,
 				B2D359A11F160D5D00827894 /* VideoHeaderView.xib in Resources */,
+				B20253751F1DF5E100F2CF47 /* useragreement.html in Resources */,
 				B21D65FA1F03855100C11BE1 /* BenefitViewController.xib in Resources */,
 				B2F67DAF1F08C65000302303 /* BabySchoolInfoSectionView.xib in Resources */,
 				B214083D1F176FF700CA4DCC /* UMSocialSDKResources.bundle in Resources */,
@@ -1677,6 +1686,7 @@
 				B2A0035F1F0BF2DB00EF87FD /* main.m in Sources */,
 				B2243F1D1F00CB4800FE795D /* VersionAPI.m in Sources */,
 				B266400F1EFD148C002A8F3D /* ABAConfig.m in Sources */,
+				B20253781F1DF6F300F2CF47 /* XieyiViewController.m in Sources */,
 				B21EB80F1F0E23BA005F571A /* IntroResumeTableViewCell.m in Sources */,
 				B2CB745F1F14FAE700949AA1 /* ConfirmPayView.m in Sources */,
 				B2D359A71F16146B00827894 /* ExpertVideoModel.m in Sources */,

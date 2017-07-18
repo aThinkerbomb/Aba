@@ -1,4 +1,4 @@
-//
+    //
 //  LoginViewController.m
 //  ABAProgram
 //
@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "XieyiViewController.h"
 #import "LoginDataSource.h"
 #import "UserLoginModel.h"
 #import "CheckBindPhone.h"
@@ -131,7 +132,8 @@
 // 协议跳转
 - (IBAction)ABAProtocol:(UIButton *)sender {
     
-    
+    XieyiViewController *xieyiVC = [[XieyiViewController alloc] init];
+    [self pushToNextNavigationController:xieyiVC];
     
 }
 
