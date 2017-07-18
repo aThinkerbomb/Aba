@@ -137,6 +137,7 @@
     
 }
 
+
 /**
  其他三方框架登录方法
 
@@ -146,14 +147,61 @@
     
     NSInteger tag = sender.tag - 200;
     if (tag == 1) {
-        [self WeiXinLogin];
+        [self OtherAuthorization:UMSocialPlatformType_WechatSession];
     } else if (tag == 2) {
-        [self QQLogin];
+        [self OtherAuthorization:UMSocialPlatformType_QQ];
     } else {
-        [self SinaLogin];
+        [self OtherAuthorization:UMSocialPlatformType_Sina];
     }
     
 }
+
+
+#pragma mark - 三方授权
+
+- (void)OtherAuthorization:(UMSocialPlatformType)platformType {
+    
+    [[UMSocialManager defaultManager] cancelAuthWithPlatform:platformType completion:^(id result, NSError *error) {//先取消以前的授权 否则 如果授权过 他会直接获取信息 而不跳微信页授权
+        
+        
+        //获取用户信息
+        [[UMSocialManager defaultManager] getUserInfoWithPlatform:platformType currentViewController:self completion:^(UMSocialUserInfoResponse * result, NSError *error) {
+            if (error) {
+                
+                [self showTipsMsg:@"授权失败"];
+            } else {
+                
+                UMSocialUserInfoResponse *resp = result;
+                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                [dic setObject:@"1" forKey:@"usertype"];
+                
+                if (platformType == UMSocialPlatformType_WechatSession) {
+                    [dic setObject:@"2" forKey:@"logintype"];
+                } else if (platformType == UMSocialPlatformType_QQ) {
+                    [dic setObject:@"1" forKey:@"logintype"];
+                } else if (platformType == UMSocialPlatformType_Sina) {
+                    [dic setObject:@"4" forKey:@"logintype"];
+                }
+                
+                [dic setObject:resp.openid forKey:@"useraccount"];
+                [dic setObject:resp.name forKey:@"username"];
+                [dic setObject:resp.iconurl forKey:@"userimg"];
+                [dic setObject:resp.unionGender?@"0":@"1" forKey:@"usergender"];
+                
+                // 设置一个全局的信息，方便绑定手机时候用
+                self.infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+                
+                // 检查是否绑定手机号
+                [self checkBingPhoneInfoDic:dic];
+                
+            }
+            
+        }];
+        
+    }];
+    
+}
+
 
 #pragma mark - 检查是否绑定手机
 - (void)checkBingPhoneInfoDic:(NSDictionary *)dic {
@@ -226,102 +274,6 @@
         [self showTipsMsg:@"网络请求错误"];
     }];
     
-}
-
-
-#pragma mark - 三方授权
-
-- (void)WeiXinLogin {
-    
-    [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_WechatSession completion:^(id result, NSError *error) {//先取消以前的授权 否则 如果授权过 他会直接获取信息 而不跳微信页授权
-        
-        
-        //获取用户信息
-        [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(UMSocialUserInfoResponse * result, NSError *error) {
-            if (error) {
-                
-                [self showTipsMsg:@"授权失败"];
-            } else {
-                
-                UMSocialUserInfoResponse *resp = result;
-                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-                [dic setObject:@"1" forKey:@"usertype"];
-                [dic setObject:@"2" forKey:@"logintype"];
-                [dic setObject:resp.openid forKey:@"useraccount"];
-                [dic setObject:resp.name forKey:@"username"];
-                [dic setObject:resp.iconurl forKey:@"userimg"];
-                [dic setObject:resp.unionGender?@"0":@"1" forKey:@"usergender"];
-                
-                // 设置一个全局的信息，方便绑定手机时候用
-                self.infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-                
-                // 检查是否绑定手机号
-                [self checkBingPhoneInfoDic:dic];
-
-            }
-            
-        }];
-        
-    }];
-}
-
-- (void)QQLogin {
-    [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_QQ completion:^(id result, NSError *error) {//先取消以前的授权 否则 如果授权过 他会直接获取信息 而不跳微信页授权
-        [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:self completion:^(id result, NSError *error) {
-            if (error) {
-                [self showTipsMsg:@"授权失败"];
-                
-            } else {
-               
-                UMSocialUserInfoResponse *resp = result;
-                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-                [dic setObject:@"1" forKey:@"usertype"];
-                [dic setObject:@"1" forKey:@"logintype"];
-                [dic setObject:resp.openid forKey:@"useraccount"];
-                [dic setObject:resp.name forKey:@"username"];
-                [dic setObject:resp.iconurl forKey:@"userimg"];
-                [dic setObject:resp.unionGender?@"0":@"1" forKey:@"usergender"];
-                
-                // 设置一个全局的信息，方便绑定手机时候用
-                self.infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-                
-                // 检查是否绑定手机号
-                [self checkBingPhoneInfoDic:dic];
-            }
-        }];
-        
-        
-    }];
-    
-}
-
-
-- (void)SinaLogin {
-    [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_Sina completion:^(id result, NSError *error) {//先取消以前的授权 否则 如果授权过 他会直接获取信息 而不跳微信页授权
-        [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Sina currentViewController:self completion:^(id result, NSError *error) {
-            if (error) {
-                
-            } else {
-                UMSocialUserInfoResponse *resp = result;
-                
-                // 授权信息
-                NSLog(@"Sina uid: %@", resp.uid);
-                NSLog(@"Sina accessToken: %@", resp.accessToken);
-                NSLog(@"Sina refreshToken: %@", resp.refreshToken);
-                NSLog(@"Sina expiration: %@", resp.expiration);
-                
-                // 用户信息
-                NSLog(@"Sina name: %@", resp.name);
-                NSLog(@"Sina iconurl: %@", resp.iconurl);
-                NSLog(@"Sina gender: %@", resp.unionGender);
-                
-                // 第三方平台SDK源数据
-                NSLog(@"Sina originalResponse: %@", resp.originalResponse);
-            }
-        }];
-        
-        
-    }];
 }
 
 
