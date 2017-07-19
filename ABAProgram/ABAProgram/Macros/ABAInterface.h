@@ -119,11 +119,10 @@
 
 // 微信支付
 #define WEIXIN_URL @"chooseWXPay/gopay"
-#define ABA_WX_PAY_URL @"/chooseWXPay/payCallback"
+#define ABA_WX_PAY_URL @"/chooseWXPay/gopay"
 
 // 支付宝
-#define ZFB_URL @"/alipay/getAlipayInfo"
-#define ABA_ZFB_PAY_URL @"alipay/alipayCallBack"
+#define ABA_ZFB_PAY_URL @"/alipay/getAlipayInfo"
 
 // 图片
 #define ABA_IMAGE @"http://yccitaba002.oss-cn-hangzhou.aliyuncs.com/Act-Snapshot/"

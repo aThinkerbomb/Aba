@@ -30,12 +30,14 @@
 
 #import "NSDate+Calender.h"
 
+#import "XMLReader.h"
 
-
-#import "WeixinPayApi.h"
-#import "ZhiFuBaoPayApi.h"
 #import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "WXPayApi.h"
+#import "WXPayModel.h"
 
+#import "ZFBPayApi.h"
 
 
 #define WeiXinAppKey @"wx909f8c29eb7ddae2"
@@ -217,28 +219,66 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     }];
 }
 
+// 微信请求数据
 - (void)requestWeixinData {
+
+    [self showLoadingView:YES];
     
-    WeixinPayApi *wxApi = [[WeixinPayApi alloc] initWithCommodityName:@"Video" totalPrice:self.homePlayModel.price];
+    NSInteger p = [self.homePlayModel.price doubleValue]*100;
+    NSString *price = [NSString stringWithFormat:@"%lu", p];
+    
+    WXPayApi *wxApi = [[WXPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:price goodsname:@"Video"];
     [wxApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
-        NSLog(@"request = %@", request.responseObject);
+        [self showLoadingView:NO];
+        
+        NSString *xmlStr = request.responseObject[@"body"];
+        NSLog(@"xmlStr = %s", [xmlStr UTF8String]);
+        NSError *error;
+        NSDictionary *dic = [XMLReader dictionaryForXMLString:xmlStr error:&error];
+        NSLog(@"dicdic = %@", dic);
+        
+        [self TuneUpWeiXinRequestWithWXPAyModel:[self setWXPayModel:dic[@"xml"]]];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        
         NSLog(@"error = %@", request.error);
     }];
-    
 
-//    ZhiFuBaoPayApi *api = [[ZhiFuBaoPayApi alloc] initWithMercid:self.homePlayModel.liveId cashnum:self.homePlayModel.price];
-//    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-//        
-//        NSLog(@"request = %@", request.responseObject);
-//        
-//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//        NSLog(@"error = %@", request.error);
-//    }];
     
 }
+
+// 支付宝请求数据
+- (void)requestZFBData {
+    
+    
+    [self showLoadingView:YES];
+    
+    NSInteger p = [self.homePlayModel.price doubleValue]*100;
+    NSString *price = [NSString stringWithFormat:@"%lu", p];
+    
+    ZFBPayApi *api = [[ZFBPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:price goodsname:@"Video"];
+    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        
+        NSString *xmlStr = request.responseObject[@"body"];
+        NSLog(@"xmlStr = %s", [xmlStr UTF8String]);
+//        NSError *error;
+//        NSDictionary *dic = [XMLReader dictionaryForXMLString:xmlStr error:&error];
+//        NSLog(@"dicdic = %@", dic);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        NSLog(@"error = %@", request.error);
+    }];
+
+    
+}
+
 
 
 #pragma mark - UITableViewDataSource
@@ -446,10 +486,14 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
         if (1 == index) {
             // 微信
             
-//            [self requestWeixinData];
-            [self TuneUpWeiXinRequestWithPrepayid:@"wx2017071820563316b91f1b330352249961"];
+            [self requestWeixinData];
+            
         } else if (2 == index) {
             // 支付宝
+            
+            [self requestZFBData];
+            
+            
         } else {
             [WeakSelf showTipsMsg:@"请选择支付方式"];
         }
@@ -461,40 +505,69 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     
 }
 
+- (WXPayModel *)setWXPayModel:(NSDictionary *)dic {
+    WXPayModel *payModel = [[WXPayModel alloc] init];
+    payModel.prepayId = dic[@"prepay_id"][@"text"];
+    payModel.nonceStr = dic[@"nonce_str"][@"text"];
+    payModel.partnerId = dic[@"mch_id"][@"text"];
+    payModel.sign = dic[@"sign"][@"text"];
+    payModel.package = [NSString stringWithFormat:@"Sign=%@", payModel.partnerId];
+    NSString *time = [NSDate getCurrentTimestamp];//[NSDate getCurrentTimestamp];
+    NSLog(@"time --------%@", time);
+    payModel.timeStamp = time.intValue;
+    NSLog(@"time ++++++++%d", time.intValue);
+
+    return payModel;
+}
+
+
 #pragma mark - 微信支付
 /**
  调起微信支付
  */
-- (void)TuneUpWeiXinRequestWithPrepayid:(NSString *)prepayid {
+- (void)TuneUpWeiXinRequestWithWXPAyModel:(WXPayModel *)payModel {
     
     if ([WXApi isWXAppSupportApi]) {
         
         [WXApi registerApp:WeiXinAppKey enableMTA:YES];
         
-        // 生成随机数
-        NSString * nonceStr = [ABAConfig acrRandow];
-        
-        // 当前时间戳
-        NSString * timestamp = [NSDate getCurrentTimestamp];
-        
-        // 生成sign签名
-        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        [dic setObject:nonceStr forKey:@"nonceStr"];
-        [dic setObject:timestamp forKey:@"timestamp"];
-        [dic setObject:ABA_WX_Partnerid forKey:@"partnerId"];
-        [dic setObject:prepayid forKey:@"prepayId"];
-        [dic setObject:@"Sign=WXPay" forKey:@"package"];
-        NSString * sign = [ABAConfig getSignFieldFromRequestDictionary:dic];
+//        // 生成随机数
+//        NSString * nonceStr = [ABAConfig acrRandow];
+//
+//        // 当前时间戳
+//        NSString * timestamp = [NSDate getCurrentTimestamp];
+//        
+//        // 生成sign签名partnerId
+//        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+//        [dic setObject:WeiXinAppKey forKey:@"appid"];
+//        [dic setObject:nonceStr forKey:@"noncestr"];
+//        [dic setObject:@(timestamp.intValue) forKey:@"timestamp"];
+//        [dic setObject:ABA_WX_Partnerid forKey:@"partnerid"];
+//        [dic setObject:payModel.prepayId forKey:@"prepayid"];
+//        [dic setObject:@"Sign=WXPay" forKey:@"package"];
+//        NSString * sign = [ABAConfig getSignFieldFromRequestDictionary:dic];
+//        
+//        
+//        PayReq *request = [[PayReq alloc] init];
+//        request.partnerId = ABA_WX_Partnerid;
+//        request.prepayId= payModel.prepayId;
+//        request.nonceStr= nonceStr;
+//        request.package = @"Sign=WXPay";
+//        request.timeStamp= timestamp.intValue;
+//        request.sign= sign;
+//        [WXApi sendReq:request];
+//        
         
         // 调起微信支付
         PayReq *request = [[PayReq alloc] init];
-        request.partnerId = ABA_WX_Partnerid;
-        request.prepayId= prepayid;
-        request.nonceStr= nonceStr;
-        request.package = @"Sign=WXPay";
-        request.timeStamp= (UInt32)timestamp;
-        request.sign= sign;
+        request.partnerId = payModel.partnerId;
+        request.prepayId= payModel.prepayId;
+        request.nonceStr= payModel.nonceStr;
+        request.package = payModel.package;
+        request.timeStamp= payModel.timeStamp;
+        request.sign= payModel.sign;
         [WXApi sendReq:request];
+
     } else {
         [self showTipsMsg:@"未安装微信或请升级微信版本"];
     }
