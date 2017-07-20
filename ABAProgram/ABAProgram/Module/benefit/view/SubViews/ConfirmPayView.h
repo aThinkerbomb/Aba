@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ConfirmPayDelegate;
+
 @interface ConfirmPayView : UIView
+
+@property (nonatomic, assign)id<ConfirmPayDelegate>delegaet;
+
+@end
+
+@protocol ConfirmPayDelegate <NSObject>
+
+// 确认支付
+- (void)confirmPayAction;
 
 @end

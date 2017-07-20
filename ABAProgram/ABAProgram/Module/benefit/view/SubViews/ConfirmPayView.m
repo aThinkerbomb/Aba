@@ -20,6 +20,11 @@
 
 @implementation ConfirmPayView
 - (IBAction)ConfirmPayAction:(UIButton *)sender {
+    
+    if (self.delegaet && [self.delegaet respondsToSelector:@selector(confirmPayAction)]) {
+        [self.delegaet confirmPayAction];
+    }
+    
 }
 
 /*

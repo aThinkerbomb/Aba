@@ -26,7 +26,7 @@ static NSString * PriceInfoCellIdentifier = @"PriceInfoTableViewCell";
 static NSString * PayCellIdentifier       = @"payTableViewCell";
 
 
-@interface OrderViewController ()<UITableViewDelegate, UITableViewDataSource, PayCellDelegate, AdressDelegate>
+@interface OrderViewController ()<UITableViewDelegate, UITableViewDataSource, PayCellDelegate, AdressDelegate, ConfirmPayDelegate>
 
 @property (nonatomic, strong) UITableView *orderTableView;
 @property (nonatomic, strong) GetReceiptAdressModel *adressModel;
@@ -75,6 +75,7 @@ static NSString * PayCellIdentifier       = @"payTableViewCell";
 - (ConfirmPayView *)confirmPayView {
     if (!_confirmPayView) {
         _confirmPayView = [[[NSBundle mainBundle] loadNibNamed:@"ConfirmPayView" owner:self options:nil]firstObject];
+        _confirmPayView.delegaet = self;
         [_confirmPayView setFrame:CGRectMake(0, ScreenH-50-64, ScreenW, 50)];
     }
     return _confirmPayView;
@@ -222,13 +223,20 @@ static NSString * PayCellIdentifier       = @"payTableViewCell";
     }
 }
 
-#pragma mark - PayCellDelegate
+#pragma mark - PayCellDelegate (选择 微信、支付宝 支付)
 
 - (void)didSelectedIndexPathRow:(NSInteger)row {
     _selectedPayRow = row;
     
     NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:3];
     [self.orderTableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
+    
+}
+
+
+#pragma mark - ConfirmPayDelegate (确认支付代理)
+
+- (void)confirmPayAction {
     
 }
 
