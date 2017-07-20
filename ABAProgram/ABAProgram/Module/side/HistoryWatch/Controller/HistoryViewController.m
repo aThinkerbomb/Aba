@@ -37,6 +37,8 @@ static NSString *historyCellIdentifier = @"HistoryTableViewCell";
     [self.historyTableView registerNib:[UINib nibWithNibName:@"HistoryTableViewCell" bundle:nil] forCellReuseIdentifier:historyCellIdentifier];
     
     [self requestHistoryData];
+    
+    self.historyTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHistoryData)];
 }
 
 #pragma mark - 历史观看数据请求
@@ -52,6 +54,7 @@ static NSString *historyCellIdentifier = @"HistoryTableViewCell";
             
             self.dataSource = [HistoryModel mj_objectArrayWithKeyValuesArray:request.responseObject[@"body"]];
             
+            [self.historyTableView.mj_header endRefreshing];
             [self.historyTableView reloadData];
             
         }

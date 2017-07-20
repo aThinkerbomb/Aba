@@ -82,7 +82,8 @@
 // 更新App接口 获取最新版本
 #define ABA_GET_NEW_VERSION_URL @"/user/getNewVersonForAppName"
 
-// 商品图片前缀
+// 专家视频观看
+#define ABA_EXPERT_LOOK_URL @"/userVideo/updateVideoLookSum";
 
 // 一天一播中的 活动列表接口
 #define ABA_ACTIVITY_LIST_URL @"/userActivity/queryUserActivityAllList"

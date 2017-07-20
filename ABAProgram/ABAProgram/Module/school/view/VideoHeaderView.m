@@ -32,7 +32,6 @@
         [self.playNumbwe setTitle:num forState:UIControlStateNormal];
         
         ZFPlayerModel * playerModel = [[ZFPlayerModel alloc] init];
-//        playerModel.title = _videoModel.videoname;// 这个标题页不写了，难看
         
         NSString *videoPath = _videoModel.videopath;
         if ([ABAConfig IsChinese:videoPath]) {

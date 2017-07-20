@@ -11,6 +11,7 @@
 #import "VideListTableViewCell.h"
 #import "VideoHeaderView.h"
 #import "ExpertVideoApi.h"
+#import "ExpertVideoLookSumApi.h"
 #import "ExpertVideoModel.h"
 #import "ABAShareManager.h"
 
@@ -106,6 +107,19 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     
 }
 
+#pragma mark - 观看视频记录
+- (void)requestVideoLookSum:(NSString *)videoId {
+    
+    ExpertVideoLookSumApi *lookApi = [[ExpertVideoLookSumApi alloc] initWithLookSum:videoId];
+    [lookApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+    
+}
+
 
 
 #pragma mark - UITableViewDataSource
@@ -190,8 +204,13 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.videoheaderView.videoModel = self.dataSource[indexPath.row-1];
+    
+    ExpertVideoModel *videModel = self.dataSource[indexPath.row-1];
+    self.videoheaderView.videoModel = videModel;
     _index = indexPath.row - 1;
+    
+    // 观看接口请求
+    [self requestVideoLookSum:videModel.videoid];
 }
 
 #pragma mark - 分享
