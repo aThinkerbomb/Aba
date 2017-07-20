@@ -1,4 +1,4 @@
-    //
+//
 //  LoginViewController.m
 //  ABAProgram
 //
@@ -183,7 +183,12 @@
                     [dic setObject:@"4" forKey:@"logintype"];
                 }
                 
-                [dic setObject:resp.openid forKey:@"useraccount"];
+                if (platformType == UMSocialPlatformType_Sina) {
+                    [dic setObject:resp.uid forKey:@"useraccount"];
+                } else {
+                    [dic setObject:resp.openid forKey:@"useraccount"];
+                }
+
                 [dic setObject:resp.name forKey:@"username"];
                 [dic setObject:resp.iconurl forKey:@"userimg"];
                 [dic setObject:resp.unionGender?@"0":@"1" forKey:@"usergender"];

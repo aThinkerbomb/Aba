@@ -33,7 +33,7 @@
 #import "XMLReader.h"
 
 #import "WXApi.h"
-#import <AlipaySDK/AlipaySDK.h>
+//#import <AlipaySDK/AlipaySDK.h>
 #import "WXPayApi.h"
 #import "WXPayModel.h"
 

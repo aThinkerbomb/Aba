@@ -14,7 +14,7 @@
 
 #define UMengShareKey @"596706f6c62dca478c0007ee"
 
-#define redirect @"www.yccit.com"
+#define redirect @"http://www.yccit.com"
 
 
 #define QQAPPID @"1106287210"
@@ -26,7 +26,7 @@
 
 #define SinaAppKey @"1014488485"
 #define SinaSecret @"b1bc1e0f8057d1254b9fcfa60048453b"
-
+#define SinaRedirect @"https://api.weibo.com/oauth2/default.html"
 
 
 
@@ -38,7 +38,7 @@
     [[UMSocialManager defaultManager] openLog:YES];
 
 
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:SinaAppKey appSecret:SinaSecret redirectURL:redirect];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:SinaAppKey appSecret:SinaSecret redirectURL:SinaRedirect];
     
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:QQAPPID appSecret:QQAPPKEY redirectURL:redirect];
     

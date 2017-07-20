@@ -26,7 +26,6 @@
 		B21256AD1F1FABFD00CE9392 /* WXPayApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B21256A81F1FABFD00CE9392 /* WXPayApi.m */; };
 		B21256AE1F1FABFD00CE9392 /* WXPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B21256AA1F1FABFD00CE9392 /* WXPayModel.m */; };
 		B21256AF1F1FABFD00CE9392 /* ZFBPayApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B21256AC1F1FABFD00CE9392 /* ZFBPayApi.m */; };
-		B21256B71F1FB29F00CE9392 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B21256B51F1FB29F00CE9392 /* AlipaySDK.bundle */; };
 		B214081F1F176CDA00CA4DCC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B214081E1F176CDA00CA4DCC /* libsqlite3.tbd */; };
 		B21408211F176CEC00CA4DCC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21408201F176CEC00CA4DCC /* CoreGraphics.framework */; };
 		B21408361F176FF700CA4DCC /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B21408251F176FF700CA4DCC /* libSocialQQ.a */; };
@@ -245,8 +244,6 @@
 		B21256AA1F1FABFD00CE9392 /* WXPayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXPayModel.m; sourceTree = "<group>"; };
 		B21256AB1F1FABFD00CE9392 /* ZFBPayApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFBPayApi.h; sourceTree = "<group>"; };
 		B21256AC1F1FABFD00CE9392 /* ZFBPayApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFBPayApi.m; sourceTree = "<group>"; };
-		B21256B51F1FB29F00CE9392 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
-		B21256B61F1FB29F00CE9392 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		B214081E1F176CDA00CA4DCC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		B21408201F176CEC00CA4DCC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B21408251F176FF700CA4DCC /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
@@ -1550,8 +1547,6 @@
 		B2F816461EFAB720002454A9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				B21256B51F1FB29F00CE9392 /* AlipaySDK.bundle */,
-				B21256B61F1FB29F00CE9392 /* AlipaySDK.framework */,
 				B21256871F1F363700CE9392 /* XMLReader.h */,
 				B21256881F1F363700CE9392 /* XMLReader.m */,
 				B2343F261F1E0760002C281C /* OpenSDK1.7.8 */,
@@ -1701,7 +1696,6 @@
 				B2D3599C1F160AD500827894 /* VideListTableViewCell.xib in Resources */,
 				B20253701F1DCC6800F2CF47 /* BackFreeInfoViewController.xib in Resources */,
 				B23B5B1A1F192053006AB709 /* LICENSE in Resources */,
-				B21256B71F1FB29F00CE9392 /* AlipaySDK.bundle in Resources */,
 				B28FC2631F03EF3F009899ED /* SchoolSectionView.xib in Resources */,
 				B2D359971F1605D400827894 /* VideoIntroSectionView.xib in Resources */,
 				B2A6B3CE1EF9331600C74D79 /* Main.storyboard in Resources */,
