@@ -139,11 +139,6 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 }
 
 
-- (void)rightButtonAction:(UIButton *)sender {
-    //分享
-    [self sharePlatform];
-}
-
 #pragma mark - 数据请求
 // 更新浏览数
 - (void)RequestBrowHistory {
@@ -231,7 +226,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
         [self showLoadingView:NO];
         
         NSString *xmlStr = request.responseObject[@"body"];
-        NSLog(@"xmlStr = %s", [xmlStr UTF8String]);
+        xmlStr = @"<xml><return_code><![CDATA[SUCCESS]]></return_code>\n<return_msg><![CDATA[OK]]></return_msg>\n<appid><![CDATA[wx909f8c29eb7ddae2]]></appid>\n<mch_id><![CDATA[1454243702]]></mch_id>\n<nonce_str><![CDATA[BMRyL9EGHr0T9g2o]]></nonce_str>\n<sign><![CDATA[08B91DAD9F863949A11609CF1C2CA8AC]]></sign>\n<result_code><![CDATA[SUCCESS]]></result_code>\n<prepay_id><![CDATA[wx20170720204837e1add99e120629090425]]></prepay_id>\n<trade_type><![CDATA[APP]]></trade_type>\n</xml>";
         NSError *error;
         NSDictionary *dic = [XMLReader dictionaryForXMLString:xmlStr error:&error];
         NSLog(@"dicdic = %@", dic);
@@ -365,6 +360,13 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 }
 
 
+#pragma mark - 分享Action
+- (void)rightButtonAction:(UIButton *)sender {
+    //分享
+    [self sharePlatform];
+}
+
+
 
 #pragma mark - CommentCellDelegate  评论点赞
 
@@ -386,10 +388,10 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     
 }
 
-#pragma mark - HomeVideSectionViewDelegate
+#pragma mark - HomeVideSectionViewDelegate (切换Tab)
 
 /**
- Section 点击事件
+ 切换Tab
 
  @param sectionIndex 1--留言  2--介绍
  */
@@ -461,58 +463,46 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 
 // 遮挡btn 被点击 需要支付
 - (void)ShelterBtnViewClickedAction {
-    
-    NSLog(@"需要支付哦～～");
-    
+
+    // 支付BlackView
     self.backGroundView = [[UIView alloc] initWithFrame:self.view.bounds];
     self.backGroundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
-    [self.payChooseView setFrame:CGRectMake((ScreenW-240)/2, (ScreenH-360)/2, 240, 360)];
+    
+    // 支付View
+    [self.payChooseView setFrame:CGRectMake((ScreenW-260)/2, (ScreenH-360)/2, 260, 360)];
     
     __weak typeof(self)WeakSelf = self;
+    
+    // 支付关闭按钮
     [self.payChooseView closePayView:^{
         [WeakSelf.backGroundView removeFromSuperview];
     }];
     
+    // 支付按钮
     [self.payChooseView SurePay:^(NSInteger index) {
        
-        NSLog(@"index = %lu", index);
         if (1 == index) {
-            // 微信
             
+            // 微信
             [WeakSelf requestWeixinData];
             
         } else if (2 == index) {
-            // 支付宝
             
+            // 支付宝
             [WeakSelf requestZFBData];
             
-            
         } else {
+            
             [WeakSelf showTipsMsg:@"请选择支付方式"];
+            
         }
         
         
     }];
+    
     [self.backGroundView addSubview:self.payChooseView];
     [self.view addSubview:self.backGroundView];
     
-}
-
-#pragma mark - 设置自定义 微信支付 model
-
-- (WXPayModel *)setWXPayModel:(NSDictionary *)dic {
-    WXPayModel *payModel = [[WXPayModel alloc] init];
-    payModel.prepayId = dic[@"prepay_id"][@"text"];
-    payModel.nonceStr = dic[@"nonce_str"][@"text"];
-    payModel.partnerId = dic[@"mch_id"][@"text"];
-    payModel.sign = dic[@"sign"][@"text"];
-    payModel.package = [NSString stringWithFormat:@"Sign=%@", payModel.partnerId];
-    NSString *time = [NSDate getCurrentTimestamp];//[NSDate getCurrentTimestamp];
-    NSLog(@"time --------%@", time);
-    payModel.timeStamp = time.intValue;
-    NSLog(@"time ++++++++%d", time.intValue);
-
-    return payModel;
 }
 
 
@@ -595,7 +585,26 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     }
 }
 
-//
+
+#pragma mark - 设置自定义 微信支付 model
+
+- (WXPayModel *)setWXPayModel:(NSDictionary *)dic {
+    WXPayModel *payModel = [[WXPayModel alloc] init];
+    payModel.prepayId = dic[@"prepay_id"][@"text"];
+    payModel.nonceStr = dic[@"nonce_str"][@"text"];
+    payModel.partnerId = dic[@"mch_id"][@"text"];
+    payModel.sign = dic[@"sign"][@"text"];
+    payModel.package = @"Sign=WXPay";
+    NSString *time = [NSDate getCurrentTimestamp];
+    payModel.timeStamp = time.intValue;
+    
+    
+    return payModel;
+}
+
+
+#pragma mark - 支付成功后的处理
+
 - (void)PaySuccessHandle {
     // 移除 视频遮挡button
     [self.shelterBtnView removeFromSuperview];
@@ -608,7 +617,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 
 
 
-#pragma mark - 设置分享
+#pragma mark - 分享
 - (void)sharePlatform {
  
     [UMSocialUIManager setPreDefinePlatforms:@[@0,@1,@2,@4,@5]];
