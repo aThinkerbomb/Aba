@@ -72,6 +72,8 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     
     // 数据请求
     [self requestVideoList];
+    
+    self.videoTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestVideoList)];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -92,6 +94,7 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
             // 设置视频播放 第一个 0
             self.videoheaderView.videoModel = self.dataSource[0];
             
+            [self.videoTableView.mj_header endRefreshing];
             [self.videoTableView reloadData];
         }
         

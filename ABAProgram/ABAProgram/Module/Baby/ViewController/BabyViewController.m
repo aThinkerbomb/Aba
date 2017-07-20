@@ -52,8 +52,7 @@ static NSString *babyListCellIdentifier = @"BabyListTableViewCell";
         [self setNaviLeftItemNormalImage:imagerString HighlightedIamge:imagerString];
     }
     
-    
-    
+
     // lySegment 初始化
     LySegmentMenu *lySegment = [[LySegmentMenu alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH - 64 - 50) ControllerViewArray:@[self.goodTeachTableView, self.goodClassTableView] TitleArray:@[@"优教", @"优班"]];
     [self.view addSubview:lySegment];
@@ -64,6 +63,11 @@ static NSString *babyListCellIdentifier = @"BabyListTableViewCell";
     
     // 数据请求
     [self requestBabyData];
+    
+    
+    // 导入下拉刷新
+    self.goodClassTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestBabyData)];
+    self.goodTeachTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestBabyData)];
 
   
 }
@@ -87,18 +91,30 @@ static NSString *babyListCellIdentifier = @"BabyListTableViewCell";
         [self showLoadingView:NO];
         
         if ([ABAConfig checkResponseObject:request.responseObject]) {
+            
+            // 映射
             NSArray * array = [BabyTeachModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"body"]];
+            
+            [self.teachArr removeAllObjects];
+            [self.classArr removeAllObjects];
+            // 数据重组
             for (BabyTeachModel *model in array) {
                 if ([model.institutiontype intValue] == 1) {
+                    
                     
                     [self.teachArr addObject:model];
                     
                 } else if ([model.institutiontype intValue] == 3) {
                     
+                    
                     [self.classArr addObject:model];
                     
                 }
             }
+            
+            // 结束刷新
+            [self.goodTeachTableView.mj_header endRefreshing];
+            [self.goodClassTableView.mj_header endRefreshing];
             
             [self.goodTeachTableView reloadData];
             [self.goodClassTableView reloadData];

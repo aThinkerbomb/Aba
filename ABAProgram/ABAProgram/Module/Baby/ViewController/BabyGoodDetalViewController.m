@@ -58,7 +58,11 @@ static NSString *TableViewCellIdentifier = @"UITableViewCell";
 {
     [super setupController];
     
+    // 注册cell
     [self.teachTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:TableViewCellIdentifier];
+    
+    // 导入 下拉刷新
+    self.teachTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestVideoInfoData)];
 }
 
 
@@ -113,7 +117,7 @@ static NSString *TableViewCellIdentifier = @"UITableViewCell";
             
             self.dataSource = [VideoIntroductionModel mj_objectArrayWithKeyValuesArray:request.responseObject[@"body"]];
             
-            
+            [self.teachTableView.mj_header endRefreshing];
             [self.teachTableView reloadData];
             
             

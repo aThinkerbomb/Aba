@@ -62,6 +62,10 @@ static NSString *articelCellIdentifier = @"ArticleTableViewCell";
     [self requestDaRenData];
     [self requestArticleData];
     
+    // 导入下拉刷新
+    self.expertTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestExpertData)];
+    self.talentTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestDaRenData)];
+    self.articleTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestArticleData)];
     
 }
 
@@ -119,6 +123,7 @@ static NSString *articelCellIdentifier = @"ArticleTableViewCell";
                 model.open = NO;
             }
             
+            [self.expertTableView.mj_header endRefreshing];
             [self.expertTableView reloadData];
         } else {
             [self showTipsMsg:@"数据错误"];
@@ -153,7 +158,7 @@ static NSString *articelCellIdentifier = @"ArticleTableViewCell";
                 model.open = NO;
             }
             
-            
+            [self.talentTableView.mj_header endRefreshing];
             [self.talentTableView reloadData];
         } else {
             [self showTipsMsg:@"数据错误"];
@@ -179,6 +184,7 @@ static NSString *articelCellIdentifier = @"ArticleTableViewCell";
             
             self.articleArr = [SchoolArticleModel mj_objectArrayWithKeyValuesArray:request.responseObject[@"body"]];
             
+            [self.articleTableView.mj_header endRefreshing];
             [self.articleTableView reloadData];
         } else {
             [self showTipsMsg:@"数据错误"];

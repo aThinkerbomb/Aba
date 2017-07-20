@@ -40,6 +40,8 @@ static NSString *articleCellIdentifier = @"ArticleTableViewCell";
     [self.myTableView registerNib:[UINib nibWithNibName:@"ArticleTableViewCell" bundle:nil] forCellReuseIdentifier:articleCellIdentifier];
     
     [self requestArticleData];
+    
+    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestArticleData)];
 }
 
 #pragma mark - requestData
@@ -57,6 +59,7 @@ static NSString *articleCellIdentifier = @"ArticleTableViewCell";
             
             self.dataSource = [DaRenArticleModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"body"]];
             
+            [self.myTableView.mj_header endRefreshing];
             [self.myTableView reloadData];
             
         } else {
