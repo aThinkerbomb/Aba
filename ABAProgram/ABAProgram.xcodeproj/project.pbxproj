@@ -122,6 +122,8 @@
 		B266400F1EFD148C002A8F3D /* ABAConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B266400E1EFD148C002A8F3D /* ABAConfig.m */; };
 		B26640111EFD1C54002A8F3D /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26640101EFD1C54002A8F3D /* RegisterViewController.xib */; };
 		B2683F201F0F85830099C391 /* CommentZanApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B2683F1F1F0F85830099C391 /* CommentZanApi.m */; };
+		B285A8721F208DB500B97447 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B285A8701F208DB500B97447 /* AlipaySDK.bundle */; };
+		B285A8731F208DB500B97447 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B285A8711F208DB500B97447 /* AlipaySDK.framework */; };
 		B28FC2611F03EF30009899ED /* SchoolSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28FC2601F03EF30009899ED /* SchoolSectionView.m */; };
 		B28FC2631F03EF3F009899ED /* SchoolSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B28FC2621F03EF3F009899ED /* SchoolSectionView.xib */; };
 		B28FC2661F03F9F1009899ED /* SchoolAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B28FC2651F03F9F1009899ED /* SchoolAlbumModel.m */; };
@@ -408,6 +410,9 @@
 		B26640101EFD1C54002A8F3D /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		B2683F1E1F0F85830099C391 /* CommentZanApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentZanApi.h; sourceTree = "<group>"; };
 		B2683F1F1F0F85830099C391 /* CommentZanApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentZanApi.m; sourceTree = "<group>"; };
+		B285A8601F208AC900B97447 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = ../../AlipaySDK_No_UTDID/IOS/AlipaySDK.framework; sourceTree = "<group>"; };
+		B285A8701F208DB500B97447 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		B285A8711F208DB500B97447 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		B28FC25F1F03EF30009899ED /* SchoolSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolSectionView.h; sourceTree = "<group>"; };
 		B28FC2601F03EF30009899ED /* SchoolSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolSectionView.m; sourceTree = "<group>"; };
 		B28FC2621F03EF3F009899ED /* SchoolSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolSectionView.xib; sourceTree = "<group>"; };
@@ -598,6 +603,7 @@
 				B2B3CCE81F069A220094AD5B /* WebKit.framework in Frameworks */,
 				B21408381F176FF700CA4DCC /* libSocialWeChat.a in Frameworks */,
 				B21408391F176FF700CA4DCC /* UMSocialCore.framework in Frameworks */,
+				B285A8731F208DB500B97447 /* AlipaySDK.framework in Frameworks */,
 				B21408361F176FF700CA4DCC /* libSocialQQ.a in Frameworks */,
 				B2343F2C1F1E0760002C281C /* libWeChatSDK.a in Frameworks */,
 				B214081F1F176CDA00CA4DCC /* libsqlite3.tbd in Frameworks */,
@@ -613,6 +619,7 @@
 		261751746A16BBCE7C83D030 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B285A8601F208AC900B97447 /* AlipaySDK.framework */,
 				B21256A51F1FA8B500CE9392 /* CoreMotion.framework */,
 				B21256A31F1FA8A300CE9392 /* CFNetwork.framework */,
 				B21256A11F1FA89900CE9392 /* Foundation.framework */,
@@ -1547,6 +1554,8 @@
 		B2F816461EFAB720002454A9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				B285A8701F208DB500B97447 /* AlipaySDK.bundle */,
+				B285A8711F208DB500B97447 /* AlipaySDK.framework */,
 				B21256871F1F363700CE9392 /* XMLReader.h */,
 				B21256881F1F363700CE9392 /* XMLReader.m */,
 				B2343F261F1E0760002C281C /* OpenSDK1.7.8 */,
@@ -1696,6 +1705,7 @@
 				B2D3599C1F160AD500827894 /* VideListTableViewCell.xib in Resources */,
 				B20253701F1DCC6800F2CF47 /* BackFreeInfoViewController.xib in Resources */,
 				B23B5B1A1F192053006AB709 /* LICENSE in Resources */,
+				B285A8721F208DB500B97447 /* AlipaySDK.bundle in Resources */,
 				B28FC2631F03EF3F009899ED /* SchoolSectionView.xib in Resources */,
 				B2D359971F1605D400827894 /* VideoIntroSectionView.xib in Resources */,
 				B2A6B3CE1EF9331600C74D79 /* Main.storyboard in Resources */,

@@ -40,7 +40,8 @@
     return @{@"goodsId": _goodsid,
              @"userId": [KZUserDefaults objectForKey:@"userid"]?:@"0",
              @"isPre": _isPre,
-             @"goodsName": _goodsname
+             @"goodsName": _goodsname,
+             @"totalPrice": _totalPrice
              };
 }
 @end

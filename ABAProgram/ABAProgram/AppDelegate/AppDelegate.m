@@ -15,7 +15,7 @@
 #import "SchoolViewController.h"
 #import "ABAShareManager.h"
 #import "WXApi.h"
-//#import <AlipaySDK/AlipaySDK.h>
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -70,6 +70,12 @@
     if ([urlStr containsString:@"wx909f8c29eb7ddae2://pay"]) {
         return [WXApi handleOpenURL:url delegate:self];
     }
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
+    }
     return [ABAShareManager HandleCallBackOpenurl:url];
     
 }
@@ -82,9 +88,9 @@
     }
     if ([url.host isEqualToString:@"safepay"]) {
         //跳转支付宝钱包进行支付，处理支付结果
-//        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-//            NSLog(@"result = %@",resultDic);
-//        }];
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
     }
     return [ABAShareManager HandleCallBackOpenurl:url];
 }

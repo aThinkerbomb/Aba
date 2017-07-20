@@ -35,8 +35,12 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
     self.title = @"一天一播";
     self.dataSourceArr = [NSArray array];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestOnedayOnePlay) name:@"Homereload" object:nil];
+    
+    // 一天一播列表接口
     [self requestOnedayOnePlay];
     
+    // 直播接口
     [self HomeLiveNow];
 
 }
@@ -45,6 +49,7 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 {
     [super setupController];
     
+    // 头像
     NSString *imagerString = [KZUserDefaults objectForKey:@"userimg"];
     if ([imagerString isEqualToString:@""]) {
         UIImage *imager = [UIImage imageNamed:@"headerImage"];
@@ -53,7 +58,11 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
         [self setNaviLeftItemNormalImage:imagerString HighlightedIamge:imagerString];
     }
     
+    // 注册cell
     [self registerTableViewCell];
+    
+    // 加入下拉刷新
+    self.homeTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestOnedayOnePlay)];
     
 }
 
@@ -80,7 +89,7 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
             HomePlayModel *playModel = self.dataSourceArr[0];
             self.liveHeaderView.imageUrl = playModel.bannerurl;
             
-            
+            [self.homeTableView.mj_header endRefreshing];
             [self.homeTableView reloadData];
         } else {
                 [self showTipsMsg:@"数据错误"];
@@ -188,6 +197,13 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
     }
     
     return _liveHeaderView;
+}
+
+
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"释放啦～～");
 }
 
 - (void)didReceiveMemoryWarning {

@@ -33,7 +33,7 @@
 #import "XMLReader.h"
 
 #import "WXApi.h"
-//#import <AlipaySDK/AlipaySDK.h>
+#import <AlipaySDK/AlipaySDK.h>
 #import "WXPayApi.h"
 #import "WXPayModel.h"
 
@@ -223,10 +223,8 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 - (void)requestWeixinData {
 
     [self showLoadingView:YES];
-    
     NSInteger p = [self.homePlayModel.price doubleValue]*100;
-    NSString *price = [NSString stringWithFormat:@"%lu", p];
-    
+    NSString *price = [NSString stringWithFormat:@"%lu", (long)p];
     WXPayApi *wxApi = [[WXPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:price goodsname:@"Video"];
     [wxApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
@@ -255,20 +253,15 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     
     
     [self showLoadingView:YES];
-    
-    NSInteger p = [self.homePlayModel.price doubleValue]*100;
-    NSString *price = [NSString stringWithFormat:@"%lu", p];
-    
-    ZFBPayApi *api = [[ZFBPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:price goodsname:@"Video"];
+
+    ZFBPayApi *api = [[ZFBPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:self.homePlayModel.price goodsname:@"Video"];
     [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         [self showLoadingView:NO];
         
-        NSString *xmlStr = request.responseObject[@"body"];
-        NSLog(@"xmlStr = %s", [xmlStr UTF8String]);
-//        NSError *error;
-//        NSDictionary *dic = [XMLReader dictionaryForXMLString:xmlStr error:&error];
-//        NSLog(@"dicdic = %@", dic);
+        // 调起支付宝
+        [self TuneUpZFBRequestWithOrderStr:request.responseObject[@"body"]];
+        
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         
@@ -464,7 +457,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 
 }
 
-#pragma mark - 需要支付
+#pragma mark - 支付按钮
 
 // 遮挡btn 被点击 需要支付
 - (void)ShelterBtnViewClickedAction {
@@ -486,12 +479,12 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
         if (1 == index) {
             // 微信
             
-            [self requestWeixinData];
+            [WeakSelf requestWeixinData];
             
         } else if (2 == index) {
             // 支付宝
             
-            [self requestZFBData];
+            [WeakSelf requestZFBData];
             
             
         } else {
@@ -504,6 +497,8 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     [self.view addSubview:self.backGroundView];
     
 }
+
+#pragma mark - 设置自定义 微信支付 model
 
 - (WXPayModel *)setWXPayModel:(NSDictionary *)dic {
     WXPayModel *payModel = [[WXPayModel alloc] init];
@@ -521,7 +516,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 }
 
 
-#pragma mark - 微信支付
+#pragma mark - 调起微信支付
 /**
  调起微信支付
  */
@@ -571,10 +566,46 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     } else {
         [self showTipsMsg:@"未安装微信或请升级微信版本"];
     }
-    
-    
-    
+   
 }
+
+
+#pragma mark - 调起 支付宝支付
+- (void)TuneUpZFBRequestWithOrderStr:(NSString *)orderStr {
+    if (orderStr != nil) {
+        //应用注册scheme,在AliSDKDemo-Info.plist定义URL types
+        NSString *appScheme = @"ali2017041406709494";
+        
+        __weak typeof(self)WeakSelf = self;
+        
+        // 调起支付宝
+        [[AlipaySDK defaultService] payOrder:orderStr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            
+
+            // 支付成功。
+            if ([resultDic[@"resultStatus"] intValue] == 9000) {
+                [WeakSelf showTipsMsg:@"支付成功"];
+                // 支付
+                [WeakSelf PaySuccessHandle];
+    
+            } else {
+                [WeakSelf showTipsMsg:resultDic[@"memo"]];
+            }
+        }];
+    }
+}
+
+//
+- (void)PaySuccessHandle {
+    // 移除 视频遮挡button
+    [self.shelterBtnView removeFromSuperview];
+    
+    // 移除支付选项页面
+    [self.backGroundView removeFromSuperview];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Homereload" object:self];
+}
+
 
 
 #pragma mark - 设置分享
