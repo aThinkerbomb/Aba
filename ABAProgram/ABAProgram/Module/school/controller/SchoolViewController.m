@@ -351,7 +351,6 @@ static NSString *articelCellIdentifier = @"ArticleTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (tableView == self.expertTableView) {
         SchoolAlbumModel *albumModel = self.expertArr[indexPath.section];
