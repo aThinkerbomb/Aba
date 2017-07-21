@@ -147,8 +147,19 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 
 #pragma mark - UITableViewDelegate
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger index = [[KZUserDefaults objectForKey:@"index"] intValue];
+    if (index >= 0) {
+        NSIndexPath * indexP= [NSIndexPath indexPathForRow:index inSection:0];
+        [tableView deselectRowAtIndexPath:indexP animated:NO];
+        
+    }
+    return YES;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [KZUserDefaults setObject:@(indexPath.row) forKey:@"index"];
     HomeVideoViewController *videoVC = [[HomeVideoViewController alloc] init];
     videoVC.homePlayModel = self.dataSourceArr[indexPath.row];
     videoVC.hidesBottomBarWhenPushed = YES;
