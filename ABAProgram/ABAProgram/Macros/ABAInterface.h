@@ -38,7 +38,7 @@
 
 // 历史观看
 #define ABA_HISTORY_WATCH_URL @"/userVideo/queryUserHistoryLookByUserId"
-// 观看记录
+// 收费
 #define ABA_Watch_Record_URL @"/userPayRecord/queryUserPayRecordByUserId";
 
 // 信息反馈

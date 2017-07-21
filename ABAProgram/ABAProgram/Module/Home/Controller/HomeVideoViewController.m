@@ -56,7 +56,8 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 
 @interface HomeVideoViewController ()<UITableViewDelegate, UITableViewDataSource, CommentCellDelegate, HomeVideSectionViewDelegate>
 {
-    VideoSectionType _Type;
+    VideoSectionType _Type; // Tab选项类型
+    NSInteger _isBuy;       // 标志该视频是否付费 1--付费 0--未付费
 }
 @property (nonatomic, strong) UITableView * videoTableView;
 @property (nonatomic, strong) HomeVideoSectionView * videoSectionView;
@@ -67,6 +68,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 
 @property (nonatomic, strong) UIButton * shelterBtnView;     //遮挡视频播放的btn，需要支付的时候出现
 @property (nonatomic, strong) PayChooseView * payChooseView; //支付选择页面
+@property (nonatomic, strong) UIView *backView;              //视频播放界面的父view
 @property (nonatomic, strong) UIView * backGroundView;       //支付选择页面的父view
 
 @end
@@ -109,9 +111,8 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     // 注册cell
     [self registerTableViewCell];
     
-    // 视频
-    [self.view addSubview:[self setupPlayView]];;
-    
+    // 设置视频View
+    [self.view addSubview:[self setupPlayView]];
     
     
     // 发表评论的view
@@ -125,7 +126,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     
     // 数据请求
     [self RequestBrowHistory];
-    [self requestWatchRecord];
+    [self requestPayRecord];
     [self requestCommentData];
     
 }
@@ -143,23 +144,37 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 // 更新浏览数
 - (void)RequestBrowHistory {
  
-    VideoBrowNumberApi *browApi = [[VideoBrowNumberApi alloc] initWithBrowHistoryGoodsId:self.homePlayModel.liveId];
-    [browApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
+    [self showLoadingView:YES];
+    VideoBrowNumberApi *browApi = [[VideoBrowNumberApi alloc] initWithBrowHistoryGoodsId:self.homePlayModel.liveId];[self showLoadingView:NO];    [browApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [self showLoadingView:NO];
         NSLog(@"redada = %@", request.responseObject);
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [self showLoadingView:NO];
         NSLog(@"error = %@", request.error);
     }];
     
 }
 
-// 观看记录
-- (void)requestWatchRecord {
+// 收费接口
+- (void)requestPayRecord {
     VideoWatchRecordApi *recordApi = [[VideoWatchRecordApi alloc] initWithUserWatchRecordGoodsid:self.homePlayModel.liveId];
     
     [recordApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSLog(@"redada = %@", request.responseObject);
+        
+        NSString *buy = request.responseObject[@"body"];
+        _isBuy = [buy intValue];
+        
+        // 设置遮挡btnView
+        if ([self.homePlayModel.price doubleValue] > 0 && _isBuy == 0) {
+            self.shelterBtnView = [UIButton buttonWithType:UIButtonTypeCustom];
+            [self.shelterBtnView setFrame:self.backView.bounds];
+            self.shelterBtnView.backgroundColor = [UIColor clearColor];
+            [self.shelterBtnView addTarget:self action:@selector(ShelterBtnViewClickedAction) forControlEvents:UIControlEventTouchUpInside];
+            [self.backView addSubview:self.shelterBtnView];
+        }
+        
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSLog(@"error = %@", request.error);
     }];
@@ -168,11 +183,8 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 // 评论列表数据
 - (void)requestCommentData {
     
-    [self showLoadingView:YES];
     VideoMessageApi * messageApi = [[VideoMessageApi alloc] initWithVideMessageLiveid:self.homePlayModel.liveId type:@"1"];
     [messageApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-        [self showLoadingView:NO];
         
         if ([ABAConfig checkResponseObject:request.responseObject]) {
             
@@ -193,7 +205,6 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSLog(@"error = %@", request.error);
-        [self showLoadingView:NO];
     }];
     
 }
@@ -416,16 +427,13 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 - (UIView *)setupPlayView {
     
     // 底层View
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenW/5*3)];
+    self.backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenW/5*3)];
 
-    self.playerView = [[ZFPlayerView alloc] initWithFrame:backView.bounds];
+    self.playerView = [[ZFPlayerView alloc] initWithFrame:self.backView.bounds];
     
     ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
     
     ZFPlayerModel *playModel = [[ZFPlayerModel alloc] init];
-    
-    // 设置视频标题
-//    playModel.title = self.homePlayModel.streamname; //标题不写了，展示的太难看，还需要改三方
     
     // 设置视频网络URL
     NSString *videoURL = self.homePlayModel.recordurl;
@@ -440,21 +448,11 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
         URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
     playModel.placeholderImageURLString = URLString;
-    playModel.fatherView = backView;
+    playModel.fatherView = self.backView;
     [self.playerView playerControlView:controlView playerModel:playModel];
-    [backView addSubview:self.playerView];
+    [self.backView addSubview:self.playerView];
     
-    // 设置遮挡btnView
-    if ([self.homePlayModel.price doubleValue] > 0) {
-        self.shelterBtnView = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.shelterBtnView setFrame:backView.bounds];
-        self.shelterBtnView.backgroundColor = [UIColor clearColor];
-        [self.shelterBtnView addTarget:self action:@selector(ShelterBtnViewClickedAction) forControlEvents:UIControlEventTouchUpInside];
-        [backView addSubview:self.shelterBtnView];
-    }
-    
-    
-    return backView;
+    return self.backView;
 
 }
 
@@ -515,42 +513,42 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
         
         [WXApi registerApp:WeiXinAppKey enableMTA:YES];
         
-//        // 生成随机数
-//        NSString * nonceStr = [ABAConfig acrRandow];
-//
-//        // 当前时间戳
-//        NSString * timestamp = [NSDate getCurrentTimestamp];
-//        
-//        // 生成sign签名partnerId
-//        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-//        [dic setObject:WeiXinAppKey forKey:@"appid"];
-//        [dic setObject:nonceStr forKey:@"noncestr"];
-//        [dic setObject:@(timestamp.intValue) forKey:@"timestamp"];
-//        [dic setObject:ABA_WX_Partnerid forKey:@"partnerid"];
-//        [dic setObject:payModel.prepayId forKey:@"prepayid"];
-//        [dic setObject:@"Sign=WXPay" forKey:@"package"];
-//        NSString * sign = [ABAConfig getSignFieldFromRequestDictionary:dic];
-//        
-//        
-//        PayReq *request = [[PayReq alloc] init];
-//        request.partnerId = ABA_WX_Partnerid;
-//        request.prepayId= payModel.prepayId;
-//        request.nonceStr= nonceStr;
-//        request.package = @"Sign=WXPay";
-//        request.timeStamp= timestamp.intValue;
-//        request.sign= sign;
-//        [WXApi sendReq:request];
-//        
+        // 生成随机数
+        NSString * nonceStr = [ABAConfig acrRandow];
+
+        // 当前时间戳
+        NSString * timestamp = [NSDate getCurrentTimestamp];
+        
+        // 生成sign签名partnerId
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:WeiXinAppKey forKey:@"appid"];
+        [dic setObject:nonceStr forKey:@"noncestr"];
+        [dic setObject:@(timestamp.intValue) forKey:@"timestamp"];
+        [dic setObject:ABA_WX_Partnerid forKey:@"partnerid"];
+        [dic setObject:payModel.prepayId forKey:@"prepayid"];
+        [dic setObject:@"Sign=WXPay" forKey:@"package"];
+        NSString * sign = [ABAConfig getSignFieldFromRequestDictionary:dic];
+        
+        
+        PayReq *request = [[PayReq alloc] init];
+        request.partnerId = ABA_WX_Partnerid;
+        request.prepayId= payModel.prepayId;
+        request.nonceStr= nonceStr;
+        request.package = @"Sign=WXPay";
+        request.timeStamp= timestamp.intValue;
+        request.sign= sign;
+        [WXApi sendReq:request];
+        
         
         // 调起微信支付
-        PayReq *request = [[PayReq alloc] init];
-        request.partnerId = payModel.partnerId;
-        request.prepayId= payModel.prepayId;
-        request.nonceStr= payModel.nonceStr;
-        request.package = payModel.package;
-        request.timeStamp= payModel.timeStamp;
-        request.sign= payModel.sign;
-        [WXApi sendReq:request];
+//        PayReq *request = [[PayReq alloc] init];
+//        request.partnerId = payModel.partnerId;
+//        request.prepayId= payModel.prepayId;
+//        request.nonceStr= payModel.nonceStr;
+//        request.package = payModel.package;
+//        request.timeStamp= payModel.timeStamp;
+//        request.sign= payModel.sign;
+//        [WXApi sendReq:request];
 
     } else {
         [self showTipsMsg:@"未安装微信或请升级微信版本"];

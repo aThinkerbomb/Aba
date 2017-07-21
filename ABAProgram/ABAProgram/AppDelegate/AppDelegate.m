@@ -125,9 +125,11 @@
 
 - (void)onResp:(BaseResp*)resp{
     if ([resp isKindOfClass:[PayResp class]]){
-        PayResp*response=(PayResp*)resp;
+        PayResp *response = (PayResp*)resp;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WXpayResult" object:nil userInfo:@{@"errorCode": @(response.errCode)}];
+        
         switch(response.errCode){
-            caseWXSuccess:
+            case WXSuccess:
                 //服务器端查询支付通知或查询API返回的结果再提示成功
                 NSLog(@"支付成功");
                 break;

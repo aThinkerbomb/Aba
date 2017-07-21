@@ -11,7 +11,7 @@
 #import "LoginViewController.h"
 #import "ABATabBarController.h"
 
-#define WeiXinAppKey @"wx909f8c29eb7ddae2"
+#define WeiXinAppKey @"Yccit412Yccit412Yccit412Yccit412"
 
 @implementation ABAConfig
 
