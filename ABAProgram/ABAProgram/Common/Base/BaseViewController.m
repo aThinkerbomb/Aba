@@ -13,6 +13,7 @@
 #import "MyVideoViewController.h"
 #import "HistoryViewController.h"
 #import "AboutOursViewController.h"
+#import "UserInfoViewController.h"
 
 @interface BaseViewController ()
 {
@@ -252,7 +253,7 @@
         _leftSideView = [[[NSBundle mainBundle] loadNibNamed:@"LeftSideView" owner:self options:nil] lastObject];
         [_leftSideView setFrame:CGRectMake(-(ScreenW/4*3), 0, ScreenW/4*3, ScreenH)];
         
-        
+        // 点击侧边栏
         [_leftSideView didSelectedSideFunction:^(FunctionType funtion) {
             
             // 隐藏侧边栏
@@ -280,6 +281,17 @@
             
         }];
         
+        // 点击头像
+        [_leftSideView gotoUserInfo:^{
+            
+            // 隐藏侧边栏
+            [self HiddenLeftSideView];
+            UserInfoViewController *userInfoVC = [[UserInfoViewController alloc] init];
+            userInfoVC.hidesBottomBarWhenPushed = YES;
+            [self pushToNextNavigationController:userInfoVC];
+            
+            
+        }];
         
     }
     return _leftSideView;

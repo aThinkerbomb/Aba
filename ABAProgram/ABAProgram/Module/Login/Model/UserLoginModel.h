@@ -14,6 +14,8 @@
 @property (nonatomic, copy) NSString * usertype;
 @property (nonatomic, copy) NSString * logintype;
 @property (nonatomic, copy) NSString * useraccount;
+@property (nonatomic, copy) NSString * usersonname;
+@property (nonatomic, copy) NSString * userbirthday;
 @property (nonatomic, copy) NSString * userpassword;
 @property (nonatomic, copy) NSString * streamname;
 @property (nonatomic, copy) NSString * isdelet;
@@ -23,6 +25,7 @@
 @property (nonatomic, copy) NSString * username;
 @property (nonatomic, copy) NSString * usergender;
 @property (nonatomic, copy) NSString * userphone;
+@property (nonatomic, copy) NSString * userrelation;
 
 
 

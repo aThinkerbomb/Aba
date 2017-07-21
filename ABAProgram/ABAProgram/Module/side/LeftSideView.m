@@ -11,6 +11,7 @@
 @interface LeftSideView ()
 
 @property (nonatomic, copy) LeftSideHandle handle;
+@property (nonatomic, copy) UserInfoHandle userInfo;
 @property (weak, nonatomic) IBOutlet UIImageView *HeadImage;
 @property (weak, nonatomic) IBOutlet UILabel *Name;
 
@@ -59,10 +60,23 @@
     self.Name.text = [KZUserDefaults objectForKey:@"username"];
 }
 
+- (IBAction)HeaderAction:(UIButton *)sender {
+    
+    if (self.userInfo) {
+        self.userInfo();
+    }
+}
 
 - (void)didSelectedSideFunction:(LeftSideHandle)handle {
     if (handle) {
         self.handle = handle;
+    }
+}
+
+
+- (void)gotoUserInfo:(UserInfoHandle)handle {
+    if (handle) {
+        self.userInfo = handle;
     }
 }
 

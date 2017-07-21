@@ -17,10 +17,11 @@ typedef NS_ENUM(NSInteger, FunctionType) {
 
 
 typedef void(^LeftSideHandle)(FunctionType funtion);
+typedef void(^UserInfoHandle)(void);
 
 @interface LeftSideView : UIView
 
 - (void)didSelectedSideFunction:(LeftSideHandle)handle;
-
+- (void)gotoUserInfo:(UserInfoHandle)handle;
 
 @end

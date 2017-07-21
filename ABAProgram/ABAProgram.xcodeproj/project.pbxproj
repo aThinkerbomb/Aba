@@ -74,6 +74,14 @@
 		B22C97721F000CF500A3EEEA /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B22C976B1F000CF500A3EEEA /* BaseModel.m */; };
 		B22C97731F000CF500A3EEEA /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22C976E1F000CF500A3EEEA /* BaseNavigationController.m */; };
 		B22C97741F000CF500A3EEEA /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22C97701F000CF500A3EEEA /* BaseViewController.m */; };
+		B22D7DD91F22486400A0CEE8 /* UserInfoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B22D7DD41F22486400A0CEE8 /* UserInfoApi.m */; };
+		B22D7DDA1F22486400A0CEE8 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22D7DD71F22486400A0CEE8 /* UserInfoViewController.m */; };
+		B22D7DDE1F224B2500A0CEE8 /* UserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B22D7DDC1F224B2500A0CEE8 /* UserInfoTableViewCell.m */; };
+		B22D7DDF1F224B2500A0CEE8 /* UserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22D7DDD1F224B2500A0CEE8 /* UserInfoTableViewCell.xib */; };
+		B22D7DE21F224C5C00A0CEE8 /* UserSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B22D7DE11F224C5C00A0CEE8 /* UserSectionView.m */; };
+		B22D7DE41F224C6800A0CEE8 /* UserSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22D7DE31F224C6700A0CEE8 /* UserSectionView.xib */; };
+		B22D7DE71F224DA500A0CEE8 /* UserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B22D7DE61F224DA500A0CEE8 /* UserHeaderView.m */; };
+		B22D7DE91F224DB200A0CEE8 /* UserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22D7DE81F224DB100A0CEE8 /* UserHeaderView.xib */; };
 		B231274D1F052DB90091CC78 /* HeaderToolScrollBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B23127461F052DB90091CC78 /* HeaderToolScrollBar.m */; };
 		B231274E1F052DB90091CC78 /* NSString+CalculateFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = B23127481F052DB90091CC78 /* NSString+CalculateFontSize.m */; };
 		B23127501F052DB90091CC78 /* LySegmentMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B231274C1F052DB90091CC78 /* LySegmentMenu.m */; };
@@ -327,6 +335,19 @@
 		B22C976E1F000CF500A3EEEA /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		B22C976F1F000CF500A3EEEA /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		B22C97701F000CF500A3EEEA /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		B22D7DD31F22486400A0CEE8 /* UserInfoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoApi.h; sourceTree = "<group>"; };
+		B22D7DD41F22486400A0CEE8 /* UserInfoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoApi.m; sourceTree = "<group>"; };
+		B22D7DD61F22486400A0CEE8 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		B22D7DD71F22486400A0CEE8 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		B22D7DDB1F224B2500A0CEE8 /* UserInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTableViewCell.h; sourceTree = "<group>"; };
+		B22D7DDC1F224B2500A0CEE8 /* UserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTableViewCell.m; sourceTree = "<group>"; };
+		B22D7DDD1F224B2500A0CEE8 /* UserInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoTableViewCell.xib; sourceTree = "<group>"; };
+		B22D7DE01F224C5C00A0CEE8 /* UserSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSectionView.h; sourceTree = "<group>"; };
+		B22D7DE11F224C5C00A0CEE8 /* UserSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSectionView.m; sourceTree = "<group>"; };
+		B22D7DE31F224C6700A0CEE8 /* UserSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSectionView.xib; sourceTree = "<group>"; };
+		B22D7DE51F224DA500A0CEE8 /* UserHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderView.h; sourceTree = "<group>"; };
+		B22D7DE61F224DA500A0CEE8 /* UserHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderView.m; sourceTree = "<group>"; };
+		B22D7DE81F224DB100A0CEE8 /* UserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderView.xib; sourceTree = "<group>"; };
 		B23127451F052DB90091CC78 /* HeaderToolScrollBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderToolScrollBar.h; sourceTree = "<group>"; };
 		B23127461F052DB90091CC78 /* HeaderToolScrollBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderToolScrollBar.m; sourceTree = "<group>"; };
 		B23127471F052DB90091CC78 /* NSString+CalculateFontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CalculateFontSize.h"; sourceTree = "<group>"; };
@@ -797,6 +818,50 @@
 			path = BaseNavigation;
 			sourceTree = "<group>";
 		};
+		B22D7DD11F22486400A0CEE8 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				B22D7DD21F22486400A0CEE8 /* APi */,
+				B22D7DD51F22486400A0CEE8 /* Controller */,
+				B22D7DD81F22486400A0CEE8 /* View */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		B22D7DD21F22486400A0CEE8 /* APi */ = {
+			isa = PBXGroup;
+			children = (
+				B22D7DD31F22486400A0CEE8 /* UserInfoApi.h */,
+				B22D7DD41F22486400A0CEE8 /* UserInfoApi.m */,
+			);
+			path = APi;
+			sourceTree = "<group>";
+		};
+		B22D7DD51F22486400A0CEE8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B22D7DD61F22486400A0CEE8 /* UserInfoViewController.h */,
+				B22D7DD71F22486400A0CEE8 /* UserInfoViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B22D7DD81F22486400A0CEE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B22D7DDB1F224B2500A0CEE8 /* UserInfoTableViewCell.h */,
+				B22D7DDC1F224B2500A0CEE8 /* UserInfoTableViewCell.m */,
+				B22D7DDD1F224B2500A0CEE8 /* UserInfoTableViewCell.xib */,
+				B22D7DE01F224C5C00A0CEE8 /* UserSectionView.h */,
+				B22D7DE11F224C5C00A0CEE8 /* UserSectionView.m */,
+				B22D7DE31F224C6700A0CEE8 /* UserSectionView.xib */,
+				B22D7DE51F224DA500A0CEE8 /* UserHeaderView.h */,
+				B22D7DE61F224DA500A0CEE8 /* UserHeaderView.m */,
+				B22D7DE81F224DB100A0CEE8 /* UserHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B23127431F052DB90091CC78 /* SegmentMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1013,6 +1078,7 @@
 				B2243F1A1F00CB1000FE795D /* version */,
 				B2A6B3FB1EF9388D00C74D79 /* Register */,
 				B2A6B3F91EF9386000C74D79 /* Login */,
+				B22D7DD11F22486400A0CEE8 /* User */,
 				B2A6B3F81EF9386000C74D79 /* Home */,
 				B2B73E111EFB7BB4008F3BC3 /* Baby */,
 				B2B73E121EFB7BB4008F3BC3 /* benefit */,
@@ -1704,6 +1770,7 @@
 				B23B5A501F18D732006AB709 /* OtherLoginBingView.xib in Resources */,
 				B250A7071F10CC920069CB10 /* VideoSendCommentView.xib in Resources */,
 				B2343F2D1F1E0760002C281C /* README.txt in Resources */,
+				B22D7DDF1F224B2500A0CEE8 /* UserInfoTableViewCell.xib in Resources */,
 				B2C073E11F13839E0038381F /* OrangeTableViewCell.xib in Resources */,
 				B23B5B261F192053006AB709 /* ZFPlayer.bundle in Resources */,
 				B2D3599C1F160AD500827894 /* VideListTableViewCell.xib in Resources */,
@@ -1711,8 +1778,10 @@
 				B23B5B1A1F192053006AB709 /* LICENSE in Resources */,
 				B285A8721F208DB500B97447 /* AlipaySDK.bundle in Resources */,
 				B28FC2631F03EF3F009899ED /* SchoolSectionView.xib in Resources */,
+				B22D7DE91F224DB200A0CEE8 /* UserHeaderView.xib in Resources */,
 				B2D359971F1605D400827894 /* VideoIntroSectionView.xib in Resources */,
 				B2A6B3CE1EF9331600C74D79 /* Main.storyboard in Resources */,
+				B22D7DE41F224C6800A0CEE8 /* UserSectionView.xib in Resources */,
 				B2D359D71F166C2000827894 /* HistoryTableViewCell.xib in Resources */,
 				B2A003571F0BEFD900EF87FD /* GoodDetailSectionView.xib in Resources */,
 			);
@@ -1778,11 +1847,13 @@
 				B266400F1EFD148C002A8F3D /* ABAConfig.m in Sources */,
 				B20253781F1DF6F300F2CF47 /* XieyiViewController.m in Sources */,
 				B21EB80F1F0E23BA005F571A /* IntroResumeTableViewCell.m in Sources */,
+				B22D7DDA1F22486400A0CEE8 /* UserInfoViewController.m in Sources */,
 				B2CB745F1F14FAE700949AA1 /* ConfirmPayView.m in Sources */,
 				B21256AD1F1FABFD00CE9392 /* WXPayApi.m in Sources */,
 				B2D359A71F16146B00827894 /* ExpertVideoModel.m in Sources */,
 				B250A7051F10CC880069CB10 /* VideoSendCommentView.m in Sources */,
 				B2B3CCF11F069CDF0094AD5B /* ABAWebViewController.m in Sources */,
+				B22D7DDE1F224B2500A0CEE8 /* UserInfoTableViewCell.m in Sources */,
 				B23B5A4B1F18C682006AB709 /* OtherLoginApi.m in Sources */,
 				B23C3C3E1F0B78DB009723FE /* BenefitDetailViewController.m in Sources */,
 				B22C97741F000CF500A3EEEA /* BaseViewController.m in Sources */,
@@ -1814,6 +1885,7 @@
 				B29B53701F07920100087CFA /* DaRenArticleApi.m in Sources */,
 				B2B492D41EFE535800CF1221 /* LoginDataSource.m in Sources */,
 				B26561451F0CD3630078B2A7 /* ServiceDesTableViewCell.m in Sources */,
+				B22D7DE21F224C5C00A0CEE8 /* UserSectionView.m in Sources */,
 				B2243F261F010DBB00FE795D /* HomePlayModel.m in Sources */,
 				B21256AE1F1FABFD00CE9392 /* WXPayModel.m in Sources */,
 				B28FC2731F04013B009899ED /* SchoolDaRenApi.m in Sources */,
@@ -1866,6 +1938,7 @@
 				B2D359D21F166A6A00827894 /* HistoryViewController.m in Sources */,
 				B23B5B1C1F192053006AB709 /* ASValuePopUpView.m in Sources */,
 				B22C97721F000CF500A3EEEA /* BaseModel.m in Sources */,
+				B22D7DD91F22486400A0CEE8 /* UserInfoApi.m in Sources */,
 				B2B347DA1F02115A005FEAD5 /* HomeListTableViewCell.m in Sources */,
 				B2B492DB1EFE70D100CF1221 /* ForgotPasswordApi.m in Sources */,
 				B21EB81B1F0E4510005F571A /* VideoWatchRecordApi.m in Sources */,
@@ -1901,6 +1974,7 @@
 				B21256AF1F1FABFD00CE9392 /* ZFBPayApi.m in Sources */,
 				B21EB8181F0E3293005F571A /* VideoBrowNumberApi.m in Sources */,
 				B231274D1F052DB90091CC78 /* HeaderToolScrollBar.m in Sources */,
+				B22D7DE71F224DA500A0CEE8 /* UserHeaderView.m in Sources */,
 				B23B5B1B1F192053006AB709 /* README.md in Sources */,
 				B2B3CCE41F0643C70094AD5B /* ArticleTableViewCell.m in Sources */,
 				B2D359DD1F16722000827894 /* HistoryModel.m in Sources */,
