@@ -10,6 +10,8 @@
 #import "UserSectionView.h"
 #import "EditTableViewCell.h"
 #import "EditInfoView.h"
+#import "UpdateUserInfoApi.h"
+
 static NSString * editCellIdentifier = @"EditTableViewCell";
 
 
@@ -38,6 +40,45 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     [self.editTableView registerNib:[UINib nibWithNibName:@"EditTableViewCell" bundle:nil] forCellReuseIdentifier:editCellIdentifier];
     
 }
+
+- (void)rightButtonAction:(UIButton *)sender {
+    
+    // 提交更新信息
+    [self UpdateUserinfo];
+    
+}
+
+
+
+#pragma mark - 更新提交数据
+
+- (void)UpdateUserinfo {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    [self showLoadingView:YES];
+    
+    UpdateUserInfoApi *updateApi = [[UpdateUserInfoApi alloc] initWithUserInfo:dic];
+
+    [updateApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        
+        if ([ABAConfig checkResponseObject:request.responseObject]) {
+            
+            [self showTipsMessageDelayPopBackWithMessage:@"更新信息成功"];
+            
+        } else {
+            [self showTipsMsg:@"更新失败"];
+        }
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        [self showTipsMsg:@"网络错误"];
+        
+    }];
+}
+
+
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -98,6 +139,7 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     
 }
 
+#pragma mark - 显示 选择View
 // 显示 选择View
 - (void)ChooseViewWithindexpath:(NSIndexPath *)indexp{
     
