@@ -56,4 +56,23 @@
  @return 返回随机数
  */
 + (NSString *)acrRandow;
+
+
+/**
+ 根据出生日期time 获取当前 年龄
+
+ @param time 出生日期 time
+ @return 返回年龄
+ */
++ (int)getAgeWithDateTimeInterval:(NSTimeInterval)time;
+
+
+/**
+ 根据生日 获取星座
+
+ @param month 月
+ @param day 日
+ @return 星座
+ */
++ (NSString *)calculateConstellationWithMonth:(NSInteger)month day:(NSInteger)day;
 @end

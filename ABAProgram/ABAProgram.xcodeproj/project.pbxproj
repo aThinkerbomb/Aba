@@ -89,6 +89,8 @@
 		B2323CE41F2344D8006E0161 /* EditInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2323CE31F2344D8006E0161 /* EditInfoView.m */; };
 		B2323CE61F2344E2006E0161 /* EditInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2323CE51F2344E2006E0161 /* EditInfoView.xib */; };
 		B2323CE91F234D5A006E0161 /* UpdateUserInfoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B2323CE81F234D5A006E0161 /* UpdateUserInfoApi.m */; };
+		B2323CEC1F235078006E0161 /* EditUserBirthdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2323CEB1F235078006E0161 /* EditUserBirthdayView.m */; };
+		B2323CEE1F235085006E0161 /* EditUserBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2323CED1F235085006E0161 /* EditUserBirthdayView.xib */; };
 		B2343F2C1F1E0760002C281C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2343F271F1E0760002C281C /* libWeChatSDK.a */; };
 		B2343F2D1F1E0760002C281C /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = B2343F281F1E0760002C281C /* README.txt */; };
 		B2343F321F1E1C13002C281C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2343F311F1E1C13002C281C /* CoreTelephony.framework */; };
@@ -367,6 +369,9 @@
 		B2323CE51F2344E2006E0161 /* EditInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditInfoView.xib; sourceTree = "<group>"; };
 		B2323CE71F234D5A006E0161 /* UpdateUserInfoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateUserInfoApi.h; sourceTree = "<group>"; };
 		B2323CE81F234D5A006E0161 /* UpdateUserInfoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateUserInfoApi.m; sourceTree = "<group>"; };
+		B2323CEA1F235078006E0161 /* EditUserBirthdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserBirthdayView.h; sourceTree = "<group>"; };
+		B2323CEB1F235078006E0161 /* EditUserBirthdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserBirthdayView.m; sourceTree = "<group>"; };
+		B2323CED1F235085006E0161 /* EditUserBirthdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditUserBirthdayView.xib; sourceTree = "<group>"; };
 		B2343F271F1E0760002C281C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		B2343F281F1E0760002C281C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		B2343F291F1E0760002C281C /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
@@ -884,6 +889,9 @@
 				B2323CE21F2344D8006E0161 /* EditInfoView.h */,
 				B2323CE31F2344D8006E0161 /* EditInfoView.m */,
 				B2323CE51F2344E2006E0161 /* EditInfoView.xib */,
+				B2323CEA1F235078006E0161 /* EditUserBirthdayView.h */,
+				B2323CEB1F235078006E0161 /* EditUserBirthdayView.m */,
+				B2323CED1F235085006E0161 /* EditUserBirthdayView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1765,6 +1773,7 @@
 				B25AD18C1F1B7F8400ADA23D /* PayChooseView.xib in Resources */,
 				B202536B1F1DC54700F2CF47 /* GoodsIntroViewController.xib in Resources */,
 				B21EB8151F0E2560005F571A /* IntroGoodAtTableViewCell.xib in Resources */,
+				B2323CEE1F235085006E0161 /* EditUserBirthdayView.xib in Resources */,
 				B2C073DC1F137FBC0038381F /* AdressTableViewCell.xib in Resources */,
 				B2C49D751F1A20C400F15CA8 /* LeftSideView.xib in Resources */,
 				B2B347F11F0261CE005FEAD5 /* BabyListTableViewCell.xib in Resources */,
@@ -1954,6 +1963,7 @@
 				B28FC2611F03EF30009899ED /* SchoolSectionView.m in Sources */,
 				B28FC2661F03F9F1009899ED /* SchoolAlbumModel.m in Sources */,
 				B2C073E01F13839E0038381F /* OrangeTableViewCell.m in Sources */,
+				B2323CEC1F235078006E0161 /* EditUserBirthdayView.m in Sources */,
 				B2B73E0C1EFB6E87008F3BC3 /* ABATabBarController.m in Sources */,
 				B2D359921F15F07900827894 /* ExpertVideoViewController.m in Sources */,
 				B26561411F0CAC900078B2A7 /* ParameterTableViewCell.m in Sources */,

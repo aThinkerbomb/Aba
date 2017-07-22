@@ -11,6 +11,8 @@
 #import "EditTableViewCell.h"
 #import "EditInfoView.h"
 #import "UpdateUserInfoApi.h"
+#import "EditUserBirthdayView.h"
+
 
 static NSString * editCellIdentifier = @"EditTableViewCell";
 
@@ -18,6 +20,7 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
 @interface EditUserInfoViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView * editTableView;
 @property (nonatomic, strong) EditInfoView *editInfoView;
+@property (nonatomic, strong) EditUserBirthdayView *birthdayView;
 @property (nonatomic, strong) UIView *blackGroundView;
 @end
 
@@ -137,9 +140,14 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
         [self ChooseViewWithindexpath:indexPath];
     }
     
+    if (indexPath.section == 1 && indexPath.row == 2) {
+     
+        [self showBirthdayView];
+    }
+    
 }
 
-#pragma mark - 显示 选择View
+#pragma mark - 显示 选择性别关系View
 // 显示 选择View
 - (void)ChooseViewWithindexpath:(NSIndexPath *)indexp{
     
@@ -165,7 +173,7 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
         }
         
         [Weakself.editTableView reloadData];
-        
+
         [Weakself.blackGroundView removeFromSuperview];
     }];
     
@@ -176,6 +184,7 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     [self.blackGroundView addGestureRecognizer:tap];
 }
 
+// 取消手势
 - (void)tapGesture:(UITapGestureRecognizer *)tap {
     
     [self.blackGroundView removeFromSuperview];
@@ -183,6 +192,25 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
 }
 
 
+
+#pragma mark - 显示 生日view
+
+- (void)showBirthdayView {
+    
+    self.blackGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+    self.blackGroundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    
+    self.birthdayView = [[[NSBundle mainBundle] loadNibNamed:@"EditUserBirthdayView" owner:self options:nil] lastObject];
+    [self.birthdayView setFrame:CGRectMake((ScreenW - (ScreenW-60))/2, (ScreenH - 400)/2, ScreenW-60, 400)];
+    self.birthdayView.userModel = self.userModel;
+    
+    [self.blackGroundView addSubview:self.birthdayView];
+    [kAppDelegate.window addSubview:self.blackGroundView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
+    [self.blackGroundView addGestureRecognizer:tap];
+    
+}
 
 #pragma mark - lazyLoading
 

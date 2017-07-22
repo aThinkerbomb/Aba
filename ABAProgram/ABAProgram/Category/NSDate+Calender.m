@@ -44,4 +44,26 @@
     NSTimeInterval timeInterval = [date timeIntervalSince1970];
     return [NSString stringWithFormat:@"%d", (int)timeInterval];
 }
+
+
++ (NSDate *)getCurrentDateWithDateString:(NSString *)dateString {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *date = [formatter dateFromString:dateString];
+    return date;
+}
+
++ (NSString *)getTimeWithdate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *time = [dateFormatter stringFromDate:date];
+    return time;
+}
+
++ (NSTimeInterval)getSecondswithDate:(NSDate *)date {
+    NSTimeInterval dateDiff = [date timeIntervalSinceNow];
+    return dateDiff;
+}
+
 @end
