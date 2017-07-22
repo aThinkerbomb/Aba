@@ -86,6 +86,9 @@
 		B231274E1F052DB90091CC78 /* NSString+CalculateFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = B23127481F052DB90091CC78 /* NSString+CalculateFontSize.m */; };
 		B23127501F052DB90091CC78 /* LySegmentMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B231274C1F052DB90091CC78 /* LySegmentMenu.m */; };
 		B23127531F054D120091CC78 /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23127521F054D120091CC78 /* SchoolViewController.m */; };
+		B2323CE41F2344D8006E0161 /* EditInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2323CE31F2344D8006E0161 /* EditInfoView.m */; };
+		B2323CE61F2344E2006E0161 /* EditInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2323CE51F2344E2006E0161 /* EditInfoView.xib */; };
+		B2323CE91F234D5A006E0161 /* UpdateUserInfoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B2323CE81F234D5A006E0161 /* UpdateUserInfoApi.m */; };
 		B2343F2C1F1E0760002C281C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2343F271F1E0760002C281C /* libWeChatSDK.a */; };
 		B2343F2D1F1E0760002C281C /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = B2343F281F1E0760002C281C /* README.txt */; };
 		B2343F321F1E1C13002C281C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2343F311F1E1C13002C281C /* CoreTelephony.framework */; };
@@ -359,6 +362,11 @@
 		B231274C1F052DB90091CC78 /* LySegmentMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LySegmentMenu.m; sourceTree = "<group>"; };
 		B23127511F054D120091CC78 /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
 		B23127521F054D120091CC78 /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
+		B2323CE21F2344D8006E0161 /* EditInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditInfoView.h; sourceTree = "<group>"; };
+		B2323CE31F2344D8006E0161 /* EditInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditInfoView.m; sourceTree = "<group>"; };
+		B2323CE51F2344E2006E0161 /* EditInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditInfoView.xib; sourceTree = "<group>"; };
+		B2323CE71F234D5A006E0161 /* UpdateUserInfoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateUserInfoApi.h; sourceTree = "<group>"; };
+		B2323CE81F234D5A006E0161 /* UpdateUserInfoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateUserInfoApi.m; sourceTree = "<group>"; };
 		B2343F271F1E0760002C281C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		B2343F281F1E0760002C281C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		B2343F291F1E0760002C281C /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
@@ -841,6 +849,8 @@
 			children = (
 				B22D7DD31F22486400A0CEE8 /* UserInfoApi.h */,
 				B22D7DD41F22486400A0CEE8 /* UserInfoApi.m */,
+				B2323CE71F234D5A006E0161 /* UpdateUserInfoApi.h */,
+				B2323CE81F234D5A006E0161 /* UpdateUserInfoApi.m */,
 			);
 			path = APi;
 			sourceTree = "<group>";
@@ -871,6 +881,9 @@
 				B22D7DE51F224DA500A0CEE8 /* UserHeaderView.h */,
 				B22D7DE61F224DA500A0CEE8 /* UserHeaderView.m */,
 				B22D7DE81F224DB100A0CEE8 /* UserHeaderView.xib */,
+				B2323CE21F2344D8006E0161 /* EditInfoView.h */,
+				B2323CE31F2344D8006E0161 /* EditInfoView.m */,
+				B2323CE51F2344E2006E0161 /* EditInfoView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1775,6 +1788,7 @@
 				B2B347DB1F02115A005FEAD5 /* HomeListTableViewCell.xib in Resources */,
 				B2C073E61F1385500038381F /* CommodityTableViewCell.xib in Resources */,
 				B2D359A11F160D5D00827894 /* VideoHeaderView.xib in Resources */,
+				B2323CE61F2344E2006E0161 /* EditInfoView.xib in Resources */,
 				B20253751F1DF5E100F2CF47 /* useragreement.html in Resources */,
 				B21D65FA1F03855100C11BE1 /* BenefitViewController.xib in Resources */,
 				B2F67DAF1F08C65000302303 /* BabySchoolInfoSectionView.xib in Resources */,
@@ -1862,6 +1876,7 @@
 				B266400F1EFD148C002A8F3D /* ABAConfig.m in Sources */,
 				B20253781F1DF6F300F2CF47 /* XieyiViewController.m in Sources */,
 				B21EB80F1F0E23BA005F571A /* IntroResumeTableViewCell.m in Sources */,
+				B2323CE91F234D5A006E0161 /* UpdateUserInfoApi.m in Sources */,
 				B22D7DDA1F22486400A0CEE8 /* UserInfoViewController.m in Sources */,
 				B2CB745F1F14FAE700949AA1 /* ConfirmPayView.m in Sources */,
 				B21256AD1F1FABFD00CE9392 /* WXPayApi.m in Sources */,
@@ -1870,6 +1885,7 @@
 				B2B3CCF11F069CDF0094AD5B /* ABAWebViewController.m in Sources */,
 				B22D7DDE1F224B2500A0CEE8 /* UserInfoTableViewCell.m in Sources */,
 				B23B5A4B1F18C682006AB709 /* OtherLoginApi.m in Sources */,
+				B2323CE41F2344D8006E0161 /* EditInfoView.m in Sources */,
 				B23C3C3E1F0B78DB009723FE /* BenefitDetailViewController.m in Sources */,
 				B22C97741F000CF500A3EEEA /* BaseViewController.m in Sources */,
 				B2F67DB81F08D9C500302303 /* VideoIntroductionModel.m in Sources */,

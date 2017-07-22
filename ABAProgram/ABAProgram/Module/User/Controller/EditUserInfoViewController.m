@@ -9,12 +9,14 @@
 #import "EditUserInfoViewController.h"
 #import "UserSectionView.h"
 #import "EditTableViewCell.h"
-
+#import "EditInfoView.h"
 static NSString * editCellIdentifier = @"EditTableViewCell";
 
 
 @interface EditUserInfoViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView * editTableView;
+@property (nonatomic, strong) EditInfoView *editInfoView;
+@property (nonatomic, strong) UIView *blackGroundView;
 @end
 
 @implementation EditUserInfoViewController
@@ -51,12 +53,10 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     EditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:editCellIdentifier forIndexPath:indexPath];
     [cell setUpInfoCell:self.userModel indexPath:indexPath];
     if (indexPath.section == 0 && indexPath.row == 2) {
-//        cell.info.enabled = NO;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     if (indexPath.section == 1) {
         if (indexPath.row == 1 || indexPath.row == 2) {
-//            cell.info.enabled = NO;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }
@@ -84,6 +84,63 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     return 60.0;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0 && indexPath.row == 2) {
+        
+        [self ChooseViewWithindexpath:indexPath];
+        
+    }
+    
+    if (indexPath.section == 1 && indexPath.row == 1) {
+        [self ChooseViewWithindexpath:indexPath];
+    }
+    
+}
+
+// 显示 选择View
+- (void)ChooseViewWithindexpath:(NSIndexPath *)indexp{
+    
+    self.blackGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+    self.blackGroundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    
+    self.editInfoView = [[[NSBundle mainBundle] loadNibNamed:@"EditInfoView" owner:self options:nil] lastObject];
+    [self.editInfoView setFrame:CGRectMake((ScreenW-250)/2, (ScreenH-64-200)/2, 250, 180)];
+    [self.editInfoView setUpEditWithIndexpath:indexp];
+    
+    __weak typeof(self)Weakself = self;
+    [self.editInfoView Chooseproperty:^(NSIndexPath *indexpath, NSString *str) {
+        
+        if (indexpath.section == 0 && indexpath.row == 2) {
+            Weakself.userModel.userrelation = str;
+        }
+        if (indexpath.section == 1 && indexpath.row == 1) {
+            if ([str isEqualToString:@"公主"]) {
+                Weakself.userModel.usergender = @"1";
+            } else if ([str isEqualToString:@"王子"]) {
+                Weakself.userModel.usergender = @"0";
+            }
+        }
+        
+        [Weakself.editTableView reloadData];
+        
+        [Weakself.blackGroundView removeFromSuperview];
+    }];
+    
+    [self.blackGroundView addSubview:self.editInfoView];
+    [kAppDelegate.window addSubview:self.blackGroundView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
+    [self.blackGroundView addGestureRecognizer:tap];
+}
+
+- (void)tapGesture:(UITapGestureRecognizer *)tap {
+    
+    [self.blackGroundView removeFromSuperview];
+    
+}
+
+
 
 #pragma mark - lazyLoading
 
@@ -108,14 +165,5 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
