@@ -147,6 +147,7 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 
 #pragma mark - UITableViewDelegate
 
+// 提前去掉 上一个选中状态
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = [[KZUserDefaults objectForKey:@"index"] intValue];
     if (index >= 0) {

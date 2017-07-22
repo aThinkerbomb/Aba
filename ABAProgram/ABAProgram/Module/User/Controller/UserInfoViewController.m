@@ -12,7 +12,7 @@
 #import "UserInfoTableViewCell.h"
 #import "UserSectionView.h"
 #import "UserHeaderView.h"
-
+#import "EditUserInfoViewController.h"
 
 static NSString *UserinfoIdentifier = @"UserInfoTableViewCell";
 
@@ -112,7 +112,10 @@ static NSString *UserinfoIdentifier = @"UserInfoTableViewCell";
 }
 
 - (void)rightButtonAction:(UIButton *)sender {
-    NSLog(@"编辑~");
+    
+    EditUserInfoViewController *edit = [[EditUserInfoViewController alloc] init];
+    edit.userModel = self.userModel;
+    [self pushToNextNavigationController:edit];
 }
 
 
