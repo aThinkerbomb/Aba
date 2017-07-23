@@ -47,7 +47,7 @@
 
 - (UIWebView *)webView {
     if (!_webView) {
-        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH-64)];
         [self.view addSubview:_webView];
     }
     return _webView;

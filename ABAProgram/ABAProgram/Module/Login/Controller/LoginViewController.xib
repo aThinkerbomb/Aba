@@ -24,14 +24,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="RX9-7J-Lsw">
-                    <rect key="frame" x="166.5" y="45" width="60" height="60"/>
+                    <rect key="frame" x="161.5" y="65" width="70" height="70"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="XLc-Zu-cQs"/>
-                        <constraint firstAttribute="height" constant="60" id="mUD-bL-LqL"/>
+                        <constraint firstAttribute="width" constant="70" id="XLc-Zu-cQs"/>
+                        <constraint firstAttribute="height" constant="70" id="mUD-bL-LqL"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WO9-my-UrD">
-                    <rect key="frame" x="0.0" y="140" width="393" height="240"/>
+                    <rect key="frame" x="0.0" y="170" width="393" height="240"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_call" translatesAutoresizingMaskIntoConstraints="NO" id="GFb-Fy-TDW">
                             <rect key="frame" x="20" y="10" width="13" height="20"/>
@@ -42,7 +42,7 @@
                                 <constraint firstAttribute="height" constant="40" id="nwH-eD-rbf"/>
                             </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHN-Xm-j2u">
@@ -62,7 +62,7 @@
                                 <constraint firstAttribute="height" constant="40" id="HUP-tc-rxi"/>
                             </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Iv-cL-6Dm">
@@ -74,8 +74,8 @@
                             </constraints>
                         </view>
                         <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IG-cC-SSq">
-                            <rect key="frame" x="20" y="97" width="62" height="27"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <rect key="frame" x="20" y="97" width="67" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="忘记密码？">
                                 <color key="titleColor" red="0.58823529409999997" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -84,8 +84,8 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYn-uc-iB6">
-                            <rect key="frame" x="323" y="97" width="50" height="27"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <rect key="frame" x="319" y="97" width="54" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="立即注册">
                                 <color key="titleColor" red="0.58823529409999997" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -99,14 +99,14 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="etH-6v-of2"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="登录"/>
                             <connections>
                                 <action selector="LoginAction:" destination="-1" eventType="touchUpInside" id="RKs-KF-4dI"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gna-fQ-5yB">
-                            <rect key="frame" x="92.5" y="206.5" width="15" height="15"/>
+                            <rect key="frame" x="85" y="207" width="15" height="15"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <state key="normal" image="btn_normal">
@@ -118,8 +118,8 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kr3-vC-atl">
-                            <rect key="frame" x="112.5" y="201" width="169" height="26"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <rect key="frame" x="105" y="201" width="184" height="27"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="我已阅读并同意《啊八用户协议》">
                                 <color key="titleColor" red="0.58823529409999997" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -182,20 +182,20 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第三方登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3W-ff-P0f">
-                    <rect key="frame" x="168.5" y="488.5" width="56.5" height="13.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <rect key="frame" x="166" y="487.5" width="61.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.99215686274509807" green="0.66666666666666663" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmI-uy-eaY">
-                    <rect key="frame" x="20" y="495" width="138.5" height="0.5"/>
+                    <rect key="frame" x="20" y="494.5" width="136" height="0.5"/>
                     <color key="backgroundColor" red="0.99215686270000003" green="0.66666666669999997" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="SQX-gK-Glz"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmY-nX-fBd">
-                    <rect key="frame" x="235" y="495" width="138" height="0.5"/>
+                    <rect key="frame" x="237.5" y="494.5" width="135.5" height="0.5"/>
                     <color key="backgroundColor" red="0.99215686270000003" green="0.66666666669999997" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="bWz-au-K4j"/>
@@ -216,7 +216,7 @@
                 <constraint firstItem="B3W-ff-P0f" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VT1-eP-blW"/>
                 <constraint firstItem="LmI-uy-eaY" firstAttribute="centerY" secondItem="B3W-ff-P0f" secondAttribute="centerY" id="bdv-QH-ZjY"/>
                 <constraint firstAttribute="bottom" secondItem="0OD-xd-pfK" secondAttribute="bottom" constant="20" id="bq8-5S-uVB"/>
-                <constraint firstItem="RX9-7J-Lsw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="45" id="bs4-RF-TK9"/>
+                <constraint firstItem="RX9-7J-Lsw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="bs4-RF-TK9"/>
                 <constraint firstItem="0OD-xd-pfK" firstAttribute="top" secondItem="B3W-ff-P0f" secondAttribute="bottom" constant="20" id="g40-Oj-cYr"/>
                 <constraint firstItem="0OD-xd-pfK" firstAttribute="leading" secondItem="Kru-IO-NzU" secondAttribute="trailing" constant="35" id="h7e-XC-KEl"/>
                 <constraint firstItem="WO9-my-UrD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rGA-w3-U50"/>
@@ -226,7 +226,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-315.5" y="-317.5"/>
+            <point key="canvasLocation" x="-398" y="-409"/>
         </view>
     </objects>
     <resources>
