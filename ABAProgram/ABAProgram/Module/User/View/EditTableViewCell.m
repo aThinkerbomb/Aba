@@ -13,9 +13,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *titlename;
 
 
-
 @property (nonatomic, strong) NSIndexPath * indexpath;
 @property (nonatomic, strong) UserLoginModel * userModel;
+
+
 @end
 
 
@@ -26,6 +27,7 @@
     
     _userModel = userModel;
     _indexpath = indexPath;
+    
     if (_userModel) {
         
         if (indexPath.section == 0) {
@@ -34,11 +36,13 @@
                 
                 self.titlename.text = @"昵称";
                 self.info.text = _userModel.username;
+                self.info.placeholder = @"请输入家长姓名";
                 
             } else if (indexPath.row == 1) {
                 
                 self.titlename.text = @"联系方式";
                 self.info.text = _userModel.userphone;
+                self.info.placeholder = @"请输入联系方式";
                 
             } else if (indexPath.row == 2) {
                 
@@ -53,6 +57,7 @@
             if (indexPath.row == 0) {
                 
                 self.titlename.text = @"宝宝昵称";
+                self.info.placeholder = @"请输入宝宝姓名";
                 if ([_userModel.usersonname isEqualToString:@""]) {
                     self.info.text = @"宝宝";
                 } else {
@@ -80,6 +85,8 @@
     }
 
 }
+
+
 
 
 - (void)awakeFromNib {

@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "UserLoginModel.h"
+
+
 @interface EditTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UITextField *info;
+
+
 - (void)setUpInfoCell:(UserLoginModel *)userModel indexPath:(NSIndexPath *)indexPath;
 
 @end
+
+
+

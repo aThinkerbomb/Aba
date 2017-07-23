@@ -32,6 +32,9 @@ static NSString *UserinfoIdentifier = @"UserInfoTableViewCell";
     self.title = @"我的资料";
     
     [self requestUserInfo];
+    
+    // 通知刷新数据
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestUserInfo) name:@"reloanUserInfo" object:nil];
 }
 
 - (void)setupController {
@@ -143,6 +146,10 @@ static NSString *UserinfoIdentifier = @"UserInfoTableViewCell";
         [_headerView setFrame:CGRectMake(0, 0, ScreenW, ScreenW/5*3)];
     }
     return _headerView;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {

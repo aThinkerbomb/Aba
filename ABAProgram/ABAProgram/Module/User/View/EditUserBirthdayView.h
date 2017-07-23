@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "UserLoginModel.h"
+
+
+typedef void(^UpdateUserInfoHandle)(NSString * birthday);
+typedef void(^closeHandle)(void);
+
 @interface EditUserBirthdayView : UIView
 
 @property (nonatomic, strong) UserLoginModel * userModel;
+
+- (void)ClickedSure:(UpdateUserInfoHandle)handle;
+- (void)ClickedCancel:(closeHandle)handle;
 
 @end

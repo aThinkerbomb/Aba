@@ -146,7 +146,7 @@
 
 
 + (int)getAgeWithDateTimeInterval:(NSTimeInterval)time {
-    int age  =  trunc(time/(60*60*24))/365;
+    int age  =  fabs(time/(60*60*24))/365;
     return age;
 }
 
@@ -185,5 +185,7 @@
     return [NSString stringWithFormat:@"%@座",result];
     
 }
+
+
 
 @end

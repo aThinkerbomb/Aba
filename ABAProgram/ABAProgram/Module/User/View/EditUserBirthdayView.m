@@ -15,7 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *birthday;
 @property (weak, nonatomic) IBOutlet UIDatePicker *birthdayPicker;
 
-
+@property (nonatomic, copy) UpdateUserInfoHandle update;
+@property (nonatomic, copy) closeHandle close;
 
 @end
 
@@ -25,23 +26,69 @@
     _userModel = userModel;
     if (_userModel) {
         
+        // yyyy-MM-dd转为date
+        NSDate *date = [NSDate getCurrentDateWithDateString:_userModel.userbirthday];
+        // 计算年龄
+        int age = [ABAConfig getAgeWithDateTimeInterval:[NSDate getSecondswithDate:date]];
+        // 展示年龄
+        self.age.text = [NSString stringWithFormat:@"%d岁", age];
+
+        // 得到年 月
+        NSString * month = [NSDate getMonthWithDate:date];
+        NSString * day   = [NSDate getDayWithDate:date];
+        
+        // 展示星座
+        self.Constellation.text = [ABAConfig calculateConstellationWithMonth:[month intValue] day:[day intValue]];
+        
+        // 展示生日
         self.birthday.text = _userModel.userbirthday;
+        
+        // 设置datepicker
         self.birthdayPicker.date = [NSDate getCurrentDateWithDateString:_userModel.userbirthday];
         
     }
     
 }
 
+- (IBAction)datePickerValueChange:(UIDatePicker *)sender {
+    
+    self.birthday.text = [NSDate getTimeWithdate:sender.date];
+    
+    int age = [ABAConfig getAgeWithDateTimeInterval:[NSDate getSecondswithDate:sender.date]];
+    self.age.text = [NSString stringWithFormat:@"%d岁", age];
+    
+    NSString * month = [NSDate getMonthWithDate:sender.date];
+    NSString * day   = [NSDate getDayWithDate:sender.date];
+    
+    self.Constellation.text = [ABAConfig calculateConstellationWithMonth:[month intValue] day:[day intValue]];
+}
 
 - (IBAction)Sure:(UIButton *)sender {
     
-    NSLog(@" %@", [NSDate getTimeWithdate:self.birthdayPicker.date]);
+    if (self.update) {
+        self.update(self.birthday.text);
+    }
     
     
 }
 - (IBAction)Cancel:(UIButton *)sender {
+    if (self.close) {
+        self.close();
+    }
+    
 }
 
+- (void)ClickedSure:(UpdateUserInfoHandle)handle {
+    if (handle) {
+        self.update = handle;
+    }
+}
+
+- (void)ClickedCancel:(closeHandle)handle {
+    if (handle) {
+        self.close = handle;
+    }
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

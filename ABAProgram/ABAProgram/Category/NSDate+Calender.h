@@ -28,4 +28,38 @@
 
 // 根据date  转秒
 + (NSTimeInterval)getSecondswithDate:(NSDate *)date;
+
+
+/**
+ 从一个时间到另一个时间的秒数
+
+ @param fromDate 第一个时间
+ @param date 第二个时间
+ @return 秒
+ */
++ (NSTimeInterval)getSecondsFromDate:(NSDate *)fromDate toDate:(NSDate *)date;
+
+/**
+ 根据date 得到当前年
+
+ @param date date
+ @return 年
+ */
++ (NSString *)getYearWitDate:(NSDate *)date;
+
+/**
+ 根据date 得到月份
+
+ @param date date
+ @return 月份
+ */
++ (NSString *)getMonthWithDate:(NSDate *)date;
+
+/**
+ 根据date 得到天
+
+ @param date date
+ @return 天
+ */
++ (NSString *)getDayWithDate:(NSDate *)date;
 @end

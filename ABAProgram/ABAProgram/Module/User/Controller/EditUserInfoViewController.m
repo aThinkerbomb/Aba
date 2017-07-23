@@ -22,6 +22,8 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
 @property (nonatomic, strong) EditInfoView *editInfoView;
 @property (nonatomic, strong) EditUserBirthdayView *birthdayView;
 @property (nonatomic, strong) UIView *blackGroundView;
+
+@property (nonatomic, strong) NSMutableDictionary *updateDic;  // 更新的数据信息
 @end
 
 @implementation EditUserInfoViewController
@@ -31,7 +33,7 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     // Do any additional setup after loading the view.
     
     self.title = @"编辑资料";
-    
+    self.updateDic = [NSMutableDictionary dictionary];
 }
 
 - (void)setupController {
@@ -58,6 +60,32 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
 - (void)UpdateUserinfo {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     
+    EditTableViewCell *cell1 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    EditTableViewCell *cell2 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    EditTableViewCell *cell3 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+    EditTableViewCell *cell4 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    EditTableViewCell *cell5 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    EditTableViewCell *cell6 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+    
+    NSInteger gender = 0;
+    if ([cell5.info.text isEqualToString:@"公主"]) {
+        gender = 1;
+    }
+    
+    [dic setValue:[KZUserDefaults objectForKey:@"userid"] forKey:@"userid"];
+    [dic setValue:cell1.info.text forKey:@"username"];
+    [dic setValue:cell2.info.text forKey:@"userphone"];
+    [dic setValue:cell3.info.text forKey:@"userrelation"];
+    [dic setValue:cell4.info.text forKey:@"usersonname"];
+    [dic setValue:@(gender) forKey:@"usergender"];
+    [dic setValue:cell6.info.text forKey:@"userbirthday"];
+    
+    if (cell2.info.text.length != 11) {
+        [self showTipsMsg:@"请输入正确的11位手机号"];
+        return;
+    }
+    
+    
     [self showLoadingView:YES];
     
     UpdateUserInfoApi *updateApi = [[UpdateUserInfoApi alloc] initWithUserInfo:dic];
@@ -68,7 +96,9 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
         
         if ([ABAConfig checkResponseObject:request.responseObject]) {
             
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloanUserInfo" object:nil];
             [self showTipsMessageDelayPopBackWithMessage:@"更新信息成功"];
+            
             
         } else {
             [self showTipsMsg:@"更新失败"];
@@ -79,6 +109,22 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
         [self showTipsMsg:@"网络错误"];
         
     }];
+//    EditTableViewCell *cell1 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+//    EditTableViewCell *cell2 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+//    EditTableViewCell *cell3 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+//    EditTableViewCell *cell4 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+//    EditTableViewCell *cell5 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+//    EditTableViewCell *cell6 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+//    
+//    NSLog(@"nmb = %@", cell3.info.text);
+//    NSString *relation = cell3.info.text;
+//    [dic setValue:[KZUserDefaults objectForKey:@"userid"] forKey:@"userid"];
+//    [dic setValue:cell1.info.text forKey:@"usersonname"];
+//    [dic setValue:cell2.info.text forKey:@"userphone"];
+//    [dic setValue:relation forKey:@"userrelation"];
+//    [dic setValue:cell4.info.text forKey:@"username"];
+//    [dic setValue:cell5.info.text forKey:@"usergender"];
+//    [dic setValue:cell6.info.text forKey:@"userbirthday"];
 }
 
 
@@ -147,6 +193,7 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     
 }
 
+
 #pragma mark - 显示 选择性别关系View
 // 显示 选择View
 - (void)ChooseViewWithindexpath:(NSIndexPath *)indexp{
@@ -161,19 +208,8 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     __weak typeof(self)Weakself = self;
     [self.editInfoView Chooseproperty:^(NSIndexPath *indexpath, NSString *str) {
         
-        if (indexpath.section == 0 && indexpath.row == 2) {
-            Weakself.userModel.userrelation = str;
-        }
-        if (indexpath.section == 1 && indexpath.row == 1) {
-            if ([str isEqualToString:@"公主"]) {
-                Weakself.userModel.usergender = @"1";
-            } else if ([str isEqualToString:@"王子"]) {
-                Weakself.userModel.usergender = @"0";
-            }
-        }
-        
-        [Weakself.editTableView reloadData];
-
+        EditTableViewCell *cell = [Weakself.editTableView cellForRowAtIndexPath:indexpath];
+        cell.info.text = str;
         [Weakself.blackGroundView removeFromSuperview];
     }];
     
@@ -203,6 +239,23 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     self.birthdayView = [[[NSBundle mainBundle] loadNibNamed:@"EditUserBirthdayView" owner:self options:nil] lastObject];
     [self.birthdayView setFrame:CGRectMake((ScreenW - (ScreenW-60))/2, (ScreenH - 400)/2, ScreenW-60, 400)];
     self.birthdayView.userModel = self.userModel;
+    
+    __weak typeof(self)WeakSelf = self;
+    [self.birthdayView ClickedSure:^(NSString *birthday) {
+       
+        WeakSelf.userModel.userbirthday = birthday;
+        
+        EditTableViewCell *cell = [WeakSelf.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+        cell.info.text = birthday;
+        [WeakSelf.blackGroundView removeFromSuperview];
+        
+    }];
+    
+    [self.birthdayView ClickedCancel:^{
+       
+        [WeakSelf.blackGroundView removeFromSuperview];
+        
+    }];
     
     [self.blackGroundView addSubview:self.birthdayView];
     [kAppDelegate.window addSubview:self.blackGroundView];

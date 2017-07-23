@@ -41,8 +41,10 @@
 
 - (IBAction)chooseAction:(UIButton *)sender {
 
+    
+    
     if (self.handle) {
-        self.handle(self.indexpath, sender.titleLabel.text);
+        self.handle(self.indexpath, sender.currentTitle);
     }
 
 }

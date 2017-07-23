@@ -66,4 +66,29 @@
     return dateDiff;
 }
 
++ (NSTimeInterval)getSecondsFromDate:(NSDate *)fromDate toDate:(NSDate *)date {
+    NSTimeInterval dateDiff = [fromDate timeIntervalSinceDate:date];
+    return dateDiff;
+}
+
++ (NSString *)getYearWitDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy"];
+    NSString *year = [dateFormatter stringFromDate:date];
+    return year;
+}
+
++ (NSString *)getMonthWithDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM"];
+    NSString *month = [dateFormatter stringFromDate:date];
+    return month;
+}
+
++ (NSString *)getDayWithDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd"];
+    NSString *day = [dateFormatter stringFromDate:date];
+    return day;
+}
 @end

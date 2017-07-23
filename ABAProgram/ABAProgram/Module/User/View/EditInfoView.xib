@@ -31,25 +31,39 @@
                         <constraint firstAttribute="height" constant="1" id="AKf-8h-tur"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zy4-WH-xRb">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zy4-WH-xRb">
                     <rect key="frame" x="20" y="73" width="176" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="r0n-Zb-o58"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="公主">
                         <color key="titleColor" red="0.58823529409999997" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.98039215690000003" green="0.67450980390000004" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.98039215690000003" green="0.67450980390000004" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="chooseAction:" destination="2QA-bf-qji" eventType="touchUpInside" id="Zft-fy-zjO"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6O-Ue-cPO">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6O-Ue-cPO">
                     <rect key="frame" x="20" y="108" width="176" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="LWS-sw-mDP"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="王子">
                         <color key="titleColor" red="0.58823529409999997" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.98039215690000003" green="0.67450980390000004" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.98039215690000003" green="0.67450980390000004" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="chooseAction:" destination="2QA-bf-qji" eventType="touchUpInside" id="LY5-Gq-sdr"/>
