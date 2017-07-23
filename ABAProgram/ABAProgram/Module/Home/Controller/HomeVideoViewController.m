@@ -82,6 +82,8 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     self.dataSource = [NSArray array];
     _Type = VideoSectionTypeComment;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(WeiXinPayResult:) name:@"WXpayResult" object:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -150,6 +152,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 }
 
 
+
 #pragma mark - 数据请求
 // 更新浏览数
 - (void)RequestBrowHistory {
@@ -157,11 +160,12 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     [self showLoadingView:YES];
     VideoBrowNumberApi *browApi = [[VideoBrowNumberApi alloc] initWithBrowHistoryGoodsId:self.homePlayModel.liveId];[self showLoadingView:NO];    [browApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         [self showLoadingView:NO];
-        NSLog(@"redada = %@", request.responseObject);
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateBrowNumber" object:nil];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [self showLoadingView:NO];
-        NSLog(@"error = %@", request.error);
+        
     }];
     
 }
@@ -241,7 +245,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     [self showLoadingView:YES];
     NSInteger p = [self.homePlayModel.price doubleValue]*100;
     NSString *price = [NSString stringWithFormat:@"%lu", (long)p];
-    WXPayApi *wxApi = [[WXPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:price goodsname:@"Video"];
+    WXPayApi *wxApi = [[WXPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:price goodsname:self.homePlayModel.streamname];
     [wxApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         [self showLoadingView:NO];
@@ -266,10 +270,9 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 // 支付宝请求数据
 - (void)requestZFBData {
     
-    
     [self showLoadingView:YES];
 
-    ZFBPayApi *api = [[ZFBPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:self.homePlayModel.price goodsname:@"Video"];
+    ZFBPayApi *api = [[ZFBPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:self.homePlayModel.price goodsname:self.homePlayModel.streamname];
     [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         [self showLoadingView:NO];
@@ -609,6 +612,18 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     return payModel;
 }
 
+#pragma mark - 微信支付回调 通知
+- (void)WeiXinPayResult:(NSNotification *)notification {
+    NSDictionary *dic = notification.userInfo;
+    if ([dic[@"errorCode"] intValue] == WXSuccess) {
+        [self showTipsMsg:@"支付成功"];
+        
+        [self PaySuccessHandle];
+    } else {
+        [self showTipsMsg:@"支付失败"];
+    }
+}
+
 
 #pragma mark - 支付成功后的处理
 
@@ -618,8 +633,6 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     
     // 移除支付选项页面
     [self.backGroundView removeFromSuperview];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Homereload" object:self];
 }
 
 
@@ -676,6 +689,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 
 - (void)dealloc {
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"WXpayResult" object:nil];
     NSLog(@"释放啦～～");
 }
 

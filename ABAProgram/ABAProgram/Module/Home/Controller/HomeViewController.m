@@ -35,7 +35,7 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
     self.title = @"一天一播";
     self.dataSourceArr = [NSArray array];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestOnedayOnePlay) name:@"Homereload" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestOnedayOnePlay) name:@"updateBrowNumber" object:nil];
     
     // 一天一播列表接口
     [self requestOnedayOnePlay];

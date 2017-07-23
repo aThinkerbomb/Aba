@@ -127,17 +127,6 @@
     if ([resp isKindOfClass:[PayResp class]]){
         PayResp *response = (PayResp*)resp;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WXpayResult" object:nil userInfo:@{@"errorCode": @(response.errCode)}];
-        
-        switch(response.errCode){
-            case WXSuccess:
-                //服务器端查询支付通知或查询API返回的结果再提示成功
-                NSLog(@"支付成功");
-                break;
-                
-            default:
-                NSLog(@"支付失败，retcode=%d",resp.errCode);
-                break;
-        }
     }
 }
 
