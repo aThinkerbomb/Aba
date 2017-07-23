@@ -112,9 +112,7 @@ static NSString *babyListCellIdentifier = @"BabyListTableViewCell";
                 }
             }
             
-            // 结束刷新
-            [self.goodTeachTableView.mj_header endRefreshing];
-            [self.goodClassTableView.mj_header endRefreshing];
+            
             
             [self.goodTeachTableView reloadData];
             [self.goodClassTableView reloadData];
@@ -122,6 +120,10 @@ static NSString *babyListCellIdentifier = @"BabyListTableViewCell";
         } else {
             [self showTipsMsg:@"请求错误"];
         }
+        
+        // 结束刷新
+        [self.goodTeachTableView.mj_header endRefreshing];
+        [self.goodClassTableView.mj_header endRefreshing];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [self showLoadingView:NO];

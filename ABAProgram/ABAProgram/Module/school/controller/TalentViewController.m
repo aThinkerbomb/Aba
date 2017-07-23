@@ -59,13 +59,13 @@ static NSString *articleCellIdentifier = @"ArticleTableViewCell";
             
             self.dataSource = [DaRenArticleModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"body"]];
             
-            [self.myTableView.mj_header endRefreshing];
+            
             [self.myTableView reloadData];
             
         } else {
             [self showTipsMsg:@"数据错误"];
         }
-        
+        [self.myTableView.mj_header endRefreshing];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [self showLoadingView:NO];

@@ -89,12 +89,12 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
             HomePlayModel *playModel = self.dataSourceArr[0];
             self.liveHeaderView.imageUrl = playModel.bannerurl;
             
-            [self.homeTableView.mj_header endRefreshing];
+            
             [self.homeTableView reloadData];
         } else {
                 [self showTipsMsg:@"数据错误"];
         }
-        
+        [self.homeTableView.mj_header endRefreshing];
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [self showLoadingView:NO];

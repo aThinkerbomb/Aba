@@ -117,7 +117,7 @@ static NSString *TableViewCellIdentifier = @"UITableViewCell";
             
             self.dataSource = [VideoIntroductionModel mj_objectArrayWithKeyValuesArray:request.responseObject[@"body"]];
             
-            [self.teachTableView.mj_header endRefreshing];
+            
             [self.teachTableView reloadData];
             
             
@@ -125,7 +125,7 @@ static NSString *TableViewCellIdentifier = @"UITableViewCell";
             
 //            [self showTipsMsg:@"数据错误"];
         }
-        
+        [self.teachTableView.mj_header endRefreshing];
         
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -228,22 +228,22 @@ static NSString *TableViewCellIdentifier = @"UITableViewCell";
 
 #pragma mark - 视频播放
 
-- (void)setupPlayViewWithUrl:(NSString *)url {
+- (void)setupPlayViewWithModel:(VideoIntroductionModel *)model {
     
     ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
     [controlView setHiddenFullButton: YES];
     ZFPlayerModel *playModel = [[ZFPlayerModel alloc] init];
     
     // 设置视频网络URL
-    NSString *videoURL = url;
+    NSString *videoURL = model.videopath;
     if ([ABAConfig IsChinese:videoURL]) {
         videoURL = [videoURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
     playModel.videoURL = [NSURL URLWithString:videoURL];
     
     // 有userimg不用 非用这个字段，真特么没见过。。。狗血的数据 一个图片 搞这么繁琐的代码，真是够了
-    NSInteger index = [url length] - 4;
-    NSString *imageName = [url substringToIndex:index];
+    NSInteger index = [model.filename length] - 4;
+    NSString *imageName = [model.filename substringToIndex:index];
     NSString *urlstring = [[ABA_IMAGE stringByAppendingString:imageName] stringByAppendingString:@".jpg"];
     if ([ABAConfig IsChinese:urlstring]) {
         urlstring = [urlstring stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -272,7 +272,7 @@ static NSString *TableViewCellIdentifier = @"UITableViewCell";
     NSLog(@"%lu", section);
     
     VideoIntroductionModel *VideoModel = self.dataSource[section];
-    [self setupPlayViewWithUrl:VideoModel.videopath];
+    [self setupPlayViewWithModel:VideoModel];
 }
 
 
