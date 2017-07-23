@@ -7,7 +7,7 @@
 //
 
 #import "BabyTeachApi.h"
-
+#import "LocationManager.h"
 @implementation BabyTeachApi
 {
     NSString *_latitude;
@@ -19,9 +19,8 @@
     self = [super init];
     if (self) {
         
-        _latitude = @"39.869963";
-        _longitude = @"116.446341";
-        
+        _longitude = [LocationManager ShareLocation].longitude;
+        _latitude = [LocationManager ShareLocation].latitude;
     }
     return self;
 }
@@ -39,9 +38,10 @@
 - (id)requestArgument
 {
     return @{
-             @"longitude": _longitude,
-             @"latitude":  _latitude
+             @"longitude": _longitude?:@"116.446341",
+             @"latitude":  _latitude?:@"39.869963"
              };
+    // 不开启定位就默认传北京的吧
 }
 
 @end

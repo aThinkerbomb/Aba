@@ -196,6 +196,8 @@
 		B2C073EB1F1388A00038381F /* PriceInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2C073E91F1388A00038381F /* PriceInfoTableViewCell.xib */; };
 		B2C073EF1F138A440038381F /* payTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C073ED1F138A440038381F /* payTableViewCell.m */; };
 		B2C073F01F138A440038381F /* payTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2C073EE1F138A440038381F /* payTableViewCell.xib */; };
+		B2C2CF431F24E7C60081DC49 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C2CF421F24E7C60081DC49 /* CoreLocation.framework */; };
+		B2C2CF461F24E9CC0081DC49 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C2CF451F24E9CC0081DC49 /* LocationManager.m */; };
 		B2C49D741F1A20C400F15CA8 /* LeftSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C49D721F1A20C400F15CA8 /* LeftSideView.m */; };
 		B2C49D751F1A20C400F15CA8 /* LeftSideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2C49D731F1A20C400F15CA8 /* LeftSideView.xib */; };
 		B2C49D7A1F1A221C00F15CA8 /* AboutOursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C49D781F1A221C00F15CA8 /* AboutOursViewController.m */; };
@@ -557,6 +559,9 @@
 		B2C073EC1F138A440038381F /* payTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payTableViewCell.h; sourceTree = "<group>"; };
 		B2C073ED1F138A440038381F /* payTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payTableViewCell.m; sourceTree = "<group>"; };
 		B2C073EE1F138A440038381F /* payTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = payTableViewCell.xib; sourceTree = "<group>"; };
+		B2C2CF421F24E7C60081DC49 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B2C2CF441F24E9CC0081DC49 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		B2C2CF451F24E9CC0081DC49 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		B2C49D711F1A20C400F15CA8 /* LeftSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSideView.h; sourceTree = "<group>"; };
 		B2C49D721F1A20C400F15CA8 /* LeftSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSideView.m; sourceTree = "<group>"; };
 		B2C49D731F1A20C400F15CA8 /* LeftSideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftSideView.xib; sourceTree = "<group>"; };
@@ -631,6 +636,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2C2CF431F24E7C60081DC49 /* CoreLocation.framework in Frameworks */,
 				B2343F341F1E1CEF002C281C /* libsqlite3.0.tbd in Frameworks */,
 				B214083C1F176FF700CA4DCC /* libUMSocialLog.a in Frameworks */,
 				B214083A1F176FF700CA4DCC /* UMSocialNetwork.framework in Frameworks */,
@@ -664,6 +670,7 @@
 		261751746A16BBCE7C83D030 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2C2CF421F24E7C60081DC49 /* CoreLocation.framework */,
 				B285A8601F208AC900B97447 /* AlipaySDK.framework */,
 				B21256A51F1FA8B500CE9392 /* CoreMotion.framework */,
 				B21256A31F1FA8A300CE9392 /* CFNetwork.framework */,
@@ -1074,7 +1081,6 @@
 			isa = PBXGroup;
 			children = (
 				B2F816481EFAB720002454A9 /* Manager */,
-				B2F816461EFAB720002454A9 /* Tools */,
 				B2F816471EFAB720002454A9 /* Common */,
 				B2A6B4171EF9529500C74D79 /* Category */,
 				B2A6B4081EF94B2400C74D79 /* Macros */,
@@ -1668,7 +1674,8 @@
 				B21D65FB1F03A3C200C11BE1 /* CycleView */,
 				B23127431F052DB90091CC78 /* SegmentMenu */,
 			);
-			path = Tools;
+			name = Tools;
+			path = ../Tools;
 			sourceTree = "<group>";
 		};
 		B2F816471EFAB720002454A9 /* Common */ = {
@@ -1692,6 +1699,9 @@
 				B2243F1F1F00CC1400FE795D /* VersionManager.m */,
 				B214083F1F17831B00CA4DCC /* ABAShareManager.h */,
 				B21408401F17831B00CA4DCC /* ABAShareManager.m */,
+				B2C2CF441F24E9CC0081DC49 /* LocationManager.h */,
+				B2C2CF451F24E9CC0081DC49 /* LocationManager.m */,
+				B2F816461EFAB720002454A9 /* Tools */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1896,6 +1906,7 @@
 				B23B5A4B1F18C682006AB709 /* OtherLoginApi.m in Sources */,
 				B2323CE41F2344D8006E0161 /* EditInfoView.m in Sources */,
 				B23C3C3E1F0B78DB009723FE /* BenefitDetailViewController.m in Sources */,
+				B2C2CF461F24E9CC0081DC49 /* LocationManager.m in Sources */,
 				B22C97741F000CF500A3EEEA /* BaseViewController.m in Sources */,
 				B2F67DB81F08D9C500302303 /* VideoIntroductionModel.m in Sources */,
 				B23B5B1F1F192053006AB709 /* UIImageView+ZFCache.m in Sources */,

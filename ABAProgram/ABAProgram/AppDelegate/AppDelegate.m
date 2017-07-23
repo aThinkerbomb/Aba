@@ -16,6 +16,7 @@
 #import "ABAShareManager.h"
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "LocationManager.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -39,11 +40,13 @@
     manager.enableAutoToolbar = YES; // IQKeyboardManager提供的键盘上面默认会有“前一个”“后一个”“完成”这样的辅助按钮。如果你不需要，可以将这个enableAutoToolbar属性设置为NO，这样就不会显示了。默认YES
     
     // 版本检测
-    [VersionManager startCheckVersion];
+    [[VersionManager shareInstance] startCheckVersion];
     
     // 注册分享功能
     [ABAShareManager registerShare];
     
+    // 开启定位服务
+    [LocationManager ShareLocation];
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -67,15 +70,21 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     NSLog(@"回调url=%@", url);
     NSString *urlStr = [NSString stringWithFormat:@"%@", url];
+    
+    // 微信支付回调
     if ([urlStr containsString:@"wx909f8c29eb7ddae2://pay"]) {
         return [WXApi handleOpenURL:url delegate:self];
     }
+    
+    // 支付支付回调
     if ([url.host isEqualToString:@"safepay"]) {
         //跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
         }];
     }
+    
+    // 友盟分享回调
     return [ABAShareManager HandleCallBackOpenurl:url];
     
 }

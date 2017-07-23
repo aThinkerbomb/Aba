@@ -30,7 +30,7 @@
 
 
 
-+ (void)startCheckVersion
+- (void)startCheckVersion
 {
     VersionAPI *version = [[VersionAPI alloc] initWithGetVersion];
     [version startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -58,10 +58,15 @@
     }
     if (buttonIndex == 1) {
         
+        NSURL *appstorrUrl = [NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1261288767&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"];
+        if ([[UIApplication sharedApplication] canOpenURL:appstorrUrl]) {
+            [[UIApplication sharedApplication] openURL:appstorrUrl];
+        }
+        
     }
 }
 
-+ (BOOL)checkUpdateWithNewVersion:(NSString *)newVerison{
+- (BOOL)checkUpdateWithNewVersion:(NSString *)newVerison{
     
     if ([ABAConfig isEmptyOfObj:newVerison]) {
         return NO;

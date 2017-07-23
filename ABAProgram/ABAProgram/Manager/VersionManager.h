@@ -13,6 +13,6 @@
 + (instancetype)shareInstance;
 
 // 开启版本检测
-+ (void)startCheckVersion;
+- (void)startCheckVersion;
 
 @end
