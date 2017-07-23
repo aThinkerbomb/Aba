@@ -53,9 +53,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0) {
-        
-    }
+
     if (buttonIndex == 1) {
         
         NSURL *appstorrUrl = [NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1261288767&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"];

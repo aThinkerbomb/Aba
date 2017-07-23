@@ -29,15 +29,15 @@ static NSString * PayCellIdentifier       = @"payTableViewCell";
 @interface OrderViewController ()<UITableViewDelegate, UITableViewDataSource, PayCellDelegate, AdressDelegate, ConfirmPayDelegate>
 
 @property (nonatomic, strong) UITableView *orderTableView;
-@property (nonatomic, strong) GetReceiptAdressModel *adressModel;
-@property (nonatomic, strong) ConfirmPayView * confirmPayView;
+@property (nonatomic, strong) GetReceiptAdressModel *adressModel; // 收获地址model。
+@property (nonatomic, strong) ConfirmPayView * confirmPayView;    // 支付view
 
 
 @end
 
 @implementation OrderViewController
 {
-    NSInteger _selectedPayRow;
+    NSInteger _selectedPayRow; // 0--微信支付  1--支付支付
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,6 +46,7 @@ static NSString * PayCellIdentifier       = @"payTableViewCell";
     self.title = @"确认订单";
     _selectedPayRow = 0;
     
+    // 获取地址通知 重新请求一下
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadRequestData) name:@"reload" object:nil];
     
 }
@@ -237,6 +238,12 @@ static NSString * PayCellIdentifier       = @"payTableViewCell";
 #pragma mark - ConfirmPayDelegate (确认支付代理)
 
 - (void)confirmPayAction {
+    
+    if (self.adressModel) {
+        
+    } else {
+        [self showTipsMsg:@"请填写收货地址"];
+    }
     
 }
 

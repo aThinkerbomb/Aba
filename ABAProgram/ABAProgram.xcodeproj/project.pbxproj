@@ -1697,8 +1697,8 @@
 			children = (
 				B2243F1E1F00CC1400FE795D /* VersionManager.h */,
 				B2243F1F1F00CC1400FE795D /* VersionManager.m */,
-				B214083F1F17831B00CA4DCC /* ABAShareManager.h */,
 				B21408401F17831B00CA4DCC /* ABAShareManager.m */,
+				B214083F1F17831B00CA4DCC /* ABAShareManager.h */,
 				B2C2CF441F24E9CC0081DC49 /* LocationManager.h */,
 				B2C2CF451F24E9CC0081DC49 /* LocationManager.m */,
 				B2F816461EFAB720002454A9 /* Tools */,
