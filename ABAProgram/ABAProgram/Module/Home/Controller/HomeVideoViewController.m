@@ -120,6 +120,16 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     [self.sendCommentView setFrame:CGRectMake(0, ScreenH - 50, ScreenW, 50)];
     __weak typeof(self)WeakSelf = self;
     [self.sendCommentView didSelectedSendMessage:^(NSString *message) {
+        
+        if ([ABAConfig isEmptyOfString:message]) {
+            [WeakSelf showTipsMsg:@"请输入正确的内容"];
+            return ;
+        }
+        
+        if ([ABAConfig isContainsTwoEmoji:message]) {
+            [WeakSelf showTipsMsg:@"不能发送表情"];
+            return;
+        }
         [WeakSelf requestSendCommentWithMessage:message];
     }];
     [self.view addSubview:self.sendCommentView];

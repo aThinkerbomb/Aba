@@ -75,4 +75,20 @@
  @return 星座
  */
 + (NSString *)calculateConstellationWithMonth:(NSInteger)month day:(NSInteger)day;
+
+/**
+ 判断是否是空字符串 包括一串空格
+
+ @param string 需要判断的字符串
+ @return YES  NO
+ */
++ (BOOL)isEmptyOfString:(NSString *)string;
+
+/**
+ 判断是否包含表情
+
+ @param string 需要判断的字符串
+ @return YES NO
+ */
++ (BOOL)isContainsTwoEmoji:(NSString *)string;
 @end
