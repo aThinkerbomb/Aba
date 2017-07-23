@@ -17,7 +17,7 @@
 static NSString * editCellIdentifier = @"EditTableViewCell";
 
 
-@interface EditUserInfoViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface EditUserInfoViewController ()<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 @property (nonatomic, strong) UITableView * editTableView;
 @property (nonatomic, strong) EditInfoView *editInfoView;
 @property (nonatomic, strong) EditUserBirthdayView *birthdayView;
@@ -44,6 +44,11 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     
     [self.editTableView registerNib:[UINib nibWithNibName:@"EditTableViewCell" bundle:nil] forCellReuseIdentifier:editCellIdentifier];
     
+}
+
+- (void)leftButtonAction:(UIButton *)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"是否放弃对资料的修改" delegate:self cancelButtonTitle:@"放弃" otherButtonTitles:@"继续编辑", nil];
+    [alert show];
 }
 
 - (void)rightButtonAction:(UIButton *)sender {
@@ -264,6 +269,16 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     [self.blackGroundView addGestureRecognizer:tap];
     
 }
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self popBack];
+    }
+}
+
+
 
 #pragma mark - lazyLoading
 
