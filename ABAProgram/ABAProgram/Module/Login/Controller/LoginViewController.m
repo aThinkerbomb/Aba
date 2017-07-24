@@ -220,7 +220,10 @@
         
         self.userModel = [UserLoginModel mj_objectWithKeyValues:[request.responseObject objectForKey:@"body"]];
         
-        if ([ABAConfig checkResponseObject:request.responseObject] && ![self.userModel.userphone isEqualToString:@""]) {
+//        if ([ABAConfig checkResponseObject:request.responseObject] && ![self.userModel.userphone isEqualToString:@""])
+        if ([ABAConfig checkResponseObject:request.responseObject])
+            
+        {
             
             // 已经绑定，就直接登录
             [self OtherLoginWithInfoDic:dic];
