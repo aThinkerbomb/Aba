@@ -91,8 +91,8 @@
         [self showTipsMsg:@"请填写姓名"];
         return;
     }
-    if ([self.phone.text isEqualToString:@""]) {
-        [self showTipsMsg:@"请输入电话号码"];
+    if (self.phone.text.length != 11) {
+        [self showTipsMsg:@"请输入正确的手机号码"];
         return;
     }
     
