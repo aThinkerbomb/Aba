@@ -16,8 +16,15 @@
 #import "GetReceiptApi.h"
 #import "GetReceiptAdressModel.h"
 #import "EditViewController.h"
+#import "XMLReader.h"
+#import "ZFBPayApi.h"
+#import "WXPayApi.h"
+#import "WXPayModel.h"
 
+#import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
 
+#define WeiXinAppKey @"wx909f8c29eb7ddae2"
 
 static NSString * AdressCellIdentifier    = @"AdressTableViewCell";
 static NSString * OrangeCellIdentifier    = @"OrangeTableViewCell";
@@ -48,6 +55,7 @@ static NSString * PayCellIdentifier       = @"payTableViewCell";
     
     // 获取地址通知 重新请求一下
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadRequestData) name:@"reload" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(WeiXinPayResult:) name:@"WXpayResult" object:nil];
     
 }
 
@@ -121,6 +129,56 @@ static NSString * PayCellIdentifier       = @"payTableViewCell";
     
 }
 
+// 微信请求数据
+- (void)requestWeixinData {
+    
+    [self showLoadingView:YES];
+    NSInteger p = [self.benefitModel.newprice doubleValue]*100;
+    NSString *price = [NSString stringWithFormat:@"%lu", (long)p];
+    WXPayApi *wxApi = [[WXPayApi alloc] initWithGoodsid:self.benefitModel.benefitId isPre:@"0" totalPrice:price goodsname:@"YCCIT"];
+    [wxApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        
+        NSString *xmlStr = request.responseObject[@"body"];
+        NSError *error;
+        NSDictionary *dic = [XMLReader dictionaryForXMLString:xmlStr error:&error];
+        NSLog(@"dicdic = %@", dic);
+        
+        [self TuneUpWeiXinRequestWithWXPAyModel:[self setWXPayModel:dic[@"xml"]]];
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        
+        NSLog(@"error = %@", request.error);
+    }];
+    
+    
+}
+
+// 支付宝请求数据
+- (void)requestZFBData {
+    
+    [self showLoadingView:YES];
+    
+    ZFBPayApi *api = [[ZFBPayApi alloc] initWithGoodsid:self.benefitModel.benefitId isPre:@"0" totalPrice:self.benefitModel.newprice goodsname:@"YCCIT"];
+    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        
+        // 调起支付宝
+        [self TuneUpZFBRequestWithOrderStr:request.responseObject[@"body"]];
+        
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [self showLoadingView:NO];
+        NSLog(@"error = %@", request.error);
+    }];
+    
+    
+}
 
 
 #pragma mark - UITableViewDataSource
@@ -241,10 +299,127 @@ static NSString * PayCellIdentifier       = @"payTableViewCell";
     
     if (self.adressModel) {
         
+        if (_selectedPayRow == 0) {
+            
+            // 微信支付
+            [self requestWeixinData];
+            
+        } else if (_selectedPayRow == 1) {
+            
+            // 支付宝支付
+            [self requestZFBData];
+            
+        }
+        
     } else {
         [self showTipsMsg:@"请填写收货地址"];
     }
     
+}
+
+#pragma mark - 调起微信支付
+/**
+ 调起微信支付
+ */
+- (void)TuneUpWeiXinRequestWithWXPAyModel:(WXPayModel *)payModel {
+    
+    if ([WXApi isWXAppSupportApi]) {
+        
+        [WXApi registerApp:WeiXinAppKey enableMTA:YES];
+        
+        // 生成随机数
+        NSString * nonceStr = [ABAConfig acrRandow];
+        
+        // 当前时间戳
+        NSString * timestamp = [NSDate getCurrentTimestamp];
+        
+        // 生成sign签名partnerId
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:WeiXinAppKey forKey:@"appid"];
+        [dic setObject:nonceStr forKey:@"noncestr"];
+        [dic setObject:@(timestamp.intValue) forKey:@"timestamp"];
+        [dic setObject:ABA_WX_Partnerid forKey:@"partnerid"];
+        [dic setObject:payModel.prepayId forKey:@"prepayid"];
+        [dic setObject:@"Sign=WXPay" forKey:@"package"];
+        NSString * sign = [ABAConfig getSignFieldFromRequestDictionary:dic];
+        
+        // 后台服务器返回少时间戳 只能自己计算
+        PayReq *request = [[PayReq alloc] init];
+        request.partnerId = ABA_WX_Partnerid;
+        request.prepayId= payModel.prepayId;
+        request.nonceStr= nonceStr;
+        request.package = @"Sign=WXPay";
+        request.timeStamp= timestamp.intValue;
+        request.sign= sign;
+        [WXApi sendReq:request];
+        
+        
+// 调起微信支付
+//        PayReq *request = [[PayReq alloc] init];
+//        request.partnerId = payModel.partnerId;
+//        request.prepayId= payModel.prepayId;
+//        request.nonceStr= payModel.nonceStr;
+//        request.package = payModel.package;
+//        request.timeStamp= payModel.timeStamp;
+//        request.sign= payModel.sign;
+//        [WXApi sendReq:request];
+        
+    } else {
+        [self showTipsMsg:@"未安装微信或请升级微信版本"];
+    }
+    
+}
+
+
+#pragma mark - 调起 支付宝支付
+- (void)TuneUpZFBRequestWithOrderStr:(NSString *)orderStr {
+    if (orderStr != nil) {
+        //应用注册scheme,在AliSDKDemo-Info.plist定义URL types
+        NSString *appScheme = @"ali2017041406709494";
+        
+        __weak typeof(self)WeakSelf = self;
+        
+        // 调起支付宝
+        [[AlipaySDK defaultService] payOrder:orderStr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            
+            
+            // 支付成功。
+            if ([resultDic[@"resultStatus"] intValue] == 9000) {
+                [WeakSelf showTipsMsg:@"支付成功"];
+                
+            } else {
+                [WeakSelf showTipsMsg:resultDic[@"memo"]];
+            }
+        }];
+    }
+}
+
+
+#pragma mark - 设置自定义 微信支付 model
+
+- (WXPayModel *)setWXPayModel:(NSDictionary *)dic {
+    WXPayModel *payModel = [[WXPayModel alloc] init];
+    payModel.prepayId = dic[@"prepay_id"][@"text"];
+    payModel.nonceStr = dic[@"nonce_str"][@"text"];
+    payModel.partnerId = dic[@"mch_id"][@"text"];
+    payModel.sign = dic[@"sign"][@"text"];
+    payModel.package = @"Sign=WXPay";
+    NSString *time = [NSDate getCurrentTimestamp];
+    payModel.timeStamp = time.intValue;
+    
+    
+    return payModel;
+}
+
+#pragma mark - 微信支付回调 通知
+- (void)WeiXinPayResult:(NSNotification *)notification {
+    NSDictionary *dic = notification.userInfo;
+    if ([dic[@"errorCode"] intValue] == WXSuccess) {
+        [self showTipsMsg:@"支付成功"];
+        
+    } else {
+        [self showTipsMsg:@"支付失败"];
+    }
 }
 
 

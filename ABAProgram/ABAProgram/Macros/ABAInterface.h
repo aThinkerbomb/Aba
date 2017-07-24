@@ -119,7 +119,7 @@
 #define ABA_UPDATE_RECEIPT_DES_URL @"/userPre/updateUserShipInfo"
 
 // 微信支付
-#define WEIXIN_URL @"chooseWXPay/gopay"
+#define WEIXIN_URL @"/chooseWXPay/gopay"
 #define ABA_WX_PAY_URL @"/chooseWXPay/gopay"
 
 // 支付宝
