@@ -538,7 +538,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
         [dic setObject:nonceStr forKey:@"noncestr"];
         [dic setObject:@(timestamp.intValue) forKey:@"timestamp"];
         [dic setObject:ABA_WX_Partnerid forKey:@"partnerid"];
-        [dic setObject:payModel.prepayId forKey:@"prepayid"];
+        [dic setObject:payModel.prepayId?:@"0" forKey:@"prepayid"];
         [dic setObject:@"Sign=WXPay" forKey:@"package"];
         NSString * sign = [ABAConfig getSignFieldFromRequestDictionary:dic];
         
