@@ -95,8 +95,8 @@
                         <constraint firstAttribute="width" secondItem="15B-2l-QtO" secondAttribute="height" multiplier="5:4" id="Cel-ZY-YYp"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有乐宝贝-亲子游戏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyC-CZ-Y42">
-                    <rect key="frame" x="16" y="356" width="121" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有乐宝贝-亲子游戏" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyC-CZ-Y42">
+                    <rect key="frame" x="16" y="356" width="343" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -156,6 +156,7 @@
                 <constraint firstItem="sHw-qB-28j" firstAttribute="leading" secondItem="KS2-Ip-6O5" secondAttribute="trailing" constant="10" id="Fe6-4W-Zs5"/>
                 <constraint firstItem="KS2-Ip-6O5" firstAttribute="centerY" secondItem="sHw-qB-28j" secondAttribute="centerY" id="G1l-IE-mp3"/>
                 <constraint firstItem="3oP-bl-cb9" firstAttribute="centerY" secondItem="utU-pA-UpN" secondAttribute="centerY" id="Ida-rc-nGN"/>
+                <constraint firstAttribute="trailing" secondItem="jyC-CZ-Y42" secondAttribute="trailing" constant="16" id="Jeb-CD-bhY"/>
                 <constraint firstItem="kQW-y5-pz3" firstAttribute="top" secondItem="jlR-SM-4yv" secondAttribute="top" id="KUt-F1-87y"/>
                 <constraint firstItem="sV5-53-YCh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="L3e-LP-kFd"/>
                 <constraint firstItem="3aI-IB-cQg" firstAttribute="centerY" secondItem="sV5-53-YCh" secondAttribute="centerY" id="NCV-mH-uzT"/>

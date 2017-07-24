@@ -42,7 +42,7 @@
              @"shipname": _shipName,
              @"shipphone": _shipPhone,
              @"shipaddress": _shipAdress,
-             @"id": _orderid
+             @"id": _orderid?:@""
              };
 }
 
