@@ -63,7 +63,7 @@ static NSString *UserinfoIdentifier = @"UserInfoTableViewCell";
             
             self.userModel = [UserLoginModel mj_objectWithKeyValues:request.responseObject[@"body"]];
             
-            [self.headerView.headerImage sd_setImageWithURL:[NSURL URLWithString:self.userModel.userimg]];
+            [self.headerView.headerImage sd_setImageWithURL:[NSURL URLWithString:self.userModel.userimg] placeholderImage:[UIImage imageNamed:@"headerImage"]];
             
             [self.myTableView reloadData];
             

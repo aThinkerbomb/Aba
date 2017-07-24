@@ -18,7 +18,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="OOM-o3-M15">
                     <rect key="frame" x="0.0" y="0.0" width="324" height="191"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test1" translatesAutoresizingMaskIntoConstraints="NO" id="Fke-8d-dvG">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerImage" translatesAutoresizingMaskIntoConstraints="NO" id="Fke-8d-dvG">
                     <rect key="frame" x="20" y="121" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="IQT-7G-T9m"/>
@@ -44,7 +44,7 @@
         </view>
     </objects>
     <resources>
+        <image name="headerImage" width="35" height="35"/>
         <image name="test" width="1920" height="1200"/>
-        <image name="test1" width="128" height="128"/>
     </resources>
 </document>
