@@ -7,6 +7,7 @@
 //
 
 #import "HomeVideoViewController.h"
+#import "HomeDetailVideoHeaderView.h"
 #import "HomeVideoSectionView.h"
 #import "CommentTableViewCell.h"
 #import "IntroPeopleTableViewCell.h"
@@ -68,6 +69,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 
 @property (nonatomic, strong) UIButton * shelterBtnView;     //遮挡视频播放的btn，需要支付的时候出现
 @property (nonatomic, strong) PayChooseView * payChooseView; //支付选择页面
+@property (nonatomic, strong) HomeDetailVideoHeaderView *headerView;
 @property (nonatomic, strong) UIView *backView;              //视频播放界面的父view
 @property (nonatomic, strong) UIView * backGroundView;       //支付选择页面的父view
 
@@ -109,13 +111,12 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     
     // 设置右侧按钮
     [self setNaviRightItemNormalImage:[UIImage imageNamed:@"nav_button_share"] HighlightedIamge:[UIImage imageNamed:@"nav_button_share"]];
-    
+
     // 注册cell
     [self registerTableViewCell];
     
     // 设置视频View
-    [self.view addSubview:[self setupPlayView]];
-    
+    [self setupPlayView];
     
     // 发表评论的view
     self.sendCommentView = [[[NSBundle mainBundle] loadNibNamed:@"VideoSendCommentView" owner:self options:nil] lastObject];
@@ -437,35 +438,47 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
 
 #pragma mark - 设置播放器界面
 
-- (UIView *)setupPlayView {
-    
-    // 底层View
-    self.backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenW/5*3)];
+- (void)setupPlayView {
+    [self showLoadingView:YES];
+    dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_HIGH), ^{
+       
+        ZFPlayerModel *playModel = [[ZFPlayerModel alloc] init];
+        // 设置视频网络URL
+        NSString *videoURL = self.homePlayModel.recordurl;
+        if ([ABAConfig IsChinese:videoURL]) {
+            videoURL = [videoURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
+        playModel.videoURL = [NSURL URLWithString:videoURL];
+        
+        // 设置播放的封面图片，来源网络
+        NSString *URLString = self.homePlayModel.bannerurl;
+        if ([ABAConfig IsChinese:URLString]) {
+            URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
+        playModel.placeholderImageURLString = URLString;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // 底层View
+            self.backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenW/5*3)];
+            
+            self.playerView = [[ZFPlayerView alloc] initWithFrame:self.backView.bounds];
+            
+            ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
 
-    self.playerView = [[ZFPlayerView alloc] initWithFrame:self.backView.bounds];
+            playModel.fatherView = self.backView;
+            [self.playerView playerControlView:controlView playerModel:playModel];
+            [self.backView addSubview:self.playerView];
+            
+            [self.view addSubview:self.backView];
+            [self showLoadingView:NO];
+            
+        });
+    });
     
-    ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
     
-    ZFPlayerModel *playModel = [[ZFPlayerModel alloc] init];
     
-    // 设置视频网络URL
-    NSString *videoURL = self.homePlayModel.recordurl;
-    if ([ABAConfig IsChinese:videoURL]) {
-        videoURL = [videoURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    }
-    playModel.videoURL = [NSURL URLWithString:videoURL];
     
-    // 设置播放的封面图片，来源网络
-    NSString *URLString = self.homePlayModel.bannerurl;
-    if ([ABAConfig IsChinese:URLString]) {
-        URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    }
-    playModel.placeholderImageURLString = URLString;
-    playModel.fatherView = self.backView;
-    [self.playerView playerControlView:controlView playerModel:playModel];
-    [self.backView addSubview:self.playerView];
-    
-    return self.backView;
 
 }
 
@@ -685,7 +698,14 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     return _payChooseView;
 }
 
-
+- (HomeDetailVideoHeaderView *)headerView {
+    if (!_headerView) {
+        _headerView = [[[NSBundle mainBundle] loadNibNamed:@"HomeDetailVideoHeaderView" owner:self options:nil] lastObject];
+        _headerView.homePlayModel = self.homePlayModel;
+        [_headerView setFrame:CGRectMake(0, 0, ScreenW, ScreenW/5*3)];
+    }
+    return _headerView;
+}
 
 - (void)dealloc {
     

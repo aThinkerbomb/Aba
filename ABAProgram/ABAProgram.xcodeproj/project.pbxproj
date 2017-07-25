@@ -129,6 +129,8 @@
 		B25C7C2B1F2321B200E2B822 /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B25C7C2A1F2321B200E2B822 /* EditUserInfoViewController.m */; };
 		B25C7C2F1F23245600E2B822 /* EditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B25C7C2D1F23245600E2B822 /* EditTableViewCell.m */; };
 		B25C7C301F23245600E2B822 /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25C7C2E1F23245600E2B822 /* EditTableViewCell.xib */; };
+		B25FCA721F270630009E5262 /* HomeDetailVideoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B25FCA711F270630009E5262 /* HomeDetailVideoHeaderView.m */; };
+		B25FCA741F27063B009E5262 /* HomeDetailVideoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25FCA731F27063B009E5262 /* HomeDetailVideoHeaderView.xib */; };
 		B26561411F0CAC900078B2A7 /* ParameterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B26561401F0CAC900078B2A7 /* ParameterTableViewCell.m */; };
 		B26561451F0CD3630078B2A7 /* ServiceDesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B26561431F0CD3630078B2A7 /* ServiceDesTableViewCell.m */; };
 		B26561461F0CD3630078B2A7 /* ServiceDesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26561441F0CD3630078B2A7 /* ServiceDesTableViewCell.xib */; };
@@ -440,6 +442,9 @@
 		B25C7C2C1F23245600E2B822 /* EditTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTableViewCell.h; sourceTree = "<group>"; };
 		B25C7C2D1F23245600E2B822 /* EditTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTableViewCell.m; sourceTree = "<group>"; };
 		B25C7C2E1F23245600E2B822 /* EditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTableViewCell.xib; sourceTree = "<group>"; };
+		B25FCA701F27062F009E5262 /* HomeDetailVideoHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailVideoHeaderView.h; sourceTree = "<group>"; };
+		B25FCA711F270630009E5262 /* HomeDetailVideoHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailVideoHeaderView.m; sourceTree = "<group>"; };
+		B25FCA731F27063B009E5262 /* HomeDetailVideoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeDetailVideoHeaderView.xib; sourceTree = "<group>"; };
 		B265613F1F0CAC900078B2A7 /* ParameterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterTableViewCell.h; sourceTree = "<group>"; };
 		B26561401F0CAC900078B2A7 /* ParameterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterTableViewCell.m; sourceTree = "<group>"; };
 		B26561421F0CD3630078B2A7 /* ServiceDesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDesTableViewCell.h; sourceTree = "<group>"; };
@@ -1222,9 +1227,12 @@
 				B2B347D71F02115A005FEAD5 /* HomeListTableViewCell.h */,
 				B2B347D81F02115A005FEAD5 /* HomeListTableViewCell.m */,
 				B2B347D91F02115A005FEAD5 /* HomeListTableViewCell.xib */,
-				B29B53711F07A6F300087CFA /* HomeLiveHeaderView.h */,
 				B29B53721F07A6F300087CFA /* HomeLiveHeaderView.m */,
+				B29B53711F07A6F300087CFA /* HomeLiveHeaderView.h */,
 				B224AC941F07A73500BAC3E9 /* HomeLiveHeaderView.xib */,
+				B25FCA701F27062F009E5262 /* HomeDetailVideoHeaderView.h */,
+				B25FCA711F270630009E5262 /* HomeDetailVideoHeaderView.m */,
+				B25FCA731F27063B009E5262 /* HomeDetailVideoHeaderView.xib */,
 				B21EB7FD1F0E1781005F571A /* HomeVideoSectionView.h */,
 				B21EB7FE1F0E1781005F571A /* HomeVideoSectionView.m */,
 				B21EB8001F0E1791005F571A /* HomeVideoSectionView.xib */,
@@ -1789,6 +1797,7 @@
 				B2B347F11F0261CE005FEAD5 /* BabyListTableViewCell.xib in Resources */,
 				B2C073EB1F1388A00038381F /* PriceInfoTableViewCell.xib in Resources */,
 				B2CB74611F14FAF200949AA1 /* ConfirmPayView.xib in Resources */,
+				B25FCA741F27063B009E5262 /* HomeDetailVideoHeaderView.xib in Resources */,
 				B25C7C301F23245600E2B822 /* EditTableViewCell.xib in Resources */,
 				B21EB8061F0E1E28005F571A /* CommentTableViewCell.xib in Resources */,
 				B2F364011F0A264B00D26AA8 /* BabyGoodTeachHeaderView.xib in Resources */,
@@ -2028,6 +2037,7 @@
 				B21EB8181F0E3293005F571A /* VideoBrowNumberApi.m in Sources */,
 				B231274D1F052DB90091CC78 /* HeaderToolScrollBar.m in Sources */,
 				B22D7DE71F224DA500A0CEE8 /* UserHeaderView.m in Sources */,
+				B25FCA721F270630009E5262 /* HomeDetailVideoHeaderView.m in Sources */,
 				B23B5B1B1F192053006AB709 /* README.md in Sources */,
 				B2B3CCE41F0643C70094AD5B /* ArticleTableViewCell.m in Sources */,
 				B2D359DD1F16722000827894 /* HistoryModel.m in Sources */,

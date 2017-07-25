@@ -28,7 +28,9 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 @end
 
 @implementation HomeViewController
-
+{
+    NSIndexPath *_index;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -91,6 +93,9 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
             
             
             [self.homeTableView reloadData];
+            
+            // reloadData 之后仍然保持选中状态
+            [self.homeTableView selectRowAtIndexPath:_index animated:YES scrollPosition:UITableViewScrollPositionNone];
         } else {
                 [self showTipsMsg:@"数据错误"];
         }
@@ -148,25 +153,27 @@ static NSString * homeTableViewCellIdentifier = @"HomeListTableViewCell";
 #pragma mark - UITableViewDelegate
 
 // 提前去掉 上一个选中状态
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger index = [[KZUserDefaults objectForKey:@"index"] intValue];
-    if (index >= 0) {
-        NSIndexPath * indexP= [NSIndexPath indexPathForRow:index inSection:0];
-        [tableView deselectRowAtIndexPath:indexP animated:NO];
-        
-    }
-    return YES;
-}
+//- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    if (_index.row >= 0) {
+//        [tableView deselectRowAtIndexPath:_index animated:NO];
+//        
+//    }
+//    return YES;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [KZUserDefaults setObject:@(indexPath.row) forKey:@"index"];
+    _index = tableView.indexPathForSelectedRow;
     HomeVideoViewController *videoVC = [[HomeVideoViewController alloc] init];
     videoVC.homePlayModel = self.dataSourceArr[indexPath.row];
     videoVC.hidesBottomBarWhenPushed = YES;
     [self pushToNextNavigationController:videoVC];
 }
 
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    [self.homeTableView selectRowAtIndexPath:_index animated:YES scrollPosition:UITableViewScrollPositionNone];
+//}
 
 
 #pragma mark - HomeLiveHeaderViewDelegate
