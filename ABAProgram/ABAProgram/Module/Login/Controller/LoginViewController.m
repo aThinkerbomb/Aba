@@ -37,6 +37,9 @@
     self.agreeBtn.selected = YES;
     self.infoDic = [NSMutableDictionary dictionary];
     
+    self.LoginBtn.layer.cornerRadius = 20;
+    self.LoginBtn.layer.masksToBounds = YES;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

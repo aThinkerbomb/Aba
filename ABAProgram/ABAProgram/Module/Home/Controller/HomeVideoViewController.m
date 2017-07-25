@@ -493,7 +493,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     
     // 支付View
     [self.payChooseView setFrame:CGRectMake((ScreenW-260)/2, (ScreenH-360)/2, 260, 360)];
-    
+    self.payChooseView.WxBtn.selected = YES;
     __weak typeof(self)WeakSelf = self;
     
     // 支付关闭按钮

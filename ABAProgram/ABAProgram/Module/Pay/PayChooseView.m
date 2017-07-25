@@ -11,8 +11,7 @@
 @interface PayChooseView ()
 
 @property (weak, nonatomic) IBOutlet UILabel *price;
-@property (weak, nonatomic) IBOutlet UIButton *WxBtn;
-@property (weak, nonatomic) IBOutlet UIButton *zfbBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *PayBtn;
 
 @property (nonatomic, copy) PayHandle payhandle;
@@ -24,13 +23,7 @@
     NSInteger _index;
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        _index = 0;
-    }
-    return self;
-}
+
 
 
 
@@ -82,6 +75,7 @@
     [super awakeFromNib];
     self.PayBtn.layer.cornerRadius = 6;
     self.PayBtn.layer.masksToBounds = YES;
+    _index = 1;
 }
 
 /*

@@ -13,6 +13,9 @@ typedef void(^PayHandle)(NSInteger index);
 typedef void(^CloseAction)(void);
 @interface PayChooseView : UIView
 
+@property (weak, nonatomic) IBOutlet UIButton *WxBtn;
+@property (weak, nonatomic) IBOutlet UIButton *zfbBtn;
+
 - (void)closePayView:(CloseAction)close;
 - (void)SurePay:(PayHandle)handle;
 

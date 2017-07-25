@@ -31,6 +31,9 @@
     
     downTime = 60;
     
+    self.sureButton.layer.cornerRadius = 20;
+    self.sureButton.layer.masksToBounds = YES;
+    
     if (self.choose == 1) {
         self.title = @"重置密码";
         self.password.placeholder = @"请输入新密码";
