@@ -250,9 +250,6 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
     [self.blackGroundView addSubview:self.birthdayView];
     [kAppDelegate.window addSubview:self.blackGroundView];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
-    [self.blackGroundView addGestureRecognizer:tap];
-    
 }
 
 #pragma mark - UIAlertViewDelegate

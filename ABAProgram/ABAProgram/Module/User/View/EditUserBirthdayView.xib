@@ -160,7 +160,7 @@
                     </connections>
                 </datePicker>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="adJ-0f-9pm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="1GC-7F-QjE"/>
                 <constraint firstItem="3l9-Du-8nw" firstAttribute="top" secondItem="7mF-cx-Hzw" secondAttribute="bottom" constant="20" id="1ex-TB-h9w"/>
