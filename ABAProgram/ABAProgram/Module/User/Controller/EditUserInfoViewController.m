@@ -114,22 +114,7 @@ static NSString * editCellIdentifier = @"EditTableViewCell";
         [self showTipsMsg:@"网络错误"];
         
     }];
-//    EditTableViewCell *cell1 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-//    EditTableViewCell *cell2 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-//    EditTableViewCell *cell3 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-//    EditTableViewCell *cell4 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-//    EditTableViewCell *cell5 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
-//    EditTableViewCell *cell6 = [self.editTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
-//    
-//    NSLog(@"nmb = %@", cell3.info.text);
-//    NSString *relation = cell3.info.text;
-//    [dic setValue:[KZUserDefaults objectForKey:@"userid"] forKey:@"userid"];
-//    [dic setValue:cell1.info.text forKey:@"usersonname"];
-//    [dic setValue:cell2.info.text forKey:@"userphone"];
-//    [dic setValue:relation forKey:@"userrelation"];
-//    [dic setValue:cell4.info.text forKey:@"username"];
-//    [dic setValue:cell5.info.text forKey:@"usergender"];
-//    [dic setValue:cell6.info.text forKey:@"userbirthday"];
+
 }
 
 

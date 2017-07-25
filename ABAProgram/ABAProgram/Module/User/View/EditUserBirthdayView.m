@@ -26,8 +26,14 @@
     _userModel = userModel;
     if (_userModel) {
         
+        // 异常处理
+        NSString *birthday = _userModel.userbirthday;
+        if ([birthday isEqualToString:@""]) {
+            birthday = [NSDate getCurrentDateWithFormatter:@"yyyy-MM-dd"];
+        }
+        
         // yyyy-MM-dd转为date
-        NSDate *date = [NSDate getCurrentDateWithDateString:_userModel.userbirthday];
+        NSDate *date = [NSDate getCurrentDateWithDateString:birthday];
         // 计算年龄
         int age = [ABAConfig getAgeWithDateTimeInterval:[NSDate getSecondswithDate:date]];
         // 展示年龄
@@ -41,10 +47,10 @@
         self.Constellation.text = [ABAConfig calculateConstellationWithMonth:[month intValue] day:[day intValue]];
         
         // 展示生日
-        self.birthday.text = _userModel.userbirthday;
+        self.birthday.text = birthday;
         
         // 设置datepicker
-        self.birthdayPicker.date = [NSDate getCurrentDateWithDateString:_userModel.userbirthday];
+        self.birthdayPicker.date = [NSDate getCurrentDateWithDateString:birthday];
         
     }
     

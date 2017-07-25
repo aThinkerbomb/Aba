@@ -91,4 +91,12 @@
     NSString *day = [dateFormatter stringFromDate:date];
     return day;
 }
+
++ (NSString *)getCurrentDateWithFormatter:(NSString *)formatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:formatter];
+    NSDate * date = [[NSDate alloc] init];
+    NSString * time = [dateFormatter stringFromDate:date];
+    return time;
+}
 @end

@@ -62,4 +62,12 @@
  @return 天
  */
 + (NSString *)getDayWithDate:(NSDate *)date;
+
+/**
+ 获取当天的时间
+
+ @param formatter 格式
+ @return 返回formatter格式的时间
+ */
++ (NSString *)getCurrentDateWithFormatter:(NSString *)formatter;
 @end
