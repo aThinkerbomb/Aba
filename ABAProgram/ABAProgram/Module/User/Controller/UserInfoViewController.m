@@ -143,7 +143,7 @@ static NSString *UserinfoIdentifier = @"UserInfoTableViewCell";
 - (UserHeaderView *)headerView {
     if (!_headerView) {
         _headerView = [[[NSBundle mainBundle] loadNibNamed:@"UserHeaderView" owner:self options:nil] lastObject];
-        [_headerView setFrame:CGRectMake(0, 0, ScreenW, ScreenW/5*3)];
+        [_headerView setFrame:CGRectMake(0, 0, ScreenW, ScreenW/720*322)];
     }
     return _headerView;
 }

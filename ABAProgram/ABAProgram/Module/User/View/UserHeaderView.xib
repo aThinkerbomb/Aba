@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="324" height="191"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="OOM-o3-M15">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myinfo_head_bg" translatesAutoresizingMaskIntoConstraints="NO" id="OOM-o3-M15">
                     <rect key="frame" x="0.0" y="0.0" width="324" height="191"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerImage" translatesAutoresizingMaskIntoConstraints="NO" id="Fke-8d-dvG">
@@ -40,11 +40,11 @@
             <connections>
                 <outlet property="headerImage" destination="Fke-8d-dvG" id="OsZ-5d-lFi"/>
             </connections>
-            <point key="canvasLocation" x="-147" y="-188"/>
+            <point key="canvasLocation" x="-323" y="-202"/>
         </view>
     </objects>
     <resources>
         <image name="headerImage" width="35" height="35"/>
-        <image name="test" width="1920" height="1200"/>
+        <image name="myinfo_head_bg" width="720" height="322"/>
     </resources>
 </document>
