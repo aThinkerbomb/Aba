@@ -246,7 +246,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     [self showLoadingView:YES];
     NSInteger p = [self.homePlayModel.price doubleValue]*100;
     NSString *price = [NSString stringWithFormat:@"%lu", (long)p];
-    WXPayApi *wxApi = [[WXPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:price goodsname:self.homePlayModel.streamname];
+    WXPayApi *wxApi = [[WXPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:price goodsname:@"Video"];
     [wxApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         [self showLoadingView:NO];
@@ -273,7 +273,7 @@ typedef NS_ENUM(NSInteger, VideoSectionType) {
     
     [self showLoadingView:YES];
 
-    ZFBPayApi *api = [[ZFBPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:self.homePlayModel.price goodsname:self.homePlayModel.streamname];
+    ZFBPayApi *api = [[ZFBPayApi alloc] initWithGoodsid:self.homePlayModel.liveId isPre:@"1" totalPrice:self.homePlayModel.price goodsname:@"Video"];
     [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         [self showLoadingView:NO];

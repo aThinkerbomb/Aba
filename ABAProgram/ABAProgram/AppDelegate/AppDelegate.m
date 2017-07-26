@@ -28,9 +28,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [NSThread sleepForTimeInterval:1.5];
+    
     // 程序刚一启动的时候 设置YTK的BaseUrl
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = @"http://www.abashow.com";
+    config.baseUrl = @"https://www.abashow.com:8443";
     
     
     // 键盘设置
