@@ -24,7 +24,7 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
 @property (nonatomic, strong) NSArray * dataSource;
 
 @property (nonatomic, strong) VideoHeaderView *videoheaderView;
-@property (nonatomic, strong) VideoIntroSectionView *sectionView;
+
 @end
 
 @implementation ExpertVideoViewController
@@ -42,6 +42,8 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     
     _open = NO;
     _index = 0;
+    
+    self.dataSource = [NSArray array];
 }
 
 - (void)popBack {
@@ -176,20 +178,21 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
 
         
     __weak typeof(self)WeakSelf = self;
-    [self.sectionView didClickedVideoIntro:^{
+    VideoIntroSectionView *sectionView = [[[NSBundle mainBundle] loadNibNamed:@"VideoIntroSectionView" owner:self options:nil] lastObject];
+    [sectionView didClickedVideoIntro:^{
         
         _open = !_open;
         if (_open) {
-            [WeakSelf.sectionView.jiantouIcon setImage:[UIImage imageNamed:@"jiantoushang"]];
+            [sectionView.jiantouIcon setImage:[UIImage imageNamed:@"jiantoushang"]];
         } else {
-            [WeakSelf.sectionView.jiantouIcon setImage:[UIImage imageNamed:@"jiantouxia"]];
+            [sectionView.jiantouIcon setImage:[UIImage imageNamed:@"jiantouxia"]];
         }
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0] ;
         [WeakSelf.videoTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         
     }];
-    return self.sectionView;
+    return sectionView;
 
 }
 
@@ -217,10 +220,11 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
 - (void)sharePlatform {
     
     [UMSocialUIManager setPreDefinePlatforms:@[@0,@1,@2,@4,@5]];
+    __weak typeof (self)Weakself = self;
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
         
         // 视频网络URL
-        ExpertVideoModel *model = self.dataSource[_index];
+        ExpertVideoModel *model = Weakself.dataSource[_index];
         NSString *videoURL = model.videopath;
         if ([ABAConfig IsChinese:videoURL]) {
             videoURL = [videoURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -234,9 +238,7 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
 //            urlstring = [urlstring stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //        }
         
-
-        __weak typeof (self)Weakself = self;
-        [ABAShareManager shareToPlatform:platformType title:model.videoname content:model.remark image:[UIImage imageNamed:@"ic_launcher"] url:videoURL presentedController:self complete:^(BOOL isSuccess, NSString *errorMsg) {
+        [ABAShareManager shareToPlatform:platformType title:model.videoname content:model.remark image:[UIImage imageNamed:@"ic_launcher"] url:videoURL presentedController:Weakself complete:^(BOOL isSuccess, NSString *errorMsg) {
             if (isSuccess) {
                 [Weakself showTipsMsg:@"分享成功"];
             } else {
@@ -264,13 +266,13 @@ static NSString *VideoListCellIdentifier = @"VideListTableViewCell";
     return _videoTableView;
 }
 
-- (VideoIntroSectionView *)sectionView {
-    if (!_sectionView) {
-        _sectionView = [[[NSBundle mainBundle] loadNibNamed:@"VideoIntroSectionView" owner:self options:nil] lastObject];
-        [_sectionView.jiantouIcon setImage:[UIImage imageNamed:@"jiantouxia"]];
-    }
-    return _sectionView;
-}
+//- (VideoIntroSectionView *)sectionView {
+//    if (!_sectionView) {
+//        _sectionView = [[[NSBundle mainBundle] loadNibNamed:@"VideoIntroSectionView" owner:self options:nil] lastObject];
+//        [_sectionView.jiantouIcon setImage:[UIImage imageNamed:@"jiantouxia"]];
+//    }
+//    return _sectionView;
+//}
 
 - (void)dealloc {
     NSLog(@"释放啦～～～");

@@ -12,6 +12,8 @@
 
 @interface VersionManager ()<UIAlertViewDelegate>
 
+@property (nonatomic, strong) VersionModel *versionModel;
+
 @end
 
 
@@ -36,11 +38,10 @@
     [version startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         if (request.responseObject != nil) {
-            VersionModel *model = [[VersionModel alloc] init];
-            model = [VersionModel mj_objectWithKeyValues:request.responseObject];
+            self.versionModel = [VersionModel mj_objectWithKeyValues:request.responseObject];
             
-            if ([self checkUpdateWithNewVersion:model.versonname]) {
-                UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:nil message:model.versionDes delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            if ([self checkUpdateWithNewVersion:self.versionModel.versonname]) {
+                UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:nil message:self.versionModel.versionDes delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
                 [alerView show];
             }
             
