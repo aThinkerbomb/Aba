@@ -184,7 +184,8 @@
 
 - (void)initTimer {
     [self.VerificationCodeButton setTitle:@"发送中..." forState:UIControlStateNormal];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(downTime) userInfo:nil repeats:YES];
+    __weak typeof(self)WeakSelf = self;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:WeakSelf selector:@selector(downTime) userInfo:nil repeats:YES];
 }
 
 
@@ -256,7 +257,10 @@
     self.timer = nil;
 }
 
-
+-(void)dealloc {
+    NSLog(@"time = %d", downTime);
+    NSLog(@"释放啦～");
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
